@@ -7,9 +7,13 @@ services:
       - 32782:1972
       - 32783:52773
       - 32784:53773
+      - 52775:52773
+      - 51776:1972
     command: 
       - --check-caps false
       - -a
       - iris session iris -U%SYS '##class(Security.Users).UnExpireUserPasswords("*")'
     volumes:
       - ./web:/usr/irissys/csp/fhirapp
+      - ./src:/home/irisowner/fhirapp/src
+      - ./misc:/home/irisowner/fhirapp/misc
