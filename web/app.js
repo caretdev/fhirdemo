@@ -151,7 +151,7 @@ class ResourceListView extends React.Component {
   render() {
     return (
       <>
-        <Navbar bg="light" expand="lg" sticky="top">
+        <Navbar bg="light" expand="sm" sticky="top">
           <Container fluid>
             <InputGroup>
               <Form.Control value={this.state.search} placeholder="Search" onChange={(e) => this.setState({ search: e.target.value })}></Form.Control>
@@ -263,7 +263,7 @@ class App extends React.Component {
   render() {
     return (
       <Tab.Container id="main-tabs" defaultActiveKey="dashboard" activeKey={this.state.key}>
-        <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+        <Navbar bg="dark" variant="dark" expand="sm" fixed="top">
           <Container fluid>
             <Navbar.Brand>FHIR</Navbar.Brand>
             <Nav className="me-auto" onSelect={(key) => this.setState({ key })}>
