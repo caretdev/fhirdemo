@@ -1,0 +1,3755 @@
+{
+ "info": {
+  "description": "Insurance or medical plan or a payment agreement",
+  "title": "FHIR R4 Coverage Resource",
+  "version": "r4"
+ },
+ "openapi": "3.0.1",
+ "servers": [
+  {
+   "url": "/fhir/r4"
+  }
+ ],
+ "components": {
+  "schemas": {
+   "Coverage": {
+    "description": "Insurance or medical plan or a payment agreement",
+    "type": "object",
+    "properties": {
+     "beneficiary": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Plan beneficiary"
+     },
+     "class": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coverage.class"
+      },
+      "description": "Additional coverage classifications"
+     },
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "contract": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Contract details"
+     },
+     "costToBeneficiary": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coverage.costToBeneficiary"
+      },
+      "description": "Patient payments for services/products"
+     },
+     "dependent": {
+      "type": "string",
+      "description": "Dependent number"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "Business Identifier for the coverage"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "network": {
+      "type": "string",
+      "description": "Insurer network"
+     },
+     "order": {
+      "type": "number",
+      "description": "Relative order of the coverage"
+     },
+     "payor": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Issuer of the policy"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Coverage start and end dates"
+     },
+     "policyHolder": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Owner of the policy"
+     },
+     "relationship": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Beneficiary relationship to the subscriber"
+     },
+     "status": {
+      "type": "string",
+      "description": "active | cancelled | draft | entered-in-error"
+     },
+     "subrogation": {
+      "type": "boolean",
+      "description": "Reimbursement to insurer"
+     },
+     "subscriber": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Subscriber to the policy"
+     },
+     "subscriberId": {
+      "type": "string",
+      "description": "ID assigned to the subscriber"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Coverage category such as medical or accident"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coverage.class": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "name": {
+      "type": "string",
+      "description": "Human readable description of the type and value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Type of class such as 'group' or 'plan'"
+     },
+     "value": {
+      "type": "string",
+      "description": "Value associated with the type"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coverage.costToBeneficiary": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "exception": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coverage.costToBeneficiary.exception"
+      },
+      "description": "Exceptions for patient payments"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Cost category"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coverage.costToBeneficiary.exception": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "The effective period of the exception"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Exception category"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityRequest": {
+    "description": "CoverageEligibilityRequest resource",
+    "type": "object",
+    "properties": {
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "created": {
+      "type": "string",
+      "description": "Creation date"
+     },
+     "enterer": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Author"
+     },
+     "facility": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Servicing facility"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "Business Identifier for coverage eligiblity request"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "insurance": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityRequest.insurance"
+      },
+      "description": "Patient insurance information"
+     },
+     "insurer": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Coverage issuer"
+     },
+     "item": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityRequest.item"
+      },
+      "description": "Item to be evaluated for eligibiity"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "patient": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Intended recipient of products and services"
+     },
+     "priority": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Desired processing priority"
+     },
+     "provider": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Party responsible for the request"
+     },
+     "purpose": {
+      "type": "string",
+      "description": "auth-requirements | benefits | discovery | validation"
+     },
+     "serviced": {
+      "description": ""
+     },
+     "servicedDate": {
+      "type": "string",
+      "description": ""
+     },
+     "servicedPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "active | cancelled | draft | entered-in-error"
+     },
+     "supportingInfo": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityRequest.supportingInfo"
+      },
+      "description": "Supporting information"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityRequest.insurance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "businessArrangement": {
+      "type": "string",
+      "description": "Additional provider contract number"
+     },
+     "coverage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Insurance information"
+     },
+     "focal": {
+      "type": "boolean",
+      "description": "Applicable coverage"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityRequest.item": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "category": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Benefit classification"
+     },
+     "detail": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Product or service details"
+     },
+     "diagnosis": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityRequest.item.diagnosis"
+      },
+      "description": "Applicable diagnosis"
+     },
+     "facility": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Servicing facility"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "modifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Product or service billing modifiers"
+     },
+     "productOrService": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Billing, service, product, or drug code"
+     },
+     "provider": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Perfoming practitioner"
+     },
+     "quantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Count of products or services"
+     },
+     "supportingInfoSequence": {
+      "type": "number",
+      "description": "Applicable exception or supporting information"
+     },
+     "unitPrice": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Fee, charge or cost per item"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityRequest.item.diagnosis": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "diagnosis": {
+      "description": ""
+     },
+     "diagnosisCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "diagnosisReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityRequest.supportingInfo": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "appliesToAll": {
+      "type": "boolean",
+      "description": "Applies to all items"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "information": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Data to be provided"
+     },
+     "sequence": {
+      "type": "number",
+      "description": "Information instance identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityResponse": {
+    "description": "CoverageEligibilityResponse resource",
+    "type": "object",
+    "properties": {
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "created": {
+      "type": "string",
+      "description": "Response creation date"
+     },
+     "disposition": {
+      "type": "string",
+      "description": "Disposition Message"
+     },
+     "error": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityResponse.error"
+      },
+      "description": "Processing errors"
+     },
+     "form": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Printed form identifier"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "Business Identifier for coverage eligiblity request"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "insurance": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityResponse.insurance"
+      },
+      "description": "Patient insurance information"
+     },
+     "insurer": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Coverage issuer"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "outcome": {
+      "type": "string",
+      "description": "queued | complete | error | partial"
+     },
+     "patient": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Intended recipient of products and services"
+     },
+     "preAuthRef": {
+      "type": "string",
+      "description": "Preauthorization reference"
+     },
+     "purpose": {
+      "type": "string",
+      "description": "auth-requirements | benefits | discovery | validation"
+     },
+     "request": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Eligibility request reference"
+     },
+     "requestor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Party responsible for the request"
+     },
+     "serviced": {
+      "description": ""
+     },
+     "servicedDate": {
+      "type": "string",
+      "description": ""
+     },
+     "servicedPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "active | cancelled | draft | entered-in-error"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityResponse.error": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Error code detailing processing issues"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityResponse.insurance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "benefitPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "When the benefits are applicable"
+     },
+     "coverage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Insurance information"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "inforce": {
+      "type": "boolean",
+      "description": "Coverage inforce indicator"
+     },
+     "item": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityResponse.insurance.item"
+      },
+      "description": "Benefits and authorization details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityResponse.insurance.item": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "authorizationRequired": {
+      "type": "boolean",
+      "description": "Authorization required flag"
+     },
+     "authorizationSupporting": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Type of required supporting materials"
+     },
+     "authorizationUrl": {
+      "type": "string",
+      "description": "Preauthorization requirements endpoint"
+     },
+     "benefit": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CoverageEligibilityResponse.insurance.item.benefit"
+      },
+      "description": "Benefit Summary"
+     },
+     "category": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Benefit classification"
+     },
+     "description": {
+      "type": "string",
+      "description": "Description of the benefit or services covered"
+     },
+     "excluded": {
+      "type": "boolean",
+      "description": "Excluded from the plan"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "modifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Product or service billing modifiers"
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name for the benefit"
+     },
+     "network": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "In or out of network"
+     },
+     "productOrService": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Billing, service, product, or drug code"
+     },
+     "provider": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Performing practitioner"
+     },
+     "term": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Annual or lifetime"
+     },
+     "unit": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Individual or family"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CoverageEligibilityResponse.insurance.item.benefit": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "allowed": {
+      "description": ""
+     },
+     "allowedMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "allowedString": {
+      "type": "string",
+      "description": ""
+     },
+     "allowedUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Benefit classification"
+     },
+     "used": {
+      "description": ""
+     },
+     "usedMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "usedString": {
+      "type": "string",
+      "description": ""
+     },
+     "usedUnsignedInt": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Reference": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "display": {
+      "type": "string",
+      "description": "Text alternative for the resource"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Logical reference, when literal reference is not known"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Literal reference, Relative, internal or absolute URL"
+     },
+     "type": {
+      "type": "string",
+      "description": "Type the reference refers to (e.g. \"Patient\")"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Resource": {
+    "description": "Base Resource",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Extension": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "url": {
+      "type": "string",
+      "description": "identifies the meaning of the extension"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "valueAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "valueAnnotation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Annotation"
+       }
+      ],
+      "description": ""
+     },
+     "valueAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "valueBase64Binary": {
+      "type": "string",
+      "description": ""
+     },
+     "valueBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "valueCanonical": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCode": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueCoding": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactDetail": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactDetail"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactPoint": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactPoint"
+       }
+      ],
+      "description": ""
+     },
+     "valueContributor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Contributor"
+       }
+      ],
+      "description": ""
+     },
+     "valueCount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Count"
+       }
+      ],
+      "description": ""
+     },
+     "valueDataRequirement": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DataRequirement"
+       }
+      ],
+      "description": ""
+     },
+     "valueDate": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDecimal": {
+      "type": "number",
+      "description": ""
+     },
+     "valueDistance": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Distance"
+       }
+      ],
+      "description": ""
+     },
+     "valueDosage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Dosage"
+       }
+      ],
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valueExpression": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": ""
+     },
+     "valueHumanName": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/HumanName"
+       }
+      ],
+      "description": ""
+     },
+     "valueId": {
+      "type": "string",
+      "description": ""
+     },
+     "valueIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": ""
+     },
+     "valueInstant": {
+      "type": "string",
+      "description": ""
+     },
+     "valueInteger": {
+      "type": "number",
+      "description": ""
+     },
+     "valueMarkdown": {
+      "type": "string",
+      "description": ""
+     },
+     "valueMeta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueOid": {
+      "type": "string",
+      "description": ""
+     },
+     "valueParameterDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ParameterDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "valuePositiveInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "valueRelatedArtifact": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/RelatedArtifact"
+       }
+      ],
+      "description": ""
+     },
+     "valueSampledData": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/SampledData"
+       }
+      ],
+      "description": ""
+     },
+     "valueSignature": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Signature"
+       }
+      ],
+      "description": ""
+     },
+     "valueString": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "valueTriggerDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TriggerDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valueUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueUri": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUrl": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUsageContext": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/UsageContext"
+       }
+      ],
+      "description": ""
+     },
+     "valueUuid": {
+      "type": "string",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Identifier": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assigner": {
+      "type": "string",
+      "description": "Organization that issued id (may be just text)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when id is/was valid for use"
+     },
+     "system": {
+      "type": "string",
+      "description": "The namespace for the identifier value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Description of identifier"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | secondary | old (If known)"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value that is unique"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Meta": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lastUpdated": {
+      "type": "string",
+      "description": "When the resource version last changed"
+     },
+     "profile": {
+      "type": "string",
+      "description": "Profiles this resource claims to conform to"
+     },
+     "security": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels applied to this resource"
+     },
+     "source": {
+      "type": "string",
+      "description": "Identifies where the resource comes from"
+     },
+     "tag": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Tags applied to this resource"
+     },
+     "versionId": {
+      "type": "string",
+      "description": "Version specific identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Period": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CodeableConcept": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "coding": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Code defined by a terminology system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Narrative": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "div": {
+      "description": "Limited xhtml content"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "generated | extensions | additional | empty"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coding": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+     },
+     "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+     },
+     "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+     },
+     "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Money": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "currency": {
+      "type": "string",
+      "description": "ISO 4217 Currency Code"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Quantity": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Coded form of the unit"
+     },
+     "comparator": {
+      "type": "string",
+      "description": "< | <= | >= | > - how to understand the value"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "system": {
+      "type": "string",
+      "description": "System that defines coded unit form"
+     },
+     "unit": {
+      "type": "string",
+      "description": "Unit representation"
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Address": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+     },
+     "country": {
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+     },
+     "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "line": {
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when address was/is in use"
+     },
+     "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+     },
+     "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+     },
+     "type": {
+      "type": "string",
+      "description": "postal | physical | both"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | billing - purpose of this address"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Age": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Annotation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "author": {
+      "description": ""
+     },
+     "authorReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "authorString": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "The annotation  - text content (as markdown)"
+     },
+     "time": {
+      "type": "string",
+      "description": "When the annotation was made"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Attachment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+     },
+     "creation": {
+      "type": "string",
+      "description": "Date attachment was first created"
+     },
+     "data": {
+      "type": "string",
+      "description": "Data inline, base64ed"
+     },
+     "hash": {
+      "type": "string",
+      "description": "Hash of the data (sha-1, base64ed)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+     },
+     "size": {
+      "type": "number",
+      "description": "Number of bytes of content (if url provided)"
+     },
+     "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+     },
+     "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name of an individual to contact"
+     },
+     "telecom": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactPoint"
+      },
+      "description": "Contact details for individual or organization"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactPoint": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when the contact point was/is in use"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Specify preferred order of use (1 = highest)"
+     },
+     "system": {
+      "type": "string",
+      "description": "phone | fax | email | pager | url | sms | other"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+     },
+     "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Contributor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details of the contributor"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Who contributed the content"
+     },
+     "type": {
+      "type": "string",
+      "description": "author | editor | reviewer | endorser"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Count": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "codeFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.codeFilter"
+      },
+      "description": ""
+     },
+     "dateFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.dateFilter"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "limit": {
+      "type": "number",
+      "description": "Number of results"
+     },
+     "mustSupport": {
+      "type": "string",
+      "description": "Indicates specific structure elements that are referenced by the knowledge module"
+     },
+     "profile": {
+      "type": "string",
+      "description": "The profile of the required data"
+     },
+     "sort": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.sort"
+      },
+      "description": ""
+     },
+     "subject": {
+      "description": ""
+     },
+     "subjectCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "subjectReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "The type of the required data"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Distance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "additionalInstruction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": ""
+     },
+     "asNeeded": {
+      "description": ""
+     },
+     "asNeededBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "asNeededCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "doseAndRate": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Dosage.doseAndRate"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "maxDosePerAdministration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerLifetime": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "method": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "patientInstruction": {
+      "type": "string",
+      "description": ""
+     },
+     "route": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "sequence": {
+      "type": "number",
+      "description": ""
+     },
+     "site": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": ""
+     },
+     "timing": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Duration": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Expression": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the condition"
+     },
+     "expression": {
+      "type": "string",
+      "description": "Expression in specified language"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "text/cql | text/fhirpath | application/x-fhir-query | etc."
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name assigned to expression for reuse"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Where the expression is found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "HumanName": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+     },
+     "given": {
+      "type": "string",
+      "description": "Given names (not always 'first'). Includes middle names"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when name was/is in use"
+     },
+     "prefix": {
+      "type": "string",
+      "description": "Parts that come before the name"
+     },
+     "suffix": {
+      "type": "string",
+      "description": "Parts that come after the name"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ParameterDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "documentation": {
+      "type": "string",
+      "description": "A brief description of the parameter"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "max": {
+      "type": "string",
+      "description": "Maximum cardinality (a number of *)"
+     },
+     "min": {
+      "type": "number",
+      "description": "Minimum cardinality"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name used to access the parameter value"
+     },
+     "profile": {
+      "type": "string",
+      "description": "What profile the value is expected to be"
+     },
+     "type": {
+      "type": "string",
+      "description": "What type of value"
+     },
+     "use": {
+      "type": "string",
+      "description": "in | out"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Range": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "high": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "High limit"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "low": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Low limit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Ratio": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "denominator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Denominator value"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "numerator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Numerator value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "RelatedArtifact": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "citation": {
+      "type": "string",
+      "description": "Bibliographic citation for the artifact"
+     },
+     "display": {
+      "type": "string",
+      "description": "Brief description of the related artifact"
+     },
+     "document": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "What document is being referenced"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "label": {
+      "type": "string",
+      "description": "Short label"
+     },
+     "resource": {
+      "type": "string",
+      "description": "What resource is being referenced"
+     },
+     "type": {
+      "type": "string",
+      "description": "documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of"
+     },
+     "url": {
+      "type": "string",
+      "description": "Where the artifact can be accessed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "SampledData": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+     },
+     "dimensions": {
+      "type": "number",
+      "description": "Number of sample points at each time point"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Multiply data by this before adding to origin"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lowerLimit": {
+      "type": "number",
+      "description": "Lower limit of detection"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Zero value and units"
+     },
+     "period": {
+      "type": "number",
+      "description": "Number of milliseconds between samples"
+     },
+     "upperLimit": {
+      "type": "number",
+      "description": "Upper limit of detection"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Signature": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "onBehalfOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The party represented"
+     },
+     "sigFormat": {
+      "type": "string",
+      "description": "The technical format of the signature"
+     },
+     "targetFormat": {
+      "type": "string",
+      "description": "The technical format of the signed resources"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Indication of the reason the entity signed the object(s)"
+     },
+     "when": {
+      "type": "string",
+      "description": "When the signature was created"
+     },
+     "who": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who signed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "event": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "repeat": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing.repeat"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TriggerDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": "Whether the event triggers (boolean expression)"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement"
+      },
+      "description": "Triggering data of the event (multiple = 'and')"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or URI that identifies the event"
+     },
+     "timing": {
+      "description": ""
+     },
+     "timingDate": {
+      "type": "string",
+      "description": ""
+     },
+     "timingDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "timingReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "timingTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "UsageContext": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Type of context being specified"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.codeFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "What code is expected"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A code-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A coded (token) parameter to search on"
+     },
+     "valueSet": {
+      "type": "string",
+      "description": "Valueset for the filter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.dateFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A date-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A date valued parameter to search on"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.sort": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "direction": {
+      "type": "string",
+      "description": "ascending | descending"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "The name of the attribute to perform the sort"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage.doseAndRate": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "dose": {
+      "description": ""
+     },
+     "doseQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "doseRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "rate": {
+      "description": ""
+     },
+     "rateQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "rateRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "rateRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The kind of dose or rate specified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing.repeat": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "bounds": {
+      "description": ""
+     },
+     "boundsDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "boundsPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "boundsRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "count": {
+      "type": "number",
+      "description": "Number of times to repeat"
+     },
+     "countMax": {
+      "type": "number",
+      "description": "Maximum number of times to repeat"
+     },
+     "dayOfWeek": {
+      "type": "string",
+      "description": "mon | tue | wed | thu | fri | sat | sun"
+     },
+     "duration": {
+      "type": "number",
+      "description": "How long when it happens"
+     },
+     "durationMax": {
+      "type": "number",
+      "description": "How long when it happens (Max)"
+     },
+     "durationUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "frequency": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "frequencyMax": {
+      "type": "number",
+      "description": "Event occurs up to frequencyMax times per period"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "offset": {
+      "type": "number",
+      "description": "Minutes from event (before or after)"
+     },
+     "period": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "periodMax": {
+      "type": "number",
+      "description": "Upper limit of period (3-4 hours)"
+     },
+     "periodUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "timeOfDay": {
+      "type": "string",
+      "description": "Time of day for action"
+     },
+     "when": {
+      "type": "string",
+      "description": "Code for time period of occurrence"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   }
+  }
+ },
+ "paths": {
+  "/Coverage": {
+   "post": {
+    "tags": [
+     "Coverage"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Coverage"
+       },
+       "examples": {
+        "coverage-example-2.json": {
+         "value": {
+          "resourceType": "Coverage",
+          "id": "7546D",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the coverage</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://xyz.com/codes/identifier",
+            "value": "AB98761"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "EHCPOL",
+             "display": "extended healthcare"
+            }
+           ]
+          },
+          "subscriber": {
+           "reference": "Patient/5"
+          },
+          "subscriberId": "AB9876",
+          "beneficiary": {
+           "reference": "Patient/5"
+          },
+          "dependent": "1",
+          "relationship": {
+           "coding": [
+            {
+             "code": "self"
+            }
+           ]
+          },
+          "period": {
+           "start": "2011-03-17",
+           "end": "2012-03-17"
+          },
+          "payor": [
+           {
+            "reference": "Organization/2"
+           }
+          ],
+          "class": [
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "group"
+              }
+             ]
+            },
+            "value": "WESTAIR",
+            "name": "Western Airlines"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "plan"
+              }
+             ]
+            },
+            "value": "BG4352",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "subplan"
+              }
+             ]
+            },
+            "value": "D15C9",
+            "name": "Platinum"
+           }
+          ],
+          "order": 2,
+          "network": "5",
+          "costToBeneficiary": [
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-copay-type",
+               "code": "gpvisit"
+              }
+             ]
+            },
+            "valueMoney": {
+             "value": 20,
+             "currency": "USD"
+            },
+            "exception": [
+             {
+              "type": {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/ex-coverage-financial-exception",
+                 "code": "retired"
+                }
+               ]
+              },
+              "period": {
+               "start": "2018-01-01",
+               "end": "2018-12-31"
+              }
+             }
+            ]
+           }
+          ],
+          "contract": [
+           {
+            "reference": "Contract/INS-101"
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "coverage-example-ehic.json": {
+         "value": {
+          "resourceType": "Coverage",
+          "id": "7547E",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the European Health Insurance Card</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://ehic.com/insurer/123456789/member",
+            "value": "A123456780"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "EHCPOL",
+             "display": "extended healthcare"
+            }
+           ]
+          },
+          "subscriber": {
+           "reference": "Patient/5"
+          },
+          "beneficiary": {
+           "reference": "Patient/5"
+          },
+          "relationship": {
+           "coding": [
+            {
+             "code": "self"
+            }
+           ]
+          },
+          "period": {
+           "end": "2012-03-17"
+          },
+          "payor": [
+           {
+            "identifier": {
+             "system": "http://ehic.com/insurer",
+             "value": "123456789"
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "coverage-example-selfpay.json": {
+         "value": {
+          "resourceType": "Coverage",
+          "id": "SP1234",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of a Self Pay Agreement.</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://hospitalx.com/selfpayagreement",
+            "value": "SP12345678"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/coverage-selfpay",
+             "code": "pay",
+             "display": "PAY"
+            }
+           ]
+          },
+          "subscriber": {
+           "reference": "Patient/5"
+          },
+          "beneficiary": {
+           "reference": "Patient/5"
+          },
+          "relationship": {
+           "coding": [
+            {
+             "code": "self"
+            }
+           ]
+          },
+          "period": {
+           "end": "2012-03-17"
+          },
+          "payor": [
+           {
+            "reference": "Patient/5"
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "coverage-example.json": {
+         "value": {
+          "resourceType": "Coverage",
+          "id": "9876B1",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the coverage</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://benefitsinc.com/certificate",
+            "value": "12345"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "EHCPOL",
+             "display": "extended healthcare"
+            }
+           ]
+          },
+          "policyHolder": {
+           "reference": "http://benefitsinc.com/FHIR/Organization/CBI35"
+          },
+          "subscriber": {
+           "reference": "Patient/4"
+          },
+          "beneficiary": {
+           "reference": "Patient/4"
+          },
+          "dependent": "0",
+          "relationship": {
+           "coding": [
+            {
+             "code": "self"
+            }
+           ]
+          },
+          "period": {
+           "start": "2011-05-23",
+           "end": "2012-05-23"
+          },
+          "payor": [
+           {
+            "reference": "Organization/2"
+           }
+          ],
+          "class": [
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "group"
+              }
+             ]
+            },
+            "value": "CB135",
+            "name": "Corporate Baker's Inc. Local #35"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "subgroup"
+              }
+             ]
+            },
+            "value": "123",
+            "name": "Trainee Part-time Benefits"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "plan"
+              }
+             ]
+            },
+            "value": "B37FC",
+            "name": "Full Coverage: Medical, Dental, Pharmacy, Vision, EHC"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "subplan"
+              }
+             ]
+            },
+            "value": "P7",
+            "name": "Includes afterlife benefits"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "class"
+              }
+             ]
+            },
+            "value": "SILVER",
+            "name": "Silver: Family Plan spouse only"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "subclass"
+              }
+             ]
+            },
+            "value": "Tier2",
+            "name": "Low deductable, max $20 copay"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "sequence"
+              }
+             ]
+            },
+            "value": "9"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "rxid"
+              }
+             ]
+            },
+            "value": "MDF12345"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "rxbin"
+              }
+             ]
+            },
+            "value": "987654"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "rxgroup"
+              }
+             ]
+            },
+            "value": "M35PT"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "rxpcn"
+              }
+             ]
+            },
+            "value": "234516"
+           },
+           {
+            "type": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/coverage-class",
+               "code": "sequence"
+              }
+             ]
+            },
+            "value": "9"
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Coverage"
+    ],
+    "parameters": [
+     {
+      "name": "beneficiary",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Covered party"
+     },
+     {
+      "name": "class-type",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Coverage class (eg. plan, group)"
+     },
+     {
+      "name": "class-value",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Value of the class (eg. Plan number, group number)"
+     },
+     {
+      "name": "dependent",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Dependent number"
+     },
+     {
+      "name": "identifier",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account number"
+     },
+     {
+      "name": "patient",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "payor",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The identity of the insurer or party paying for services"
+     },
+     {
+      "name": "policy-holder",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Reference to the policyholder"
+     },
+     {
+      "name": "status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "active | inactive | entered-in-error | on-hold | unknown"
+     },
+     {
+      "name": "subscriber",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Reference to the subscriber"
+     },
+     {
+      "name": "type",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "E.g. patient, expense, depreciation"
+     },
+     {
+      "name": "_format",
+      "in": "query",
+      "x-consoleDefault": "application/json",
+      "schema": {
+       "type": "string"
+      },
+      "description": ""
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Coverage"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Coverage/{id}": {
+   "parameters": [
+    {
+     "in": "path",
+     "required": true,
+     "name": "id",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "tags": [
+     "Coverage"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Coverage"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "Coverage"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Coverage"
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "Coverage"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    }
+   }
+  },
+  "/Coverage/{id}/_history": {
+   "get": {
+    "tags": [
+     "Coverage"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_count",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_since",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Coverage"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Coverage/{id}/_history/{vid}": {
+   "get": {
+    "tags": [
+     "Coverage"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "vid",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Coverage"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "Coverage"
+  }
+ ]
+}

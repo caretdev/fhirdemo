@@ -1,0 +1,4106 @@
+{
+ "info": {
+  "description": "A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time",
+  "title": "FHIR R4 Consent Resource",
+  "version": "r4"
+ },
+ "openapi": "3.0.1",
+ "servers": [
+  {
+   "url": "/fhir/r4"
+  }
+ ],
+ "components": {
+  "schemas": {
+   "Consent": {
+    "description": "A healthcare consumer's  choices to permit or deny recipients or roles to perform actions for specific purposes and periods of time",
+    "type": "object",
+    "properties": {
+     "category": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Classification of the consent statement - for indexing/retrieval"
+     },
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "dateTime": {
+      "type": "string",
+      "description": "When this Consent was created or indexed"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "Identifier for this record (external references)"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "organization": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Custodian of the consent"
+     },
+     "patient": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who the consent applies to"
+     },
+     "performer": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Who is agreeing to the policy and rules"
+     },
+     "policy": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Consent.policy"
+      },
+      "description": "Policies covered by this consent"
+     },
+     "policyRule": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Regulation that this consents to"
+     },
+     "provision": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Consent.provision"
+       }
+      ],
+      "description": "Constraints to the base Consent.policyRule"
+     },
+     "scope": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Which of the four areas this resource covers (extensible)"
+     },
+     "source": {
+      "description": ""
+     },
+     "sourceAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "sourceReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "draft | proposed | active | rejected | inactive | entered-in-error"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     },
+     "verification": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Consent.verification"
+      },
+      "description": "Consent Verified by patient or family"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Consent.policy": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "authority": {
+      "type": "string",
+      "description": "Enforcement source for policy"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "uri": {
+      "type": "string",
+      "description": "Specific policy covered by this consent"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Consent.provision": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "action": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Actions controlled by this rule"
+     },
+     "actor": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Consent.provision.actor"
+      },
+      "description": "Who|what controlled by this rule (or group, by role)"
+     },
+     "class": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "e.g. Resource Type, Profile, CDA, etc."
+     },
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "e.g. LOINC or SNOMED CT code, etc. in the content"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Consent.provision.data"
+      },
+      "description": "Data controlled by this rule"
+     },
+     "dataPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Timeframe for data controlled by this rule"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Timeframe for this rule"
+     },
+     "provision": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Consent.provision"
+      },
+      "description": "Nested Exception Rules"
+     },
+     "purpose": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Context of activities covered by this rule"
+     },
+     "securityLabel": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels that define affected resources"
+     },
+     "type": {
+      "type": "string",
+      "description": "deny | permit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Consent.provision.actor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "reference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Resource for the actor (or group, by role)"
+     },
+     "role": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "How the actor is involved"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Consent.provision.data": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "meaning": {
+      "type": "string",
+      "description": "instance | related | dependents | authoredby"
+     },
+     "reference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The actual data reference"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Consent.verification": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "verificationDate": {
+      "type": "string",
+      "description": "When consent verified"
+     },
+     "verified": {
+      "type": "boolean",
+      "description": "Has been verified"
+     },
+     "verifiedWith": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Person who verified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CodeableConcept": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "coding": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Code defined by a terminology system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Resource": {
+    "description": "Base Resource",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Extension": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "url": {
+      "type": "string",
+      "description": "identifies the meaning of the extension"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "valueAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "valueAnnotation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Annotation"
+       }
+      ],
+      "description": ""
+     },
+     "valueAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "valueBase64Binary": {
+      "type": "string",
+      "description": ""
+     },
+     "valueBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "valueCanonical": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCode": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueCoding": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactDetail": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactDetail"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactPoint": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactPoint"
+       }
+      ],
+      "description": ""
+     },
+     "valueContributor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Contributor"
+       }
+      ],
+      "description": ""
+     },
+     "valueCount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Count"
+       }
+      ],
+      "description": ""
+     },
+     "valueDataRequirement": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DataRequirement"
+       }
+      ],
+      "description": ""
+     },
+     "valueDate": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDecimal": {
+      "type": "number",
+      "description": ""
+     },
+     "valueDistance": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Distance"
+       }
+      ],
+      "description": ""
+     },
+     "valueDosage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Dosage"
+       }
+      ],
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valueExpression": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": ""
+     },
+     "valueHumanName": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/HumanName"
+       }
+      ],
+      "description": ""
+     },
+     "valueId": {
+      "type": "string",
+      "description": ""
+     },
+     "valueIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": ""
+     },
+     "valueInstant": {
+      "type": "string",
+      "description": ""
+     },
+     "valueInteger": {
+      "type": "number",
+      "description": ""
+     },
+     "valueMarkdown": {
+      "type": "string",
+      "description": ""
+     },
+     "valueMeta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueOid": {
+      "type": "string",
+      "description": ""
+     },
+     "valueParameterDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ParameterDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "valuePositiveInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "valueRelatedArtifact": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/RelatedArtifact"
+       }
+      ],
+      "description": ""
+     },
+     "valueSampledData": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/SampledData"
+       }
+      ],
+      "description": ""
+     },
+     "valueSignature": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Signature"
+       }
+      ],
+      "description": ""
+     },
+     "valueString": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "valueTriggerDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TriggerDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valueUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueUri": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUrl": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUsageContext": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/UsageContext"
+       }
+      ],
+      "description": ""
+     },
+     "valueUuid": {
+      "type": "string",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Identifier": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assigner": {
+      "type": "string",
+      "description": "Organization that issued id (may be just text)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when id is/was valid for use"
+     },
+     "system": {
+      "type": "string",
+      "description": "The namespace for the identifier value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Description of identifier"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | secondary | old (If known)"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value that is unique"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Meta": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lastUpdated": {
+      "type": "string",
+      "description": "When the resource version last changed"
+     },
+     "profile": {
+      "type": "string",
+      "description": "Profiles this resource claims to conform to"
+     },
+     "security": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels applied to this resource"
+     },
+     "source": {
+      "type": "string",
+      "description": "Identifies where the resource comes from"
+     },
+     "tag": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Tags applied to this resource"
+     },
+     "versionId": {
+      "type": "string",
+      "description": "Version specific identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Reference": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "display": {
+      "type": "string",
+      "description": "Text alternative for the resource"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Logical reference, when literal reference is not known"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Literal reference, Relative, internal or absolute URL"
+     },
+     "type": {
+      "type": "string",
+      "description": "Type the reference refers to (e.g. \"Patient\")"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Attachment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+     },
+     "creation": {
+      "type": "string",
+      "description": "Date attachment was first created"
+     },
+     "data": {
+      "type": "string",
+      "description": "Data inline, base64ed"
+     },
+     "hash": {
+      "type": "string",
+      "description": "Hash of the data (sha-1, base64ed)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+     },
+     "size": {
+      "type": "number",
+      "description": "Number of bytes of content (if url provided)"
+     },
+     "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+     },
+     "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Narrative": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "div": {
+      "description": "Limited xhtml content"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "generated | extensions | additional | empty"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coding": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+     },
+     "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+     },
+     "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+     },
+     "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Period": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Address": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+     },
+     "country": {
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+     },
+     "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "line": {
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when address was/is in use"
+     },
+     "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+     },
+     "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+     },
+     "type": {
+      "type": "string",
+      "description": "postal | physical | both"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | billing - purpose of this address"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Age": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Annotation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "author": {
+      "description": ""
+     },
+     "authorReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "authorString": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "The annotation  - text content (as markdown)"
+     },
+     "time": {
+      "type": "string",
+      "description": "When the annotation was made"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name of an individual to contact"
+     },
+     "telecom": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactPoint"
+      },
+      "description": "Contact details for individual or organization"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactPoint": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when the contact point was/is in use"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Specify preferred order of use (1 = highest)"
+     },
+     "system": {
+      "type": "string",
+      "description": "phone | fax | email | pager | url | sms | other"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+     },
+     "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Contributor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details of the contributor"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Who contributed the content"
+     },
+     "type": {
+      "type": "string",
+      "description": "author | editor | reviewer | endorser"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Count": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "codeFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.codeFilter"
+      },
+      "description": ""
+     },
+     "dateFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.dateFilter"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "limit": {
+      "type": "number",
+      "description": "Number of results"
+     },
+     "mustSupport": {
+      "type": "string",
+      "description": "Indicates specific structure elements that are referenced by the knowledge module"
+     },
+     "profile": {
+      "type": "string",
+      "description": "The profile of the required data"
+     },
+     "sort": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.sort"
+      },
+      "description": ""
+     },
+     "subject": {
+      "description": ""
+     },
+     "subjectCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "subjectReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "The type of the required data"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Distance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "additionalInstruction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": ""
+     },
+     "asNeeded": {
+      "description": ""
+     },
+     "asNeededBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "asNeededCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "doseAndRate": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Dosage.doseAndRate"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "maxDosePerAdministration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerLifetime": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "method": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "patientInstruction": {
+      "type": "string",
+      "description": ""
+     },
+     "route": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "sequence": {
+      "type": "number",
+      "description": ""
+     },
+     "site": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": ""
+     },
+     "timing": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Duration": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Expression": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the condition"
+     },
+     "expression": {
+      "type": "string",
+      "description": "Expression in specified language"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "text/cql | text/fhirpath | application/x-fhir-query | etc."
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name assigned to expression for reuse"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Where the expression is found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "HumanName": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+     },
+     "given": {
+      "type": "string",
+      "description": "Given names (not always 'first'). Includes middle names"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when name was/is in use"
+     },
+     "prefix": {
+      "type": "string",
+      "description": "Parts that come before the name"
+     },
+     "suffix": {
+      "type": "string",
+      "description": "Parts that come after the name"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Money": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "currency": {
+      "type": "string",
+      "description": "ISO 4217 Currency Code"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ParameterDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "documentation": {
+      "type": "string",
+      "description": "A brief description of the parameter"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "max": {
+      "type": "string",
+      "description": "Maximum cardinality (a number of *)"
+     },
+     "min": {
+      "type": "number",
+      "description": "Minimum cardinality"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name used to access the parameter value"
+     },
+     "profile": {
+      "type": "string",
+      "description": "What profile the value is expected to be"
+     },
+     "type": {
+      "type": "string",
+      "description": "What type of value"
+     },
+     "use": {
+      "type": "string",
+      "description": "in | out"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Quantity": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Coded form of the unit"
+     },
+     "comparator": {
+      "type": "string",
+      "description": "< | <= | >= | > - how to understand the value"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "system": {
+      "type": "string",
+      "description": "System that defines coded unit form"
+     },
+     "unit": {
+      "type": "string",
+      "description": "Unit representation"
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Range": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "high": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "High limit"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "low": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Low limit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Ratio": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "denominator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Denominator value"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "numerator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Numerator value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "RelatedArtifact": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "citation": {
+      "type": "string",
+      "description": "Bibliographic citation for the artifact"
+     },
+     "display": {
+      "type": "string",
+      "description": "Brief description of the related artifact"
+     },
+     "document": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "What document is being referenced"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "label": {
+      "type": "string",
+      "description": "Short label"
+     },
+     "resource": {
+      "type": "string",
+      "description": "What resource is being referenced"
+     },
+     "type": {
+      "type": "string",
+      "description": "documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of"
+     },
+     "url": {
+      "type": "string",
+      "description": "Where the artifact can be accessed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "SampledData": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+     },
+     "dimensions": {
+      "type": "number",
+      "description": "Number of sample points at each time point"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Multiply data by this before adding to origin"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lowerLimit": {
+      "type": "number",
+      "description": "Lower limit of detection"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Zero value and units"
+     },
+     "period": {
+      "type": "number",
+      "description": "Number of milliseconds between samples"
+     },
+     "upperLimit": {
+      "type": "number",
+      "description": "Upper limit of detection"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Signature": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "onBehalfOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The party represented"
+     },
+     "sigFormat": {
+      "type": "string",
+      "description": "The technical format of the signature"
+     },
+     "targetFormat": {
+      "type": "string",
+      "description": "The technical format of the signed resources"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Indication of the reason the entity signed the object(s)"
+     },
+     "when": {
+      "type": "string",
+      "description": "When the signature was created"
+     },
+     "who": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who signed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "event": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "repeat": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing.repeat"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TriggerDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": "Whether the event triggers (boolean expression)"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement"
+      },
+      "description": "Triggering data of the event (multiple = 'and')"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or URI that identifies the event"
+     },
+     "timing": {
+      "description": ""
+     },
+     "timingDate": {
+      "type": "string",
+      "description": ""
+     },
+     "timingDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "timingReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "timingTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "UsageContext": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Type of context being specified"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.codeFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "What code is expected"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A code-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A coded (token) parameter to search on"
+     },
+     "valueSet": {
+      "type": "string",
+      "description": "Valueset for the filter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.dateFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A date-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A date valued parameter to search on"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.sort": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "direction": {
+      "type": "string",
+      "description": "ascending | descending"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "The name of the attribute to perform the sort"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage.doseAndRate": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "dose": {
+      "description": ""
+     },
+     "doseQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "doseRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "rate": {
+      "description": ""
+     },
+     "rateQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "rateRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "rateRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The kind of dose or rate specified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing.repeat": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "bounds": {
+      "description": ""
+     },
+     "boundsDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "boundsPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "boundsRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "count": {
+      "type": "number",
+      "description": "Number of times to repeat"
+     },
+     "countMax": {
+      "type": "number",
+      "description": "Maximum number of times to repeat"
+     },
+     "dayOfWeek": {
+      "type": "string",
+      "description": "mon | tue | wed | thu | fri | sat | sun"
+     },
+     "duration": {
+      "type": "number",
+      "description": "How long when it happens"
+     },
+     "durationMax": {
+      "type": "number",
+      "description": "How long when it happens (Max)"
+     },
+     "durationUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "frequency": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "frequencyMax": {
+      "type": "number",
+      "description": "Event occurs up to frequencyMax times per period"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "offset": {
+      "type": "number",
+      "description": "Minutes from event (before or after)"
+     },
+     "period": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "periodMax": {
+      "type": "number",
+      "description": "Upper limit of period (3-4 hours)"
+     },
+     "periodUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "timeOfDay": {
+      "type": "string",
+      "description": "Time of day for action"
+     },
+     "when": {
+      "type": "string",
+      "description": "Code for time period of occurrence"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   }
+  }
+ },
+ "paths": {
+  "/Consent": {
+   "post": {
+    "tags": [
+     "Consent"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Consent"
+       },
+       "examples": {
+        "consent-example-Emergency.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-Emergency",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      <p>\n\tWithhold Authorization for Treatment rule for Emegency Treatment\n\t</p>\n      <p>\n    Patient &quot;P. van de Heuvel&quot; wishes to have no data at the Good Health Psychiatric Hospital \n   available rule for Emergency treatment use.\n   An overall Deny consent Directive, with an exception &quot;Permit&quot; of purposeOfUse &quot;ETREAT&quot; \n   at &quot;Good Health&quot; hospital, and exception &quot;Deny&quot; all other purposeOfUse from good health hospital.\n   </p>\n    </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "EMRGONLY"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTOUT"
+            }
+           ]
+          },
+          "provision": {
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "CST"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Organization/f001"
+             }
+            }
+           ],
+           "purpose": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "ETREAT"
+            }
+           ],
+           "provision": [
+            {
+             "type": "deny",
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "CST"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-Out.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-Out",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n\tthan &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n\tSpecific to use-case 0) Withhold Authorization of sharing data for Treatment\n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to have no data at the Good Health Psychiatric Hospital \n   available for normal treatment use.\n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTOUT"
+            }
+           ]
+          },
+          "provision": {
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "CST"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Organization/f001"
+             }
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-grantor.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-grantor",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on a question asked on John Moehrke's blog in the \n\t<a href=\"http://healthcaresecprivacy.blogspot.com/2016/04/consent-given-to-authorized.html\">Consent given to authorized representative</a>\n    <p>\nThis is a case where a Patient is giving a limited (read-only) access to an individual.\n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to provide XXX with read-only access to the data at Good Health Psychiatric Hospital \n   available for patient requested access use.\n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "INFAO"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTOUT"
+            }
+           ]
+          },
+          "provision": {
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "CST"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Organization/f001"
+             }
+            },
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "PRCP"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Patient/example",
+              "display": "Good Health Clinic"
+             }
+            }
+           ],
+           "action": [
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+               "code": "access"
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-notAuthor.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-notAuthor",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n\tthan &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n\tspecific to use-case 5) Withhold or withdraw consent for disclosure of records that were authored by a specific organization (or service delivery location).  \n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to have all of the PHI collected at the Good Health Psychiatric Hospital \n   restricted from disclosure to every provider.\n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "CST"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Organization/f001"
+             }
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-notOrg.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-notOrg",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n\tthan &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n\tspecific to use-case 3) Withhold or withdraw consent for disclosure to a specific provider organization  \n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; ex-spouse is a Physician that is employed by Good Health Clinic.  P. decides\n   that he would like to withdraw/withhold consent to disclose any instance of his health information \n   to Good Health Clinic.\n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "type": "deny",
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "PRCP"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Organization/f001"
+             }
+            }
+           ],
+           "action": [
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+               "code": "access"
+              }
+             ]
+            },
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+               "code": "correct"
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-notThem.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-notThem",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n\tthan &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n\tspecific to use-case 4) Withhold or withdraw consent for disclosure to a specific provider agent (an individual within an organization) \n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; ex-spouse, Bill T Lookafter is a Nurse that is employed by Good Health Hospital.\n   P. realizes that she may receive treatment at GHH, however she does not want her ex-spouse to have any \n   access to her IIHI.  She indicates that she would like to withdraw/withhold consent to disclose any instance \n   of her health information to her ex-spouse as a result of his employment at Good Health Clinic.\n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "PRCP"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Practitioner/f204",
+              "display": "Fictive Nurse"
+             }
+            }
+           ],
+           "action": [
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+               "code": "access"
+              }
+             ]
+            },
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+               "code": "correct"
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-notThis.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-notThis",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n\tthan &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n\tspecific to use-case 2. Withhold or withdraw consent for disclosure of a specific record (e.g. Lab Order/Result) \n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; Primary Care Provider, Dr. Philip Primary, has ordered a set of lab test which Adam \n   wishes to keep as private as possible.  At the sample collection facility, he indicates that he would \n   like withhold consent to disclose the order and all results associated with that specific order from \n   all other providers  \n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "data": [
+            {
+             "meaning": "related",
+             "reference": {
+              "reference": "Task/example3"
+             }
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-notTime.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-notTime",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. \n\tThe default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. \n\tIn other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase &quot;consent to&quot; rather \n\tthan &quot;withhold&quot; or &quot;withdraw&quot; consent for.\n    <p>\n\tspecific to use-case 6. Withhold or withdraw consent for disclosure of records related published during a timeframe\n\t</p><p>\n    Patient &quot;P. van de Heuvel&quot; wishes to withhold disclosure of all data from a timeframe to any provider. \n   </p>\n   </div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2015-11-18",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "period": {
+            "start": "2015-01-01",
+            "end": "2015-02-01"
+           }
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-pkb.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-pkb",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n        This example demonstrates how to encode this screen shot in a consent resource:\n\t\t\t</p>\n\t\t\t<p>\n\t\t\t\t<img src=\"pkb.png\" alt=\"Screenshot from Patient Knows Best\"/>\n\t\t\t</p>\n\t\t\t<p>\n        Thanks to <a href=\"https://www.patientsknowbest.com/\">Patients Know Best</a> for contributing this example\n\t\t\t</p>\n\t\t</div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/example",
+           "display": "...example patient..."
+          },
+          "dateTime": "2016-06-16",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTOUT"
+            }
+           ]
+          },
+          "provision": {
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "PRCP"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Organization/f001"
+             }
+            }
+           ],
+           "action": [
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+               "code": "access"
+              }
+             ]
+            }
+           ],
+           "securityLabel": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+             "code": "N"
+            }
+           ],
+           "provision": [
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "PSY"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "SPI"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+               "code": "N"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "PSY"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "SPI"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "SEX"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+               "code": "N"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "PSY"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "SPI"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+               "code": "SEX"
+              }
+             ]
+            },
+            {
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "PRCP"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Organization/f001"
+               }
+              }
+             ],
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "securityLabel": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-Confidentiality",
+               "code": "N"
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-signature.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-signature",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: consent-example-signature</p><p><b>identifier</b>: 494e0c7a-a69e-4fb4-9d02-6aae747790d7</p><p><b>status</b>: active</p><p><b>scope</b>: Privacy Consent <span>(Details : {http://terminology.hl7.org/CodeSystem/consentscope code 'patient-privacy' = 'Privacy Consent)</span></p><p><b>category</b>: Notice of Privacy Practices <span>(Details : {http://terminology.hl7.org/CodeSystem/consentcategorycodes code 'npp' = 'Notice of Privacy Practices)</span></p><p><b>patient</b>: <a>Patient/72</a></p><p><b>dateTime</b>: 26/05/2016 12:41:10 AM</p><p><b>performer</b>: <a>Patient/72</a></p><p><b>organization</b>: <a>Organization/f001</a></p><p><b>policyRule</b>: opt-in <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ActCode code 'OPTIN' = 'opt-in)</span></p><blockquote><p><b>provision</b></p><p><b>period</b>: 10/10/2015 --&gt; 10/10/2016</p><h3>Actors</h3><table><tr><td>-</td><td><b>Role</b></td><td><b>Reference</b></td></tr><tr><td>*</td><td>primary information recipient <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ParticipationType code 'PRCP' = 'primary information recipient)</span></td><td><a>Practitioner/13</a></td></tr></table><h3>Provisions</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></div>"
+          },
+          "identifier": [
+           {
+            "system": "urn:oid:2.16.840.1.113883.3.72.5.9.1",
+            "value": "494e0c7a-a69e-4fb4-9d02-6aae747790d7"
+           }
+          ],
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/consentcategorycodes",
+              "code": "npp"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/72"
+          },
+          "dateTime": "2016-05-26T00:41:10-04:00",
+          "performer": [
+           {
+            "reference": "Patient/72"
+           }
+          ],
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "period": {
+            "start": "2015-10-10",
+            "end": "2016-10-10"
+           },
+           "actor": [
+            {
+             "role": {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "PRCP"
+               }
+              ]
+             },
+             "reference": {
+              "reference": "Practitioner/13"
+             }
+            }
+           ],
+           "provision": [
+            {
+             "type": "permit",
+             "actor": [
+              {
+               "role": {
+                "coding": [
+                 {
+                  "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                  "code": "AUT"
+                 }
+                ]
+               },
+               "reference": {
+                "reference": "Practitioner/xcda-author"
+               }
+              }
+             ],
+             "class": [
+              {
+               "system": "urn:ietf:bcp:13",
+               "code": "application/hl7-cda+xml"
+              }
+             ],
+             "code": [
+              {
+               "coding": [
+                {
+                 "system": "http://loinc.org",
+                 "code": "34133-9"
+                }
+               ]
+              },
+              {
+               "coding": [
+                {
+                 "system": "http://loinc.org",
+                 "code": "18842-5"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example-smartonfhir.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-smartonfhir",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: consent-example-smartonfhir</p><p><b>status</b>: active</p><p><b>scope</b>: Privacy Consent <span>(Details : {http://terminology.hl7.org/CodeSystem/consentscope code 'patient-privacy' = 'Privacy Consent)</span></p><p><b>category</b>: Patient Consent <span>(Details : {LOINC code '59284-0' = 'Patient Consent)</span></p><p><b>patient</b>: <a>Patient/xcda</a></p><p><b>dateTime</b>: 23/06/2016 5:02:33 PM</p><p><b>performer</b>: <a>RelatedPerson/peter</a></p><p><b>organization</b>: <a>Organization/f001</a></p><p><b>policyRule</b>: opt-in <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ActCode code 'OPTIN' = 'opt-in)</span></p><blockquote><p><b>provision</b></p><p><b>period</b>: 23/06/2016 5:02:33 PM --&gt; 23/06/2016 5:32:33 PM</p><h3>Provisions</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/xcda"
+          },
+          "dateTime": "2016-06-23T17:02:33+10:00",
+          "performer": [
+           {
+            "reference": "RelatedPerson/peter"
+           }
+          ],
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "period": {
+            "start": "2016-06-23T17:02:33+10:00",
+            "end": "2016-06-23T17:32:33+10:00"
+           },
+           "provision": [
+            {
+             "type": "permit",
+             "action": [
+              {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/consentaction",
+                 "code": "access"
+                }
+               ]
+              }
+             ],
+             "class": [
+              {
+               "system": "http://hl7.org/fhir/resource-types",
+               "code": "MedicationRequest"
+              }
+             ]
+            }
+           ]
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "consent-example.json": {
+         "value": {
+          "resourceType": "Consent",
+          "id": "consent-example-basic",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n\t\t\t<p>\n\tAuthorize Normal access for Treatment\n\t\t\t</p>\n\t\t\t<p>\n    Patient &quot;P. van de Heuvel&quot; wishes to have all of the PHI collected at the Good Health Psychiatric Hospital \n   available for normal treatment use.\n\t\t\t</p>\n\t\t</div>"
+          },
+          "status": "active",
+          "scope": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/consentscope",
+             "code": "patient-privacy"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://loinc.org",
+              "code": "59284-0"
+             }
+            ]
+           }
+          ],
+          "patient": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "dateTime": "2016-05-11",
+          "organization": [
+           {
+            "reference": "Organization/f001"
+           }
+          ],
+          "sourceAttachment": {
+           "title": "The terms of the consent in lawyer speak."
+          },
+          "policyRule": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "OPTIN"
+            }
+           ]
+          },
+          "provision": {
+           "period": {
+            "start": "1964-01-01",
+            "end": "2016-01-01"
+           }
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Consent"
+    ],
+    "parameters": [
+     {
+      "name": "action",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Type of action performed during the event"
+     },
+     {
+      "name": "actor",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Any one of the individuals participating in the appointment"
+     },
+     {
+      "name": "category",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment"
+     },
+     {
+      "name": "consentor",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Who is agreeing to the policy and rules"
+     },
+     {
+      "name": "data",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The actual data reference"
+     },
+     {
+      "name": "date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "The activity definition publication date"
+     },
+     {
+      "name": "identifier",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account number"
+     },
+     {
+      "name": "organization",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Custodian of the consent"
+     },
+     {
+      "name": "patient",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "period",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "Transaction window"
+     },
+     {
+      "name": "purpose",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Context of activities covered by this rule"
+     },
+     {
+      "name": "scope",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Which of the four areas this resource covers (extensible)"
+     },
+     {
+      "name": "security-label",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Security Labels that define affected resources"
+     },
+     {
+      "name": "source-reference",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Search by reference to a Consent, DocumentReference, Contract  or QuestionnaireResponse"
+     },
+     {
+      "name": "status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "active | inactive | entered-in-error | on-hold | unknown"
+     },
+     {
+      "name": "_format",
+      "in": "query",
+      "x-consoleDefault": "application/json",
+      "schema": {
+       "type": "string"
+      },
+      "description": ""
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Consent"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Consent/{id}": {
+   "parameters": [
+    {
+     "in": "path",
+     "required": true,
+     "name": "id",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "tags": [
+     "Consent"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Consent"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "Consent"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Consent"
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "Consent"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    }
+   }
+  },
+  "/Consent/{id}/_history": {
+   "get": {
+    "tags": [
+     "Consent"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_count",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_since",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Consent"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Consent/{id}/_history/{vid}": {
+   "get": {
+    "tags": [
+     "Consent"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "vid",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Consent"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "Consent"
+  }
+ ]
+}

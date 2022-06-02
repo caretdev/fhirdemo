@@ -1,0 +1,4742 @@
+{
+ "info": {
+  "description": "Response to a claim predetermination or preauthorization",
+  "title": "FHIR R4 ClaimResponse Resource",
+  "version": "r4"
+ },
+ "openapi": "3.0.1",
+ "servers": [
+  {
+   "url": "/fhir/r4"
+  }
+ ],
+ "components": {
+  "schemas": {
+   "ClaimResponse": {
+    "description": "Response to a claim predetermination or preauthorization",
+    "type": "object",
+    "properties": {
+     "addItem": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.addItem"
+      },
+      "description": "Insurer added line items"
+     },
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Header-level adjudication"
+     },
+     "communicationRequest": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Request for additional information"
+     },
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "created": {
+      "type": "string",
+      "description": "Response creation date"
+     },
+     "disposition": {
+      "type": "string",
+      "description": "Disposition Message"
+     },
+     "error": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.error"
+      },
+      "description": "Processing errors"
+     },
+     "form": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "Printed reference or actual form"
+     },
+     "formCode": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Printed form identifier"
+     },
+     "fundsReserve": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Funds reserved status"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "Business Identifier for a claim response"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "insurance": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.insurance"
+      },
+      "description": "Patient insurance information"
+     },
+     "insurer": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Party responsible for reimbursement"
+     },
+     "item": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item"
+      },
+      "description": "Adjudication for claim line items"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "outcome": {
+      "type": "string",
+      "description": "queued | complete | error | partial"
+     },
+     "patient": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The recipient of the products and services"
+     },
+     "payeeType": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Party to be paid any benefits payable"
+     },
+     "payment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ClaimResponse.payment"
+       }
+      ],
+      "description": "Payment Details"
+     },
+     "preAuthPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Preauthorization reference effective period"
+     },
+     "preAuthRef": {
+      "type": "string",
+      "description": "Preauthorization reference"
+     },
+     "processNote": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.processNote"
+      },
+      "description": "Note concerning adjudication"
+     },
+     "request": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Id of resource triggering adjudication"
+     },
+     "requestor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Party responsible for the claim"
+     },
+     "status": {
+      "type": "string",
+      "description": "active | cancelled | draft | entered-in-error"
+     },
+     "subType": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "More granular claim type"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     },
+     "total": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.total"
+      },
+      "description": "Adjudication totals"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "More granular claim type"
+     },
+     "use": {
+      "type": "string",
+      "description": "claim | preauthorization | predetermination"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.addItem": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Added items adjudication"
+     },
+     "bodySite": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Anatomical location"
+     },
+     "detail": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.addItem.detail"
+      },
+      "description": "Insurer added line details"
+     },
+     "detailSequence": {
+      "type": "number",
+      "description": "Detail sequence number"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Price scaling factor"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "itemSequence": {
+      "type": "number",
+      "description": "Item sequence number"
+     },
+     "location": {
+      "description": ""
+     },
+     "locationAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "locationCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "locationReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "modifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Service/Product billing modifiers"
+     },
+     "net": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Total item cost"
+     },
+     "noteNumber": {
+      "type": "number",
+      "description": "Applicable note numbers"
+     },
+     "productOrService": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Billing, service, product, or drug code"
+     },
+     "programCode": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Program the product or service is provided under"
+     },
+     "provider": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Authorized providers"
+     },
+     "quantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Count of products or services"
+     },
+     "serviced": {
+      "description": ""
+     },
+     "servicedDate": {
+      "type": "string",
+      "description": ""
+     },
+     "servicedPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "subSite": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Anatomical sub-location"
+     },
+     "subdetailSequence": {
+      "type": "number",
+      "description": "Subdetail sequence number"
+     },
+     "unitPrice": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Fee, charge or cost per item"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.addItem.detail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Added items detail adjudication"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Price scaling factor"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "modifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Service/Product billing modifiers"
+     },
+     "net": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Total item cost"
+     },
+     "noteNumber": {
+      "type": "number",
+      "description": "Applicable note numbers"
+     },
+     "productOrService": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Billing, service, product, or drug code"
+     },
+     "quantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Count of products or services"
+     },
+     "subDetail": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.addItem.detail.subDetail"
+      },
+      "description": "Insurer added line items"
+     },
+     "unitPrice": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Fee, charge or cost per item"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.addItem.detail.subDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Added items detail adjudication"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Price scaling factor"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "modifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Service/Product billing modifiers"
+     },
+     "net": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Total item cost"
+     },
+     "noteNumber": {
+      "type": "number",
+      "description": "Applicable note numbers"
+     },
+     "productOrService": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Billing, service, product, or drug code"
+     },
+     "quantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Count of products or services"
+     },
+     "unitPrice": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Fee, charge or cost per item"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.error": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Error code detailing processing issues"
+     },
+     "detailSequence": {
+      "type": "number",
+      "description": "Detail sequence number"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "itemSequence": {
+      "type": "number",
+      "description": "Item sequence number"
+     },
+     "subDetailSequence": {
+      "type": "number",
+      "description": "Subdetail sequence number"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.insurance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "businessArrangement": {
+      "type": "string",
+      "description": "Additional provider contract number"
+     },
+     "claimResponse": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Adjudication results"
+     },
+     "coverage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Insurance information"
+     },
+     "focal": {
+      "type": "boolean",
+      "description": "Coverage to be used for adjudication"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "sequence": {
+      "type": "number",
+      "description": "Insurance instance identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.item": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Adjudication details"
+     },
+     "detail": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.detail"
+      },
+      "description": "Adjudication for claim details"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "itemSequence": {
+      "type": "number",
+      "description": "Claim item instance identifier"
+     },
+     "noteNumber": {
+      "type": "number",
+      "description": "Applicable note numbers"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.item.adjudication": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "amount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Monetary amount"
+     },
+     "category": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Type of adjudication information"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "reason": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Explanation of adjudication outcome"
+     },
+     "value": {
+      "type": "number",
+      "description": "Non-monetary value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.item.detail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Detail level adjudication details"
+     },
+     "detailSequence": {
+      "type": "number",
+      "description": "Claim detail instance identifier"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "noteNumber": {
+      "type": "number",
+      "description": "Applicable note numbers"
+     },
+     "subDetail": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.detail.subDetail"
+      },
+      "description": "Adjudication for claim sub-details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.item.detail.subDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjudication": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ClaimResponse.item.adjudication"
+      },
+      "description": "Subdetail level adjudication details"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "noteNumber": {
+      "type": "number",
+      "description": "Applicable note numbers"
+     },
+     "subDetailSequence": {
+      "type": "number",
+      "description": "Claim sub-detail instance identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.payment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "adjustment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Payment adjustment for non-claim issues"
+     },
+     "adjustmentReason": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Explanation for the adjustment"
+     },
+     "amount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Payable amount after adjustment"
+     },
+     "date": {
+      "type": "string",
+      "description": "Expected date of payment"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Business identifier for the payment"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Partial or complete payment"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.processNote": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "language": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Language of the text"
+     },
+     "number": {
+      "type": "number",
+      "description": "Note instance identifier"
+     },
+     "text": {
+      "type": "string",
+      "description": "Note explanatory text"
+     },
+     "type": {
+      "type": "string",
+      "description": "display | print | printoper"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ClaimResponse.total": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "amount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": "Financial total for the category"
+     },
+     "category": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Type of adjudication information"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Reference": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "display": {
+      "type": "string",
+      "description": "Text alternative for the resource"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Logical reference, when literal reference is not known"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Literal reference, Relative, internal or absolute URL"
+     },
+     "type": {
+      "type": "string",
+      "description": "Type the reference refers to (e.g. \"Patient\")"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Resource": {
+    "description": "Base Resource",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Extension": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "url": {
+      "type": "string",
+      "description": "identifies the meaning of the extension"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "valueAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "valueAnnotation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Annotation"
+       }
+      ],
+      "description": ""
+     },
+     "valueAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "valueBase64Binary": {
+      "type": "string",
+      "description": ""
+     },
+     "valueBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "valueCanonical": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCode": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueCoding": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactDetail": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactDetail"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactPoint": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactPoint"
+       }
+      ],
+      "description": ""
+     },
+     "valueContributor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Contributor"
+       }
+      ],
+      "description": ""
+     },
+     "valueCount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Count"
+       }
+      ],
+      "description": ""
+     },
+     "valueDataRequirement": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DataRequirement"
+       }
+      ],
+      "description": ""
+     },
+     "valueDate": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDecimal": {
+      "type": "number",
+      "description": ""
+     },
+     "valueDistance": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Distance"
+       }
+      ],
+      "description": ""
+     },
+     "valueDosage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Dosage"
+       }
+      ],
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valueExpression": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": ""
+     },
+     "valueHumanName": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/HumanName"
+       }
+      ],
+      "description": ""
+     },
+     "valueId": {
+      "type": "string",
+      "description": ""
+     },
+     "valueIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": ""
+     },
+     "valueInstant": {
+      "type": "string",
+      "description": ""
+     },
+     "valueInteger": {
+      "type": "number",
+      "description": ""
+     },
+     "valueMarkdown": {
+      "type": "string",
+      "description": ""
+     },
+     "valueMeta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueOid": {
+      "type": "string",
+      "description": ""
+     },
+     "valueParameterDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ParameterDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "valuePositiveInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "valueRelatedArtifact": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/RelatedArtifact"
+       }
+      ],
+      "description": ""
+     },
+     "valueSampledData": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/SampledData"
+       }
+      ],
+      "description": ""
+     },
+     "valueSignature": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Signature"
+       }
+      ],
+      "description": ""
+     },
+     "valueString": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "valueTriggerDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TriggerDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valueUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueUri": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUrl": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUsageContext": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/UsageContext"
+       }
+      ],
+      "description": ""
+     },
+     "valueUuid": {
+      "type": "string",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Attachment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+     },
+     "creation": {
+      "type": "string",
+      "description": "Date attachment was first created"
+     },
+     "data": {
+      "type": "string",
+      "description": "Data inline, base64ed"
+     },
+     "hash": {
+      "type": "string",
+      "description": "Hash of the data (sha-1, base64ed)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+     },
+     "size": {
+      "type": "number",
+      "description": "Number of bytes of content (if url provided)"
+     },
+     "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+     },
+     "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CodeableConcept": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "coding": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Code defined by a terminology system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Identifier": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assigner": {
+      "type": "string",
+      "description": "Organization that issued id (may be just text)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when id is/was valid for use"
+     },
+     "system": {
+      "type": "string",
+      "description": "The namespace for the identifier value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Description of identifier"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | secondary | old (If known)"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value that is unique"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Meta": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lastUpdated": {
+      "type": "string",
+      "description": "When the resource version last changed"
+     },
+     "profile": {
+      "type": "string",
+      "description": "Profiles this resource claims to conform to"
+     },
+     "security": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels applied to this resource"
+     },
+     "source": {
+      "type": "string",
+      "description": "Identifies where the resource comes from"
+     },
+     "tag": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Tags applied to this resource"
+     },
+     "versionId": {
+      "type": "string",
+      "description": "Version specific identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Period": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Narrative": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "div": {
+      "description": "Limited xhtml content"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "generated | extensions | additional | empty"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coding": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+     },
+     "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+     },
+     "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+     },
+     "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Address": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+     },
+     "country": {
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+     },
+     "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "line": {
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when address was/is in use"
+     },
+     "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+     },
+     "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+     },
+     "type": {
+      "type": "string",
+      "description": "postal | physical | both"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | billing - purpose of this address"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Money": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "currency": {
+      "type": "string",
+      "description": "ISO 4217 Currency Code"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Quantity": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Coded form of the unit"
+     },
+     "comparator": {
+      "type": "string",
+      "description": "< | <= | >= | > - how to understand the value"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "system": {
+      "type": "string",
+      "description": "System that defines coded unit form"
+     },
+     "unit": {
+      "type": "string",
+      "description": "Unit representation"
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Age": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Annotation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "author": {
+      "description": ""
+     },
+     "authorReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "authorString": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "The annotation  - text content (as markdown)"
+     },
+     "time": {
+      "type": "string",
+      "description": "When the annotation was made"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name of an individual to contact"
+     },
+     "telecom": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactPoint"
+      },
+      "description": "Contact details for individual or organization"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactPoint": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when the contact point was/is in use"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Specify preferred order of use (1 = highest)"
+     },
+     "system": {
+      "type": "string",
+      "description": "phone | fax | email | pager | url | sms | other"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+     },
+     "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Contributor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details of the contributor"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Who contributed the content"
+     },
+     "type": {
+      "type": "string",
+      "description": "author | editor | reviewer | endorser"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Count": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "codeFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.codeFilter"
+      },
+      "description": ""
+     },
+     "dateFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.dateFilter"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "limit": {
+      "type": "number",
+      "description": "Number of results"
+     },
+     "mustSupport": {
+      "type": "string",
+      "description": "Indicates specific structure elements that are referenced by the knowledge module"
+     },
+     "profile": {
+      "type": "string",
+      "description": "The profile of the required data"
+     },
+     "sort": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.sort"
+      },
+      "description": ""
+     },
+     "subject": {
+      "description": ""
+     },
+     "subjectCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "subjectReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "The type of the required data"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Distance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "additionalInstruction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": ""
+     },
+     "asNeeded": {
+      "description": ""
+     },
+     "asNeededBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "asNeededCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "doseAndRate": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Dosage.doseAndRate"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "maxDosePerAdministration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerLifetime": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "method": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "patientInstruction": {
+      "type": "string",
+      "description": ""
+     },
+     "route": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "sequence": {
+      "type": "number",
+      "description": ""
+     },
+     "site": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": ""
+     },
+     "timing": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Duration": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Expression": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the condition"
+     },
+     "expression": {
+      "type": "string",
+      "description": "Expression in specified language"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "text/cql | text/fhirpath | application/x-fhir-query | etc."
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name assigned to expression for reuse"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Where the expression is found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "HumanName": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+     },
+     "given": {
+      "type": "string",
+      "description": "Given names (not always 'first'). Includes middle names"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when name was/is in use"
+     },
+     "prefix": {
+      "type": "string",
+      "description": "Parts that come before the name"
+     },
+     "suffix": {
+      "type": "string",
+      "description": "Parts that come after the name"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ParameterDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "documentation": {
+      "type": "string",
+      "description": "A brief description of the parameter"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "max": {
+      "type": "string",
+      "description": "Maximum cardinality (a number of *)"
+     },
+     "min": {
+      "type": "number",
+      "description": "Minimum cardinality"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name used to access the parameter value"
+     },
+     "profile": {
+      "type": "string",
+      "description": "What profile the value is expected to be"
+     },
+     "type": {
+      "type": "string",
+      "description": "What type of value"
+     },
+     "use": {
+      "type": "string",
+      "description": "in | out"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Range": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "high": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "High limit"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "low": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Low limit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Ratio": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "denominator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Denominator value"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "numerator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Numerator value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "RelatedArtifact": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "citation": {
+      "type": "string",
+      "description": "Bibliographic citation for the artifact"
+     },
+     "display": {
+      "type": "string",
+      "description": "Brief description of the related artifact"
+     },
+     "document": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "What document is being referenced"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "label": {
+      "type": "string",
+      "description": "Short label"
+     },
+     "resource": {
+      "type": "string",
+      "description": "What resource is being referenced"
+     },
+     "type": {
+      "type": "string",
+      "description": "documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of"
+     },
+     "url": {
+      "type": "string",
+      "description": "Where the artifact can be accessed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "SampledData": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+     },
+     "dimensions": {
+      "type": "number",
+      "description": "Number of sample points at each time point"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Multiply data by this before adding to origin"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lowerLimit": {
+      "type": "number",
+      "description": "Lower limit of detection"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Zero value and units"
+     },
+     "period": {
+      "type": "number",
+      "description": "Number of milliseconds between samples"
+     },
+     "upperLimit": {
+      "type": "number",
+      "description": "Upper limit of detection"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Signature": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "onBehalfOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The party represented"
+     },
+     "sigFormat": {
+      "type": "string",
+      "description": "The technical format of the signature"
+     },
+     "targetFormat": {
+      "type": "string",
+      "description": "The technical format of the signed resources"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Indication of the reason the entity signed the object(s)"
+     },
+     "when": {
+      "type": "string",
+      "description": "When the signature was created"
+     },
+     "who": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who signed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "event": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "repeat": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing.repeat"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TriggerDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": "Whether the event triggers (boolean expression)"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement"
+      },
+      "description": "Triggering data of the event (multiple = 'and')"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or URI that identifies the event"
+     },
+     "timing": {
+      "description": ""
+     },
+     "timingDate": {
+      "type": "string",
+      "description": ""
+     },
+     "timingDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "timingReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "timingTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "UsageContext": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Type of context being specified"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.codeFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "What code is expected"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A code-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A coded (token) parameter to search on"
+     },
+     "valueSet": {
+      "type": "string",
+      "description": "Valueset for the filter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.dateFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A date-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A date valued parameter to search on"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.sort": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "direction": {
+      "type": "string",
+      "description": "ascending | descending"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "The name of the attribute to perform the sort"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage.doseAndRate": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "dose": {
+      "description": ""
+     },
+     "doseQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "doseRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "rate": {
+      "description": ""
+     },
+     "rateQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "rateRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "rateRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The kind of dose or rate specified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing.repeat": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "bounds": {
+      "description": ""
+     },
+     "boundsDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "boundsPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "boundsRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "count": {
+      "type": "number",
+      "description": "Number of times to repeat"
+     },
+     "countMax": {
+      "type": "number",
+      "description": "Maximum number of times to repeat"
+     },
+     "dayOfWeek": {
+      "type": "string",
+      "description": "mon | tue | wed | thu | fri | sat | sun"
+     },
+     "duration": {
+      "type": "number",
+      "description": "How long when it happens"
+     },
+     "durationMax": {
+      "type": "number",
+      "description": "How long when it happens (Max)"
+     },
+     "durationUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "frequency": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "frequencyMax": {
+      "type": "number",
+      "description": "Event occurs up to frequencyMax times per period"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "offset": {
+      "type": "number",
+      "description": "Minutes from event (before or after)"
+     },
+     "period": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "periodMax": {
+      "type": "number",
+      "description": "Upper limit of period (3-4 hours)"
+     },
+     "periodUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "timeOfDay": {
+      "type": "string",
+      "description": "Time of day for action"
+     },
+     "when": {
+      "type": "string",
+      "description": "Code for time period of occurrence"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   }
+  }
+ },
+ "paths": {
+  "/ClaimResponse": {
+   "post": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/ClaimResponse"
+       },
+       "examples": {
+        "claimresponse-example-2.json": {
+         "value": {
+          "resourceType": "ClaimResponse",
+          "id": "R3501",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ClaimResponse that demonstrates returning errors</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://www.BenefitsInc.com/fhir/remittance",
+            "value": "R3501"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+             "code": "oral"
+            }
+           ]
+          },
+          "use": "claim",
+          "patient": {
+           "reference": "Patient/1"
+          },
+          "created": "2014-08-16",
+          "insurer": {
+           "identifier": {
+            "system": "http://www.jurisdiction.org/insurers",
+            "value": "555123"
+           }
+          },
+          "requestor": {
+           "reference": "Practitioner/1"
+          },
+          "request": {
+           "reference": "Claim/100156"
+          },
+          "outcome": "error",
+          "disposition": "Claim could not be processed",
+          "formCode": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/forms-codes",
+             "code": "2"
+            }
+           ]
+          },
+          "processNote": [
+           {
+            "number": 1,
+            "type": "display",
+            "text": "Invalid claim",
+            "language": {
+             "coding": [
+              {
+               "system": "urn:ietf:bcp:47",
+               "code": "en-CA"
+              }
+             ]
+            }
+           }
+          ],
+          "communicationRequest": [
+           {
+            "reference": "CommunicationRequest/fm-solicit"
+           }
+          ],
+          "error": [
+           {
+            "itemSequence": 3,
+            "detailSequence": 2,
+            "code": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/adjudication-error",
+               "code": "a002"
+              }
+             ]
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "claimresponse-example-additem.json": {
+         "value": {
+          "resourceType": "ClaimResponse",
+          "id": "R3503",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ClaimResponse to Claim Oral Average with additional items</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://www.BenefitsInc.com/fhir/remittance",
+            "value": "R3503"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+             "code": "oral"
+            }
+           ]
+          },
+          "use": "claim",
+          "patient": {
+           "reference": "Patient/1"
+          },
+          "created": "2014-08-16",
+          "insurer": {
+           "identifier": {
+            "system": "http://www.jurisdiction.org/insurers",
+            "value": "555123"
+           }
+          },
+          "requestor": {
+           "reference": "Organization/1"
+          },
+          "request": {
+           "identifier": {
+            "system": "http://happyvalley.com/claim",
+            "value": "12346"
+           }
+          },
+          "outcome": "complete",
+          "disposition": "Claim settled as per contract.",
+          "payeeType": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/payeetype",
+             "code": "provider"
+            }
+           ]
+          },
+          "item": [
+           {
+            "itemSequence": 1,
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 0,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 0,
+               "currency": "USD"
+              }
+             }
+            ]
+           },
+           {
+            "itemSequence": 2,
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 105,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 84,
+               "currency": "USD"
+              }
+             }
+            ]
+           },
+           {
+            "itemSequence": 3,
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 750,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 600,
+               "currency": "USD"
+              }
+             }
+            ],
+            "detail": [
+             {
+              "detailSequence": 1,
+              "adjudication": [
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligible"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 750,
+                 "currency": "USD"
+                }
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligpercent"
+                  }
+                 ]
+                },
+                "value": 80
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "benefit"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 600,
+                 "currency": "USD"
+                }
+               }
+              ]
+             },
+             {
+              "detailSequence": 2,
+              "adjudication": [
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligible"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 0,
+                 "currency": "USD"
+                }
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "benefit"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 0,
+                 "currency": "USD"
+                }
+               }
+              ]
+             }
+            ]
+           }
+          ],
+          "addItem": [
+           {
+            "itemSequence": [
+             1
+            ],
+            "productOrService": {
+             "coding": [
+              {
+               "system": "http://example.org/fhir/oralservicecodes",
+               "code": "1101"
+              }
+             ]
+            },
+            "modifier": [
+             {
+              "coding": [
+               {
+                "system": "http://example.org/fhir/modifiers",
+                "code": "x",
+                "display": "None"
+               }
+              ]
+             }
+            ],
+            "net": {
+             "value": 135.57,
+             "currency": "USD"
+            },
+            "noteNumber": [
+             101
+            ],
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 100,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "copay"
+                }
+               ]
+              },
+              "amount": {
+               "value": 10,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "reason": {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/adjudication-reason",
+                 "code": "ar002",
+                 "display": "Plan Limit Reached"
+                }
+               ]
+              },
+              "amount": {
+               "value": 72,
+               "currency": "USD"
+              }
+             }
+            ]
+           },
+           {
+            "itemSequence": [
+             1
+            ],
+            "productOrService": {
+             "coding": [
+              {
+               "system": "http://example.org/fhir/oralservicecodes",
+               "code": "2141",
+               "display": "Radiograph, bytewing"
+              }
+             ]
+            },
+            "net": {
+             "value": 35.57,
+             "currency": "USD"
+            },
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 35.57,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 28.47,
+               "currency": "USD"
+              }
+             }
+            ]
+           },
+           {
+            "itemSequence": [
+             3
+            ],
+            "detailSequence": [
+             2
+            ],
+            "productOrService": {
+             "coding": [
+              {
+               "system": "http://example.org/fhir/oralservicecodes",
+               "code": "expense"
+              }
+             ]
+            },
+            "modifier": [
+             {
+              "coding": [
+               {
+                "system": "http://example.org/fhir/modifiers",
+                "code": "x",
+                "display": "None"
+               }
+              ]
+             }
+            ],
+            "net": {
+             "value": 350,
+             "currency": "USD"
+            },
+            "noteNumber": [
+             101
+            ],
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 350,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 270,
+               "currency": "USD"
+              }
+             }
+            ]
+           }
+          ],
+          "total": [
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "submitted"
+              }
+             ]
+            },
+            "amount": {
+             "value": 1340.57,
+             "currency": "USD"
+            }
+           },
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "benefit"
+              }
+             ]
+            },
+            "amount": {
+             "value": 1054.47,
+             "currency": "USD"
+            }
+           }
+          ],
+          "payment": {
+           "type": {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/ex-paymenttype",
+              "code": "complete"
+             }
+            ]
+           },
+           "date": "2014-08-31",
+           "amount": {
+            "value": 100.47,
+            "currency": "USD"
+           },
+           "identifier": {
+            "system": "http://www.BenefitsInc.com/fhir/paymentidentifier",
+            "value": "201408-2-15507"
+           }
+          },
+          "processNote": [
+           {
+            "number": 101,
+            "type": "print",
+            "text": "Package codes are not permitted. Codes replaced by Insurer.",
+            "language": {
+             "coding": [
+              {
+               "system": "urn:ietf:bcp:47",
+               "code": "en-CA"
+              }
+             ]
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "claimresponse-example-unsolicited-preauth.json": {
+         "value": {
+          "resourceType": "ClaimResponse",
+          "id": "UR3503",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A sample unsolicited pre-authorization response which authorizes basic dental services to be performed for a patient.</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://www.SocialBenefitsInc.com/fhir/ClaimResponse",
+            "value": "UR3503"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+             "code": "oral"
+            }
+           ]
+          },
+          "use": "preauthorization",
+          "patient": {
+           "reference": "Patient/1"
+          },
+          "created": "2014-08-16",
+          "insurer": {
+           "identifier": {
+            "system": "http://www.jurisdiction.org/insurers",
+            "value": "444123"
+           }
+          },
+          "requestor": {
+           "reference": "Organization/1"
+          },
+          "outcome": "complete",
+          "disposition": "The enclosed services are authorized for your provision within 30 days of this notice.",
+          "preAuthRef": "18SS12345",
+          "payeeType": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/payeetype",
+             "code": "provider"
+            }
+           ]
+          },
+          "addItem": [
+           {
+            "itemSequence": [
+             1
+            ],
+            "productOrService": {
+             "coding": [
+              {
+               "system": "http://example.org/fhir/oralservicecodes",
+               "code": "1101"
+              }
+             ]
+            },
+            "modifier": [
+             {
+              "coding": [
+               {
+                "system": "http://example.org/fhir/modifiers",
+                "code": "x",
+                "display": "None"
+               }
+              ]
+             }
+            ],
+            "net": {
+             "value": 250,
+             "currency": "USD"
+            },
+            "noteNumber": [
+             101
+            ],
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 250,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "copay"
+                }
+               ]
+              },
+              "amount": {
+               "value": 10,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 100
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 240,
+               "currency": "USD"
+              }
+             }
+            ]
+           },
+           {
+            "itemSequence": [
+             1
+            ],
+            "productOrService": {
+             "coding": [
+              {
+               "system": "http://example.org/fhir/oralservicecodes",
+               "code": "2101",
+               "display": "Radiograph, series (12)"
+              }
+             ]
+            },
+            "net": {
+             "value": 800,
+             "currency": "USD"
+            },
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 800,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 100
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 800,
+               "currency": "USD"
+              }
+             }
+            ]
+           }
+          ],
+          "total": [
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "submitted"
+              }
+             ]
+            },
+            "amount": {
+             "value": 1050,
+             "currency": "USD"
+            }
+           },
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "benefit"
+              }
+             ]
+            },
+            "amount": {
+             "value": 1040,
+             "currency": "USD"
+            }
+           }
+          ],
+          "processNote": [
+           {
+            "number": 101,
+            "type": "print",
+            "text": "Please submit a Pre-Authorization request if a more extensive examination or urgent services are required.",
+            "language": {
+             "coding": [
+              {
+               "system": "urn:ietf:bcp:47",
+               "code": "en-CA"
+              }
+             ]
+            }
+           }
+          ],
+          "insurance": [
+           {
+            "sequence": 1,
+            "focal": true,
+            "coverage": {
+             "reference": "Coverage/9876B1"
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "claimresponse-example-vision-3tier.json": {
+         "value": {
+          "resourceType": "ClaimResponse",
+          "id": "R3502",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ClaimResponse</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://thebenefitcompany.com/claimresponse",
+            "value": "CR6532875367"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+             "code": "vision"
+            }
+           ]
+          },
+          "use": "claim",
+          "patient": {
+           "reference": "Patient/1"
+          },
+          "created": "2014-08-16",
+          "insurer": {
+           "reference": "Organization/2"
+          },
+          "requestor": {
+           "reference": "Organization/1"
+          },
+          "request": {
+           "identifier": {
+            "system": "http://happysight.com/claim",
+            "value": "6612346"
+           }
+          },
+          "outcome": "complete",
+          "disposition": "Claim settled as per contract.",
+          "payeeType": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/payeetype",
+             "code": "provider"
+            }
+           ]
+          },
+          "item": [
+           {
+            "itemSequence": 1,
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 235.4,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "copay"
+                }
+               ]
+              },
+              "amount": {
+               "value": 20,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "amount": {
+               "value": 172.32,
+               "currency": "USD"
+              }
+             }
+            ],
+            "detail": [
+             {
+              "detailSequence": 1,
+              "noteNumber": [
+               1
+              ],
+              "adjudication": [
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligible"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 100,
+                 "currency": "USD"
+                }
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "copay"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 20,
+                 "currency": "USD"
+                }
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligpercent"
+                  }
+                 ]
+                },
+                "value": 80
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "benefit"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 80,
+                 "currency": "USD"
+                }
+               }
+              ]
+             },
+             {
+              "detailSequence": 2,
+              "noteNumber": [
+               1
+              ],
+              "adjudication": [
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligible"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 110,
+                 "currency": "USD"
+                }
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligpercent"
+                  }
+                 ]
+                },
+                "value": 80
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "benefit"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 88,
+                 "currency": "USD"
+                }
+               }
+              ],
+              "subDetail": [
+               {
+                "subDetailSequence": 1,
+                "noteNumber": [
+                 1
+                ],
+                "adjudication": [
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "eligible"
+                    }
+                   ]
+                  },
+                  "amount": {
+                   "value": 60,
+                   "currency": "USD"
+                  }
+                 },
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "eligpercent"
+                    }
+                   ]
+                  },
+                  "value": 80
+                 },
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "benefit"
+                    }
+                   ]
+                  },
+                  "amount": {
+                   "value": 48,
+                   "currency": "USD"
+                  }
+                 }
+                ]
+               },
+               {
+                "subDetailSequence": 2,
+                "adjudication": [
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "eligible"
+                    }
+                   ]
+                  },
+                  "amount": {
+                   "value": 30,
+                   "currency": "USD"
+                  }
+                 },
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "eligpercent"
+                    }
+                   ]
+                  },
+                  "value": 80
+                 },
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "benefit"
+                    }
+                   ]
+                  },
+                  "amount": {
+                   "value": 24,
+                   "currency": "USD"
+                  }
+                 }
+                ]
+               },
+               {
+                "subDetailSequence": 3,
+                "noteNumber": [
+                 1
+                ],
+                "adjudication": [
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "eligible"
+                    }
+                   ]
+                  },
+                  "amount": {
+                   "value": 10,
+                   "currency": "USD"
+                  }
+                 },
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "eligpercent"
+                    }
+                   ]
+                  },
+                  "value": 80
+                 },
+                 {
+                  "category": {
+                   "coding": [
+                    {
+                     "code": "benefit"
+                    }
+                   ]
+                  },
+                  "amount": {
+                   "value": 8,
+                   "currency": "USD"
+                  }
+                 }
+                ]
+               }
+              ]
+             },
+             {
+              "detailSequence": 3,
+              "noteNumber": [
+               1
+              ],
+              "adjudication": [
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligible"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 200,
+                 "currency": "USD"
+                }
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "eligpercent"
+                  }
+                 ]
+                },
+                "value": 80
+               },
+               {
+                "category": {
+                 "coding": [
+                  {
+                   "code": "benefit"
+                  }
+                 ]
+                },
+                "amount": {
+                 "value": 14,
+                 "currency": "USD"
+                }
+               }
+              ]
+             }
+            ]
+           }
+          ],
+          "total": [
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "submitted"
+              }
+             ]
+            },
+            "amount": {
+             "value": 235.4,
+             "currency": "USD"
+            }
+           },
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "benefit"
+              }
+             ]
+            },
+            "amount": {
+             "value": 182,
+             "currency": "USD"
+            }
+           }
+          ],
+          "payment": {
+           "type": {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/ex-paymenttype",
+              "code": "complete"
+             }
+            ]
+           },
+           "adjustment": {
+            "value": 75,
+            "currency": "USD"
+           },
+           "adjustmentReason": {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/payment-adjustment-reason",
+              "code": "a002",
+              "display": "Prior Overpayment"
+             }
+            ]
+           },
+           "date": "2014-08-16",
+           "amount": {
+            "value": 107,
+            "currency": "USD"
+           },
+           "identifier": {
+            "system": "http://thebenefitcompany.com/paymentidentifier",
+            "value": "201416-123456"
+           }
+          },
+          "processNote": [
+           {
+            "number": 1,
+            "type": "display",
+            "text": "After hours surcharge declined",
+            "language": {
+             "coding": [
+              {
+               "system": "urn:ietf:bcp:47",
+               "code": "en-CA"
+              }
+             ]
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "claimresponse-example.json": {
+         "value": {
+          "resourceType": "ClaimResponse",
+          "id": "R3500",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of the ClaimResponse</div>"
+          },
+          "identifier": [
+           {
+            "system": "http://www.BenefitsInc.com/fhir/remittance",
+            "value": "R3500"
+           }
+          ],
+          "status": "active",
+          "type": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+             "code": "oral"
+            }
+           ]
+          },
+          "subType": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/ex-claimsubtype",
+             "code": "emergency"
+            }
+           ]
+          },
+          "use": "claim",
+          "patient": {
+           "reference": "Patient/1"
+          },
+          "created": "2014-08-16",
+          "insurer": {
+           "identifier": {
+            "system": "http://www.jurisdiction.org/insurers",
+            "value": "555123"
+           }
+          },
+          "requestor": {
+           "reference": "Organization/1"
+          },
+          "request": {
+           "reference": "http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"
+          },
+          "outcome": "complete",
+          "disposition": "Claim settled as per contract.",
+          "payeeType": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/payeetype",
+             "code": "provider"
+            }
+           ]
+          },
+          "item": [
+           {
+            "itemSequence": 1,
+            "adjudication": [
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligible"
+                }
+               ]
+              },
+              "amount": {
+               "value": 135.57,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "copay"
+                }
+               ]
+              },
+              "amount": {
+               "value": 10,
+               "currency": "USD"
+              }
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "eligpercent"
+                }
+               ]
+              },
+              "value": 80
+             },
+             {
+              "category": {
+               "coding": [
+                {
+                 "code": "benefit"
+                }
+               ]
+              },
+              "reason": {
+               "coding": [
+                {
+                 "system": "http://terminology.hl7.org/CodeSystem/adjudication-reason",
+                 "code": "ar002",
+                 "display": "Plan Limit Reached"
+                }
+               ]
+              },
+              "amount": {
+               "value": 90.47,
+               "currency": "USD"
+              }
+             }
+            ]
+           }
+          ],
+          "total": [
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "submitted"
+              }
+             ]
+            },
+            "amount": {
+             "value": 135.57,
+             "currency": "USD"
+            }
+           },
+           {
+            "category": {
+             "coding": [
+              {
+               "code": "benefit"
+              }
+             ]
+            },
+            "amount": {
+             "value": 90.47,
+             "currency": "USD"
+            }
+           }
+          ],
+          "payment": {
+           "type": {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/ex-paymenttype",
+              "code": "complete"
+             }
+            ]
+           },
+           "date": "2014-08-31",
+           "amount": {
+            "value": 100.47,
+            "currency": "USD"
+           },
+           "identifier": {
+            "system": "http://www.BenefitsInc.com/fhir/paymentidentifier",
+            "value": "201408-2-1569478"
+           }
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "parameters": [
+     {
+      "name": "created",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "When created"
+     },
+     {
+      "name": "disposition",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The contents of the disposition message"
+     },
+     {
+      "name": "identifier",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account number"
+     },
+     {
+      "name": "insurer",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The target payor/insurer for the Claim"
+     },
+     {
+      "name": "outcome",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Whether the event succeeded or failed"
+     },
+     {
+      "name": "patient",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "payment-date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "The expected payment date"
+     },
+     {
+      "name": "request",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The claim reference"
+     },
+     {
+      "name": "requestor",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The Provider of the claim"
+     },
+     {
+      "name": "status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "active | inactive | entered-in-error | on-hold | unknown"
+     },
+     {
+      "name": "use",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The kind of financial resource"
+     },
+     {
+      "name": "_format",
+      "in": "query",
+      "x-consoleDefault": "application/json",
+      "schema": {
+       "type": "string"
+      },
+      "description": ""
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/ClaimResponse"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/ClaimResponse/{id}": {
+   "parameters": [
+    {
+     "in": "path",
+     "required": true,
+     "name": "id",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/ClaimResponse"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/ClaimResponse"
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    }
+   }
+  },
+  "/ClaimResponse/{id}/_history": {
+   "get": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_count",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_since",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/ClaimResponse"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/ClaimResponse/{id}/_history/{vid}": {
+   "get": {
+    "tags": [
+     "ClaimResponse"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "vid",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/ClaimResponse"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "ClaimResponse"
+  }
+ ]
+}

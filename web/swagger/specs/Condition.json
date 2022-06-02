@@ -1,0 +1,3782 @@
+{
+ "info": {
+  "description": "Detailed information about conditions, problems or diagnoses",
+  "title": "FHIR R4 Condition Resource",
+  "version": "r4"
+ },
+ "openapi": "3.0.1",
+ "servers": [
+  {
+   "url": "/fhir/r4"
+  }
+ ],
+ "components": {
+  "schemas": {
+   "Condition": {
+    "description": "Detailed information about conditions, problems or diagnoses",
+    "type": "object",
+    "properties": {
+     "abatement": {
+      "description": ""
+     },
+     "abatementAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "abatementDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "abatementPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "abatementRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "abatementString": {
+      "type": "string",
+      "description": ""
+     },
+     "asserter": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Person who asserts this condition"
+     },
+     "bodySite": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Anatomical location, if relevant"
+     },
+     "category": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "problem-list-item | encounter-diagnosis"
+     },
+     "clinicalStatus": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "active | recurrence | relapse | inactive | remission | resolved"
+     },
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Identification of the condition, problem or diagnosis"
+     },
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "encounter": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Encounter created as part of"
+     },
+     "evidence": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Condition.evidence"
+      },
+      "description": "Supporting evidence"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "External Ids for this condition"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "note": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Annotation"
+      },
+      "description": "Additional information about the Condition"
+     },
+     "onset": {
+      "description": ""
+     },
+     "onsetAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "onsetDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "onsetPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "onsetRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "onsetString": {
+      "type": "string",
+      "description": ""
+     },
+     "recordedDate": {
+      "type": "string",
+      "description": "Date record was first recorded"
+     },
+     "recorder": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who recorded the condition"
+     },
+     "severity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Subjective severity of condition"
+     },
+     "stage": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Condition.stage"
+      },
+      "description": "Stage/grade, usually assessed formally"
+     },
+     "subject": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who has the condition?"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     },
+     "verificationStatus": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "unconfirmed | provisional | differential | confirmed | refuted | entered-in-error"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Condition.evidence": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Manifestation/symptom"
+     },
+     "detail": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Supporting information found elsewhere"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Condition.stage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assessment": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Formal record of assessment"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "summary": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Simple summary (disease specific)"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Kind of staging"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Age": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Period": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Range": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "high": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "High limit"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "low": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Low limit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Reference": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "display": {
+      "type": "string",
+      "description": "Text alternative for the resource"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Logical reference, when literal reference is not known"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Literal reference, Relative, internal or absolute URL"
+     },
+     "type": {
+      "type": "string",
+      "description": "Type the reference refers to (e.g. \"Patient\")"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CodeableConcept": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "coding": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Code defined by a terminology system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Resource": {
+    "description": "Base Resource",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Extension": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "url": {
+      "type": "string",
+      "description": "identifies the meaning of the extension"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "valueAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "valueAnnotation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Annotation"
+       }
+      ],
+      "description": ""
+     },
+     "valueAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "valueBase64Binary": {
+      "type": "string",
+      "description": ""
+     },
+     "valueBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "valueCanonical": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCode": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueCoding": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactDetail": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactDetail"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactPoint": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactPoint"
+       }
+      ],
+      "description": ""
+     },
+     "valueContributor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Contributor"
+       }
+      ],
+      "description": ""
+     },
+     "valueCount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Count"
+       }
+      ],
+      "description": ""
+     },
+     "valueDataRequirement": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DataRequirement"
+       }
+      ],
+      "description": ""
+     },
+     "valueDate": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDecimal": {
+      "type": "number",
+      "description": ""
+     },
+     "valueDistance": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Distance"
+       }
+      ],
+      "description": ""
+     },
+     "valueDosage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Dosage"
+       }
+      ],
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valueExpression": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": ""
+     },
+     "valueHumanName": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/HumanName"
+       }
+      ],
+      "description": ""
+     },
+     "valueId": {
+      "type": "string",
+      "description": ""
+     },
+     "valueIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": ""
+     },
+     "valueInstant": {
+      "type": "string",
+      "description": ""
+     },
+     "valueInteger": {
+      "type": "number",
+      "description": ""
+     },
+     "valueMarkdown": {
+      "type": "string",
+      "description": ""
+     },
+     "valueMeta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueOid": {
+      "type": "string",
+      "description": ""
+     },
+     "valueParameterDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ParameterDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "valuePositiveInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "valueRelatedArtifact": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/RelatedArtifact"
+       }
+      ],
+      "description": ""
+     },
+     "valueSampledData": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/SampledData"
+       }
+      ],
+      "description": ""
+     },
+     "valueSignature": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Signature"
+       }
+      ],
+      "description": ""
+     },
+     "valueString": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "valueTriggerDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TriggerDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valueUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueUri": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUrl": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUsageContext": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/UsageContext"
+       }
+      ],
+      "description": ""
+     },
+     "valueUuid": {
+      "type": "string",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Identifier": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assigner": {
+      "type": "string",
+      "description": "Organization that issued id (may be just text)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when id is/was valid for use"
+     },
+     "system": {
+      "type": "string",
+      "description": "The namespace for the identifier value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Description of identifier"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | secondary | old (If known)"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value that is unique"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Meta": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lastUpdated": {
+      "type": "string",
+      "description": "When the resource version last changed"
+     },
+     "profile": {
+      "type": "string",
+      "description": "Profiles this resource claims to conform to"
+     },
+     "security": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels applied to this resource"
+     },
+     "source": {
+      "type": "string",
+      "description": "Identifies where the resource comes from"
+     },
+     "tag": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Tags applied to this resource"
+     },
+     "versionId": {
+      "type": "string",
+      "description": "Version specific identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Annotation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "author": {
+      "description": ""
+     },
+     "authorReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "authorString": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "The annotation  - text content (as markdown)"
+     },
+     "time": {
+      "type": "string",
+      "description": "When the annotation was made"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Narrative": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "div": {
+      "description": "Limited xhtml content"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "generated | extensions | additional | empty"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coding": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+     },
+     "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+     },
+     "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+     },
+     "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Quantity": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Coded form of the unit"
+     },
+     "comparator": {
+      "type": "string",
+      "description": "< | <= | >= | > - how to understand the value"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "system": {
+      "type": "string",
+      "description": "System that defines coded unit form"
+     },
+     "unit": {
+      "type": "string",
+      "description": "Unit representation"
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Address": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+     },
+     "country": {
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+     },
+     "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "line": {
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when address was/is in use"
+     },
+     "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+     },
+     "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+     },
+     "type": {
+      "type": "string",
+      "description": "postal | physical | both"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | billing - purpose of this address"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Attachment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+     },
+     "creation": {
+      "type": "string",
+      "description": "Date attachment was first created"
+     },
+     "data": {
+      "type": "string",
+      "description": "Data inline, base64ed"
+     },
+     "hash": {
+      "type": "string",
+      "description": "Hash of the data (sha-1, base64ed)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+     },
+     "size": {
+      "type": "number",
+      "description": "Number of bytes of content (if url provided)"
+     },
+     "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+     },
+     "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name of an individual to contact"
+     },
+     "telecom": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactPoint"
+      },
+      "description": "Contact details for individual or organization"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactPoint": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when the contact point was/is in use"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Specify preferred order of use (1 = highest)"
+     },
+     "system": {
+      "type": "string",
+      "description": "phone | fax | email | pager | url | sms | other"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+     },
+     "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Contributor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details of the contributor"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Who contributed the content"
+     },
+     "type": {
+      "type": "string",
+      "description": "author | editor | reviewer | endorser"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Count": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "codeFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.codeFilter"
+      },
+      "description": ""
+     },
+     "dateFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.dateFilter"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "limit": {
+      "type": "number",
+      "description": "Number of results"
+     },
+     "mustSupport": {
+      "type": "string",
+      "description": "Indicates specific structure elements that are referenced by the knowledge module"
+     },
+     "profile": {
+      "type": "string",
+      "description": "The profile of the required data"
+     },
+     "sort": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.sort"
+      },
+      "description": ""
+     },
+     "subject": {
+      "description": ""
+     },
+     "subjectCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "subjectReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "The type of the required data"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Distance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "additionalInstruction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": ""
+     },
+     "asNeeded": {
+      "description": ""
+     },
+     "asNeededBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "asNeededCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "doseAndRate": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Dosage.doseAndRate"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "maxDosePerAdministration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerLifetime": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "method": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "patientInstruction": {
+      "type": "string",
+      "description": ""
+     },
+     "route": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "sequence": {
+      "type": "number",
+      "description": ""
+     },
+     "site": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": ""
+     },
+     "timing": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Duration": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Expression": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the condition"
+     },
+     "expression": {
+      "type": "string",
+      "description": "Expression in specified language"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "text/cql | text/fhirpath | application/x-fhir-query | etc."
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name assigned to expression for reuse"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Where the expression is found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "HumanName": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+     },
+     "given": {
+      "type": "string",
+      "description": "Given names (not always 'first'). Includes middle names"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when name was/is in use"
+     },
+     "prefix": {
+      "type": "string",
+      "description": "Parts that come before the name"
+     },
+     "suffix": {
+      "type": "string",
+      "description": "Parts that come after the name"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Money": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "currency": {
+      "type": "string",
+      "description": "ISO 4217 Currency Code"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ParameterDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "documentation": {
+      "type": "string",
+      "description": "A brief description of the parameter"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "max": {
+      "type": "string",
+      "description": "Maximum cardinality (a number of *)"
+     },
+     "min": {
+      "type": "number",
+      "description": "Minimum cardinality"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name used to access the parameter value"
+     },
+     "profile": {
+      "type": "string",
+      "description": "What profile the value is expected to be"
+     },
+     "type": {
+      "type": "string",
+      "description": "What type of value"
+     },
+     "use": {
+      "type": "string",
+      "description": "in | out"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Ratio": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "denominator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Denominator value"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "numerator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Numerator value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "RelatedArtifact": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "citation": {
+      "type": "string",
+      "description": "Bibliographic citation for the artifact"
+     },
+     "display": {
+      "type": "string",
+      "description": "Brief description of the related artifact"
+     },
+     "document": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "What document is being referenced"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "label": {
+      "type": "string",
+      "description": "Short label"
+     },
+     "resource": {
+      "type": "string",
+      "description": "What resource is being referenced"
+     },
+     "type": {
+      "type": "string",
+      "description": "documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of"
+     },
+     "url": {
+      "type": "string",
+      "description": "Where the artifact can be accessed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "SampledData": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+     },
+     "dimensions": {
+      "type": "number",
+      "description": "Number of sample points at each time point"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Multiply data by this before adding to origin"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lowerLimit": {
+      "type": "number",
+      "description": "Lower limit of detection"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Zero value and units"
+     },
+     "period": {
+      "type": "number",
+      "description": "Number of milliseconds between samples"
+     },
+     "upperLimit": {
+      "type": "number",
+      "description": "Upper limit of detection"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Signature": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "onBehalfOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The party represented"
+     },
+     "sigFormat": {
+      "type": "string",
+      "description": "The technical format of the signature"
+     },
+     "targetFormat": {
+      "type": "string",
+      "description": "The technical format of the signed resources"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Indication of the reason the entity signed the object(s)"
+     },
+     "when": {
+      "type": "string",
+      "description": "When the signature was created"
+     },
+     "who": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who signed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "event": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "repeat": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing.repeat"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TriggerDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": "Whether the event triggers (boolean expression)"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement"
+      },
+      "description": "Triggering data of the event (multiple = 'and')"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or URI that identifies the event"
+     },
+     "timing": {
+      "description": ""
+     },
+     "timingDate": {
+      "type": "string",
+      "description": ""
+     },
+     "timingDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "timingReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "timingTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "UsageContext": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Type of context being specified"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.codeFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "What code is expected"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A code-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A coded (token) parameter to search on"
+     },
+     "valueSet": {
+      "type": "string",
+      "description": "Valueset for the filter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.dateFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A date-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A date valued parameter to search on"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.sort": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "direction": {
+      "type": "string",
+      "description": "ascending | descending"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "The name of the attribute to perform the sort"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage.doseAndRate": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "dose": {
+      "description": ""
+     },
+     "doseQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "doseRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "rate": {
+      "description": ""
+     },
+     "rateQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "rateRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "rateRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The kind of dose or rate specified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing.repeat": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "bounds": {
+      "description": ""
+     },
+     "boundsDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "boundsPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "boundsRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "count": {
+      "type": "number",
+      "description": "Number of times to repeat"
+     },
+     "countMax": {
+      "type": "number",
+      "description": "Maximum number of times to repeat"
+     },
+     "dayOfWeek": {
+      "type": "string",
+      "description": "mon | tue | wed | thu | fri | sat | sun"
+     },
+     "duration": {
+      "type": "number",
+      "description": "How long when it happens"
+     },
+     "durationMax": {
+      "type": "number",
+      "description": "How long when it happens (Max)"
+     },
+     "durationUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "frequency": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "frequencyMax": {
+      "type": "number",
+      "description": "Event occurs up to frequencyMax times per period"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "offset": {
+      "type": "number",
+      "description": "Minutes from event (before or after)"
+     },
+     "period": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "periodMax": {
+      "type": "number",
+      "description": "Upper limit of period (3-4 hours)"
+     },
+     "periodUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "timeOfDay": {
+      "type": "string",
+      "description": "Time of day for action"
+     },
+     "when": {
+      "type": "string",
+      "description": "Code for time period of occurrence"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   }
+  }
+ },
+ "paths": {
+  "/Condition": {
+   "post": {
+    "tags": [
+     "Condition"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Condition"
+       },
+       "examples": {
+        "condition-example-f001-heart.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f001",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>clinicalStatus</b>: Active <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'active' = 'Active)</span></p><p><b>verificationStatus</b>: Confirmed <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'confirmed' = 'Confirmed)</span></p><p><b>category</b>: diagnosis <span>(Details : {SNOMED CT code '439401001' = 'Diagnosis', given as 'diagnosis'})</span></p><p><b>severity</b>: Moderate <span>(Details : {SNOMED CT code '6736007' = 'Moderate', given as 'Moderate'})</span></p><p><b>code</b>: Heart valve disorder <span>(Details : {SNOMED CT code '368009' = 'Heart valve disorder', given as 'Heart valve disorder'})</span></p><p><b>bodySite</b>: heart structure <span>(Details : {SNOMED CT code '40768004' = 'Left thorax', given as 'Left thorax'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>encounter</b>: <a>Encounter/f001</a></p><p><b>onset</b>: 05/08/2011</p><p><b>recordedDate</b>: 05/10/2011</p><p><b>asserter</b>: <a>P. van de Heuvel</a></p><h3>Evidences</h3><table><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td>Cardiac chest pain <span>(Details : {SNOMED CT code '426396005' = 'Cardiac chest pain', given as 'Cardiac chest pain'})</span></td></tr></table></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "diagnosis"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "6736007",
+             "display": "Moderate"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "368009",
+             "display": "Heart valve disorder"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "40768004",
+              "display": "Left thorax"
+             }
+            ],
+            "text": "heart structure"
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "encounter": {
+           "reference": "Encounter/f001"
+          },
+          "onsetDateTime": "2011-08-05",
+          "recordedDate": "2011-10-05",
+          "asserter": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "evidence": [
+           {
+            "code": [
+             {
+              "coding": [
+               {
+                "system": "http://snomed.info/sct",
+                "code": "426396005",
+                "display": "Cardiac chest pain"
+               }
+              ]
+             }
+            ]
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-f002-lung.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f002",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f002</p><p><b>clinicalStatus</b>: Active <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'active' = 'Active)</span></p><p><b>verificationStatus</b>: Confirmed <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'confirmed' = 'Confirmed)</span></p><p><b>category</b>: diagnosis <span>(Details : {SNOMED CT code '439401001' = 'Diagnosis', given as 'diagnosis'})</span></p><p><b>severity</b>: Severe <span>(Details : {SNOMED CT code '24484000' = 'Severe', given as 'Severe'})</span></p><p><b>code</b>: NSCLC - Non-small cell lung cancer <span>(Details : {SNOMED CT code '254637007' = 'Non-small cell lung cancer', given as 'NSCLC - Non-small cell lung cancer'})</span></p><p><b>bodySite</b>: Thorax <span>(Details : {SNOMED CT code '51185008' = 'Thorax', given as 'Thorax'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>encounter</b>: <a>Encounter/f002</a></p><p><b>onset</b>: 05/05/2011</p><p><b>recordedDate</b>: 03/06/2012</p><p><b>asserter</b>: <a>P. van de Heuvel</a></p><h3>Stages</h3><table><tr><td>-</td><td><b>Summary</b></td><td><b>Type</b></td></tr><tr><td>*</td><td>stage II <span>(Details : {SNOMED CT code '258219007' = 'Stage 2', given as 'stage II'})</span></td><td>Clinical staging (qualifier value) <span>(Details : {SNOMED CT code '260998006' = 'cS - Clinical staging', given as 'Clinical staging (qualifier value)'})</span></td></tr></table><h3>Evidences</h3><table><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td>CT of thorax <span>(Details : {SNOMED CT code '169069000' = 'CT of chest', given as 'CT of thorax'})</span></td></tr></table></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "diagnosis"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "24484000",
+             "display": "Severe"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "254637007",
+             "display": "NSCLC - Non-small cell lung cancer"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "51185008",
+              "display": "Thorax"
+             }
+            ]
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "encounter": {
+           "reference": "Encounter/f002"
+          },
+          "onsetDateTime": "2011-05-05",
+          "recordedDate": "2012-06-03",
+          "asserter": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "stage": [
+           {
+            "summary": {
+             "coding": [
+              {
+               "system": "http://snomed.info/sct",
+               "code": "258219007",
+               "display": "stage II"
+              }
+             ]
+            },
+            "type": {
+             "coding": [
+              {
+               "system": "http://snomed.info/sct",
+               "code": "260998006",
+               "display": "Clinical staging (qualifier value)"
+              }
+             ]
+            }
+           }
+          ],
+          "evidence": [
+           {
+            "code": [
+             {
+              "coding": [
+               {
+                "system": "http://snomed.info/sct",
+                "code": "169069000",
+                "display": "CT of thorax"
+               }
+              ]
+             }
+            ]
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-f003-abscess.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f003",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f003</p><p><b>clinicalStatus</b>: Active <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'active' = 'Active)</span></p><p><b>verificationStatus</b>: Confirmed <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'confirmed' = 'Confirmed)</span></p><p><b>category</b>: diagnosis <span>(Details : {SNOMED CT code '439401001' = 'Diagnosis', given as 'diagnosis'})</span></p><p><b>severity</b>: Mild to moderate <span>(Details : {SNOMED CT code '371923003' = 'Mild to moderate', given as 'Mild to moderate'})</span></p><p><b>code</b>: Retropharyngeal abscess <span>(Details : {SNOMED CT code '18099001' = 'Retropharyngeal abscess', given as 'Retropharyngeal abscess'})</span></p><p><b>bodySite</b>: Entire retropharyngeal area <span>(Details : {SNOMED CT code '280193007' = 'Retropharyngeal space', given as 'Entire retropharyngeal area'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><p><b>encounter</b>: <a>Encounter/f003</a></p><p><b>onset</b>: 27/02/2012</p><p><b>recordedDate</b>: 20/02/2012</p><p><b>asserter</b>: <a>P. van de Heuvel</a></p><h3>Evidences</h3><table><tr><td>-</td><td><b>Code</b></td></tr><tr><td>*</td><td>CT of neck <span>(Details : {SNOMED CT code '169068008' = 'CT of neck', given as 'CT of neck'})</span></td></tr></table></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "diagnosis"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "371923003",
+             "display": "Mild to moderate"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "18099001",
+             "display": "Retropharyngeal abscess"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "280193007",
+              "display": "Entire retropharyngeal area"
+             }
+            ]
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "encounter": {
+           "reference": "Encounter/f003"
+          },
+          "onsetDateTime": "2012-02-27",
+          "recordedDate": "2012-02-20",
+          "asserter": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "evidence": [
+           {
+            "code": [
+             {
+              "coding": [
+               {
+                "system": "http://snomed.info/sct",
+                "code": "169068008",
+                "display": "CT of neck"
+               }
+              ]
+             }
+            ]
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-f201-fever.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f201",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>identifier</b>: 12345</p><p><b>clinicalStatus</b>: Resolved <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'resolved' = 'Resolved)</span></p><p><b>verificationStatus</b>: Confirmed <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'confirmed' = 'Confirmed)</span></p><p><b>category</b>: Problem <span>(Details : {SNOMED CT code '55607006' = 'Problem', given as 'Problem'}; {http://terminology.hl7.org/CodeSystem/condition-category code 'problem-list-item' = 'Problem List Item)</span></p><p><b>severity</b>: Mild <span>(Details : {SNOMED CT code '255604002' = 'Mild', given as 'Mild'})</span></p><p><b>code</b>: Fever <span>(Details : {SNOMED CT code '386661006' = 'Fever', given as 'Fever'})</span></p><p><b>bodySite</b>: Entire body as a whole <span>(Details : {SNOMED CT code '38266002' = 'Body as a whole', given as 'Entire body as a whole'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>encounter</b>: <a>Encounter/f201</a></p><p><b>onset</b>: 02/04/2013</p><p><b>abatement</b>: around April 9, 2013</p><p><b>recordedDate</b>: 04/04/2013</p><p><b>recorder</b>: <a>Practitioner/f201</a></p><p><b>asserter</b>: <a>Practitioner/f201</a></p><h3>Evidences</h3><table><tr><td>-</td><td><b>Code</b></td><td><b>Detail</b></td></tr><tr><td>*</td><td>degrees C <span>(Details : {SNOMED CT code '258710007' = 'degrees C', given as 'degrees C'})</span></td><td><a>Temperature</a></td></tr></table></div>"
+          },
+          "identifier": [
+           {
+            "value": "12345"
+           }
+          ],
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "resolved"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "55607006",
+              "display": "Problem"
+             },
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "problem-list-item"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "255604002",
+             "display": "Mild"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "386661006",
+             "display": "Fever"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "38266002",
+              "display": "Entire body as a whole"
+             }
+            ]
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "encounter": {
+           "reference": "Encounter/f201"
+          },
+          "onsetDateTime": "2013-04-02",
+          "abatementString": "around April 9, 2013",
+          "recordedDate": "2013-04-04",
+          "recorder": {
+           "reference": "Practitioner/f201"
+          },
+          "asserter": {
+           "reference": "Practitioner/f201"
+          },
+          "evidence": [
+           {
+            "code": [
+             {
+              "coding": [
+               {
+                "system": "http://snomed.info/sct",
+                "code": "258710007",
+                "display": "degrees C"
+               }
+              ]
+             }
+            ],
+            "detail": [
+             {
+              "reference": "Observation/f202",
+              "display": "Temperature"
+             }
+            ]
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-f202-malignancy.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f202",
+          "meta": {
+           "security": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "TBOO",
+             "display": "taboo"
+            }
+           ],
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          },
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f202</p><p><b>meta</b>: </p><p><b>clinicalStatus</b>: Resolved <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'resolved' = 'Resolved)</span></p><p><b>verificationStatus</b>: Confirmed <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'confirmed' = 'Confirmed)</span></p><p><b>category</b>: Encounter Diagnosis <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-category code 'encounter-diagnosis' = 'Encounter Diagnosis)</span></p><p><b>severity</b>: Severe <span>(Details : {SNOMED CT code '24484000' = 'Severe', given as 'Severe'})</span></p><p><b>code</b>: Malignant neoplastic disease <span>(Details : {SNOMED CT code '363346000' = 'Malignant tumour', given as 'Malignant neoplastic disease'})</span></p><p><b>bodySite</b>: Entire head and neck <span>(Details : {SNOMED CT code '361355005' = 'Entire head and neck', given as 'Entire head and neck'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>onset</b>: 52 years<span> (Details: UCUM code a = 'a')</span></p><p><b>abatement</b>: 54 years<span> (Details: UCUM code a = 'a')</span></p><p><b>recordedDate</b>: 01/12/2012</p><h3>Evidences</h3><table><tr><td>-</td><td><b>Detail</b></td></tr><tr><td>*</td><td><a>Erasmus' diagnostic report of Roel's tumor</a></td></tr></table></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "resolved"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "encounter-diagnosis"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "24484000",
+             "display": "Severe"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "363346000",
+             "display": "Malignant neoplastic disease"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "361355005",
+              "display": "Entire head and neck"
+             }
+            ]
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "onsetAge": {
+           "value": 52,
+           "unit": "years",
+           "system": "http://unitsofmeasure.org",
+           "code": "a"
+          },
+          "abatementAge": {
+           "value": 54,
+           "unit": "years",
+           "system": "http://unitsofmeasure.org",
+           "code": "a"
+          },
+          "recordedDate": "2012-12-01",
+          "evidence": [
+           {
+            "detail": [
+             {
+              "reference": "DiagnosticReport/f201",
+              "display": "Erasmus' diagnostic report of Roel's tumor"
+             }
+            ]
+           }
+          ]
+         }
+        },
+        "condition-example-f203-sepsis.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f203",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f203</p><p><b>clinicalStatus</b>: Active <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'active' = 'Active)</span></p><p><b>verificationStatus</b>: Confirmed <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'confirmed' = 'Confirmed)</span></p><p><b>category</b>: Problem <span>(Details : {SNOMED CT code '55607006' = 'Problem', given as 'Problem'}; {http://terminology.hl7.org/CodeSystem/condition-category code 'problem-list-item' = 'Problem List Item)</span></p><p><b>severity</b>: Moderate to severe <span>(Details : {SNOMED CT code '371924009' = 'Moderate to severe', given as 'Moderate to severe'})</span></p><p><b>code</b>: Bacterial sepsis <span>(Details : {SNOMED CT code '10001005' = 'Bacterial septicemia', given as 'Bacterial sepsis'})</span></p><p><b>bodySite</b>: Pulmonary vascular structure <span>(Details : {SNOMED CT code '281158006' = 'Pulmonary vascular structure', given as 'Pulmonary vascular structure'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>encounter</b>: <a>Roel's encounter on March elevanth</a></p><p><b>onset</b>: 08/03/2013</p><p><b>recordedDate</b>: 11/03/2013</p><p><b>asserter</b>: <a>Practitioner/f201</a></p><h3>Evidences</h3><table><tr><td>-</td><td><b>Detail</b></td></tr><tr><td>*</td><td><a>Diagnostic report for Roel's sepsis</a></td></tr></table></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "55607006",
+              "display": "Problem"
+             },
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "problem-list-item"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "371924009",
+             "display": "Moderate to severe"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "10001005",
+             "display": "Bacterial sepsis"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "281158006",
+              "display": "Pulmonary vascular structure"
+             }
+            ]
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "encounter": {
+           "reference": "Encounter/f203",
+           "display": "Roel's encounter on March elevanth"
+          },
+          "onsetDateTime": "2013-03-08",
+          "recordedDate": "2013-03-11",
+          "asserter": {
+           "reference": "Practitioner/f201"
+          },
+          "evidence": [
+           {
+            "detail": [
+             {
+              "reference": "DiagnosticReport/f202",
+              "display": "Diagnostic report for Roel's sepsis"
+             }
+            ]
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-f204-renal.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f204",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f204</p><p><b>clinicalStatus</b>: Inactive <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'inactive' = 'Inactive)</span></p><p><b>verificationStatus</b>: Differential <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'differential' = 'Differential)</span></p><p><b>category</b>: Problem <span>(Details : {SNOMED CT code '55607006' = 'Problem', given as 'Problem'}; {http://terminology.hl7.org/CodeSystem/condition-category code 'problem-list-item' = 'Problem List Item)</span></p><p><b>severity</b>: Severe <span>(Details : {SNOMED CT code '24484000' = 'Severe', given as 'Severe'})</span></p><p><b>code</b>: Acute renal insufficiency specified as due to procedure <span>(Details : {SNOMED CT code '36225005' = 'Acute renal failure due to procedure', given as 'Acute renal insufficiency specified as due to procedure'})</span></p><p><b>bodySite</b>: Kidney <span>(Details : {SNOMED CT code '181414000' = 'Kidney', given as 'Kidney'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>encounter</b>: <a>Roel's encounter on March elevanth</a></p><p><b>onset</b>: 11/03/2013</p><p><b>abatement</b>: 20/03/2013</p><p><b>recordedDate</b>: 11/03/2013</p><p><b>asserter</b>: <a>Practitioner/f201</a></p><h3>Stages</h3><table><tr><td>-</td><td><b>Summary</b></td><td><b>Assessment</b></td></tr><tr><td>*</td><td>Temporary <span>(Details : {SNOMED CT code '14803004' = 'Transitory', given as 'Temporary'})</span></td><td>Genetic analysis master panel</td></tr></table><p><b>note</b>: The patient is anuric.</p></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "inactive"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "differential"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "55607006",
+              "display": "Problem"
+             },
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "problem-list-item"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "24484000",
+             "display": "Severe"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "36225005",
+             "display": "Acute renal insufficiency specified as due to procedure"
+            }
+           ]
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "181414000",
+              "display": "Kidney"
+             }
+            ]
+           }
+          ],
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "encounter": {
+           "reference": "Encounter/f203",
+           "display": "Roel's encounter on March elevanth"
+          },
+          "onsetDateTime": "2013-03-11",
+          "abatementDateTime": "2013-03-20",
+          "recordedDate": "2013-03-11",
+          "asserter": {
+           "reference": "Practitioner/f201"
+          },
+          "stage": [
+           {
+            "summary": {
+             "coding": [
+              {
+               "system": "http://snomed.info/sct",
+               "code": "14803004",
+               "display": "Temporary"
+              }
+             ]
+            },
+            "assessment": [
+             {
+              "display": "Genetic analysis master panel"
+             }
+            ]
+           }
+          ],
+          "note": [
+           {
+            "text": "The patient is anuric."
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-f205-infection.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "f205",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f205</p><p><b>clinicalStatus</b>: Active <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-clinical code 'active' = 'Active)</span></p><p><b>verificationStatus</b>: Differential <span>(Details : {http://terminology.hl7.org/CodeSystem/condition-ver-status code 'differential' = 'Differential)</span></p><p><b>code</b>: Bacterial infectious disease <span>(Details : {SNOMED CT code '87628006' = 'Bacterial infectious disease', given as 'Bacterial infectious disease'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>recordedDate</b>: 04/04/2013</p><p><b>asserter</b>: <a>Practitioner/f201</a></p></div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "differential"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "87628006",
+             "display": "Bacterial infectious disease"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "recordedDate": "2013-04-04",
+          "asserter": {
+           "reference": "Practitioner/f201"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-family-history.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "family-history",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Family history of cancer of colon</div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "problem-list-item",
+              "display": "Problem List Item"
+             }
+            ]
+           }
+          ],
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "312824007",
+             "display": "Family history of cancer of colon"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example-stroke.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "stroke",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ischemic stroke, July 18, 2010</div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "encounter-diagnosis",
+              "display": "Encounter Diagnosis"
+             }
+            ]
+           }
+          ],
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "422504002",
+             "display": "Ischemic stroke (disorder)"
+            }
+           ],
+           "text": "Stroke"
+          },
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "onsetDateTime": "2010-07-18",
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "example",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Severe burn of left ear (Date: 24-May 2012)</div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "encounter-diagnosis",
+              "display": "Encounter Diagnosis"
+             },
+             {
+              "system": "http://snomed.info/sct",
+              "code": "439401001",
+              "display": "Diagnosis"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "24484000",
+             "display": "Severe"
+            }
+           ]
+          },
+          "code": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "39065001",
+             "display": "Burn of ear"
+            }
+           ],
+           "text": "Burnt Ear"
+          },
+          "bodySite": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "49521004",
+              "display": "Left external ear structure"
+             }
+            ],
+            "text": "Left Ear"
+           }
+          ],
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "onsetDateTime": "2012-05-24",
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "condition-example2.json": {
+         "value": {
+          "resourceType": "Condition",
+          "id": "example2",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mild Asthma (Date: 12-Nov 2012)</div>"
+          },
+          "clinicalStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+             "code": "active"
+            }
+           ]
+          },
+          "verificationStatus": {
+           "coding": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+             "code": "confirmed"
+            }
+           ]
+          },
+          "category": [
+           {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "problem-list-item",
+              "display": "Problem List Item"
+             }
+            ]
+           }
+          ],
+          "severity": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "255604002",
+             "display": "Mild"
+            }
+           ]
+          },
+          "code": {
+           "text": "Asthma"
+          },
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "onsetString": "approximately November 2012",
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Condition"
+    ],
+    "parameters": [
+     {
+      "name": "abatement-age",
+      "in": "query",
+      "schema": {
+       "type": "integer"
+      },
+      "description": "Abatement as age or age range"
+     },
+     {
+      "name": "abatement-date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "Date-related abatements (dateTime and period)"
+     },
+     {
+      "name": "abatement-string",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Abatement as a string"
+     },
+     {
+      "name": "asserter",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Source of the information about the allergy"
+     },
+     {
+      "name": "body-site",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Anatomical location, if relevant"
+     },
+     {
+      "name": "category",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment"
+     },
+     {
+      "name": "clinical-status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "active | inactive | resolved"
+     },
+     {
+      "name": "code",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Code for the condition"
+     },
+     {
+      "name": "encounter",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Encounter created as part of"
+     },
+     {
+      "name": "evidence",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Manifestation/symptom"
+     },
+     {
+      "name": "evidence-detail",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Supporting information found elsewhere"
+     },
+     {
+      "name": "identifier",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account number"
+     },
+     {
+      "name": "onset-age",
+      "in": "query",
+      "schema": {
+       "type": "integer"
+      },
+      "description": "Onsets as age or age range"
+     },
+     {
+      "name": "onset-date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "Date related onsets (dateTime and Period)"
+     },
+     {
+      "name": "onset-info",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Onsets as a string"
+     },
+     {
+      "name": "patient",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "recorded-date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "Date record was first recorded"
+     },
+     {
+      "name": "severity",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "mild | moderate | severe"
+     },
+     {
+      "name": "stage",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Simple summary (disease specific)"
+     },
+     {
+      "name": "subject",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "verification-status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "unconfirmed | confirmed | refuted | entered-in-error"
+     },
+     {
+      "name": "_format",
+      "in": "query",
+      "x-consoleDefault": "application/json",
+      "schema": {
+       "type": "string"
+      },
+      "description": ""
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Condition"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Condition/{id}": {
+   "parameters": [
+    {
+     "in": "path",
+     "required": true,
+     "name": "id",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "tags": [
+     "Condition"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Condition"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "Condition"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Condition"
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "Condition"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    }
+   }
+  },
+  "/Condition/{id}/_history": {
+   "get": {
+    "tags": [
+     "Condition"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_count",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_since",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Condition"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Condition/{id}/_history/{vid}": {
+   "get": {
+    "tags": [
+     "Condition"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "vid",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Condition"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "Condition"
+  }
+ ]
+}

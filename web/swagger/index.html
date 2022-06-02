@@ -1,0 +1,196 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI</title>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css">
+  <style>
+    html {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      background: #fafafa;
+    }
+
+    .errors-wrapper {
+      display: none !IMPORTANT;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="swagger-ui"></div>
+
+  <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"> </script>
+  <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js"> </script>
+  <script>
+    window.onload = function () {
+
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        "dom_id": "#swagger-ui",
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout",
+        validatorUrl: "https://validator.swagger.io/validator",
+        urls: [
+          { url: "specs/Account.json", name: "Account" },
+          { url: "specs/ActivityDefinition.json", name: "ActivityDefinition" },
+          { url: "specs/AdverseEvent.json", name: "AdverseEvent" },
+          { url: "specs/AllergyIntolerance.json", name: "AllergyIntolerance" },
+          { url: "specs/Appointment.json", name: "Appointment" },
+          { url: "specs/AppointmentResponse.json", name: "AppointmentResponse" },
+          { url: "specs/AuditEvent.json", name: "AuditEvent" },
+          { url: "specs/Basic.json", name: "Basic" },
+          { url: "specs/BodyStructure.json", name: "BodyStructure" },
+          { url: "specs/Bundle.json", name: "Bundle" },
+          { url: "specs/CapabilityStatement.json", name: "CapabilityStatement" },
+          { url: "specs/CarePlan.json", name: "CarePlan" },
+          { url: "specs/CareTeam.json", name: "CareTeam" },
+          { url: "specs/ChargeItem.json", name: "ChargeItem" },
+          { url: "specs/ChargeItemDefinition.json", name: "ChargeItemDefinition" },
+          { url: "specs/Claim.json", name: "Claim" },
+          { url: "specs/ClaimResponse.json", name: "ClaimResponse" },
+          { url: "specs/ClinicalImpression.json", name: "ClinicalImpression" },
+          { url: "specs/CodeSystem.json", name: "CodeSystem" },
+          { url: "specs/Communication.json", name: "Communication" },
+          { url: "specs/CommunicationRequest.json", name: "CommunicationRequest" },
+          { url: "specs/CompartmentDefinition.json", name: "CompartmentDefinition" },
+          { url: "specs/Composition.json", name: "Composition" },
+          { url: "specs/ConceptMap.json", name: "ConceptMap" },
+          { url: "specs/Condition.json", name: "Condition" },
+          { url: "specs/Consent.json", name: "Consent" },
+          { url: "specs/Contract.json", name: "Contract" },
+          { url: "specs/Coverage.json", name: "Coverage" },
+          { url: "specs/CoverageEligibilityRequest.json", name: "CoverageEligibilityRequest" },
+          { url: "specs/CoverageEligibilityResponse.json", name: "CoverageEligibilityResponse" },
+          { url: "specs/DetectedIssue.json", name: "DetectedIssue" },
+          { url: "specs/Device.json", name: "Device" },
+          { url: "specs/DeviceDefinition.json", name: "DeviceDefinition" },
+          { url: "specs/DeviceMetric.json", name: "DeviceMetric" },
+          { url: "specs/DeviceRequest.json", name: "DeviceRequest" },
+          { url: "specs/DeviceUseStatement.json", name: "DeviceUseStatement" },
+          { url: "specs/DiagnosticReport.json", name: "DiagnosticReport" },
+          { url: "specs/DocumentManifest.json", name: "DocumentManifest" },
+          { url: "specs/DocumentReference.json", name: "DocumentReference" },
+          { url: "specs/EffectEvidenceSynthesis.json", name: "EffectEvidenceSynthesis" },
+          { url: "specs/Encounter.json", name: "Encounter" },
+          { url: "specs/Endpoint.json", name: "Endpoint" },
+          { url: "specs/EnrollmentRequest.json", name: "EnrollmentRequest" },
+          { url: "specs/EnrollmentResponse.json", name: "EnrollmentResponse" },
+          { url: "specs/EpisodeOfCare.json", name: "EpisodeOfCare" },
+          { url: "specs/EventDefinition.json", name: "EventDefinition" },
+          { url: "specs/Evidence.json", name: "Evidence" },
+          { url: "specs/EvidenceVariable.json", name: "EvidenceVariable" },
+          { url: "specs/ExampleScenario.json", name: "ExampleScenario" },
+          { url: "specs/ExplanationOfBenefit.json", name: "ExplanationOfBenefit" },
+          { url: "specs/FamilyMemberHistory.json", name: "FamilyMemberHistory" },
+          { url: "specs/Flag.json", name: "Flag" },
+          { url: "specs/Goal.json", name: "Goal" },
+          { url: "specs/GraphDefinition.json", name: "GraphDefinition" },
+          { url: "specs/Group.json", name: "Group" },
+          { url: "specs/GuidanceResponse.json", name: "GuidanceResponse" },
+          { url: "specs/HealthcareService.json", name: "HealthcareService" },
+          { url: "specs/ImagingStudy.json", name: "ImagingStudy" },
+          { url: "specs/Immunization.json", name: "Immunization" },
+          { url: "specs/ImmunizationEvaluation.json", name: "ImmunizationEvaluation" },
+          { url: "specs/ImmunizationRecommendation.json", name: "ImmunizationRecommendation" },
+          { url: "specs/ImplementationGuide.json", name: "ImplementationGuide" },
+          { url: "specs/InsurancePlan.json", name: "InsurancePlan" },
+          { url: "specs/Invoice.json", name: "Invoice" },
+          { url: "specs/Library.json", name: "Library" },
+          { url: "specs/Linkage.json", name: "Linkage" },
+          { url: "specs/List.json", name: "List" },
+          { url: "specs/Location.json", name: "Location" },
+          { url: "specs/Measure.json", name: "Measure" },
+          { url: "specs/MeasureReport.json", name: "MeasureReport" },
+          { url: "specs/Media.json", name: "Media" },
+          { url: "specs/Medication.json", name: "Medication" },
+          { url: "specs/MedicationAdministration.json", name: "MedicationAdministration" },
+          { url: "specs/MedicationDispense.json", name: "MedicationDispense" },
+          { url: "specs/MedicationKnowledge.json", name: "MedicationKnowledge" },
+          { url: "specs/MedicationRequest.json", name: "MedicationRequest" },
+          { url: "specs/MedicationStatement.json", name: "MedicationStatement" },
+          { url: "specs/MedicinalProduct.json", name: "MedicinalProduct" },
+          { url: "specs/MedicinalProductAuthorization.json", name: "MedicinalProductAuthorization" },
+          { url: "specs/MedicinalProductContraindication.json", name: "MedicinalProductContraindication" },
+          { url: "specs/MedicinalProductIndication.json", name: "MedicinalProductIndication" },
+          { url: "specs/MedicinalProductInteraction.json", name: "MedicinalProductInteraction" },
+          { url: "specs/MedicinalProductPackaged.json", name: "MedicinalProductPackaged" },
+          { url: "specs/MedicinalProductPharmaceutical.json", name: "MedicinalProductPharmaceutical" },
+          { url: "specs/MedicinalProductUndesirableEffect.json", name: "MedicinalProductUndesirableEffect" },
+          { url: "specs/MessageDefinition.json", name: "MessageDefinition" },
+          { url: "specs/MessageHeader.json", name: "MessageHeader" },
+          { url: "specs/MolecularSequence.json", name: "MolecularSequence" },
+          { url: "specs/NamingSystem.json", name: "NamingSystem" },
+          { url: "specs/NutritionOrder.json", name: "NutritionOrder" },
+          { url: "specs/Observation.json", name: "Observation" },
+          { url: "specs/OperationDefinition.json", name: "OperationDefinition" },
+          { url: "specs/Organization.json", name: "Organization" },
+          { url: "specs/OrganizationAffiliation.json", name: "OrganizationAffiliation" },
+          { url: "specs/Patient.json", name: "Patient" },
+          { url: "specs/PaymentNotice.json", name: "PaymentNotice" },
+          { url: "specs/PaymentReconciliation.json", name: "PaymentReconciliation" },
+          { url: "specs/Person.json", name: "Person" },
+          { url: "specs/PlanDefinition.json", name: "PlanDefinition" },
+          { url: "specs/Practitioner.json", name: "Practitioner" },
+          { url: "specs/PractitionerRole.json", name: "PractitionerRole" },
+          { url: "specs/Procedure.json", name: "Procedure" },
+          { url: "specs/Provenance.json", name: "Provenance" },
+          { url: "specs/Questionnaire.json", name: "Questionnaire" },
+          { url: "specs/QuestionnaireResponse.json", name: "QuestionnaireResponse" },
+          { url: "specs/RelatedPerson.json", name: "RelatedPerson" },
+          { url: "specs/RequestGroup.json", name: "RequestGroup" },
+          { url: "specs/ResearchDefinition.json", name: "ResearchDefinition" },
+          { url: "specs/ResearchElementDefinition.json", name: "ResearchElementDefinition" },
+          { url: "specs/ResearchStudy.json", name: "ResearchStudy" },
+          { url: "specs/ResearchSubject.json", name: "ResearchSubject" },
+          { url: "specs/RiskAssessment.json", name: "RiskAssessment" },
+          { url: "specs/RiskEvidenceSynthesis.json", name: "RiskEvidenceSynthesis" },
+          { url: "specs/Schedule.json", name: "Schedule" },
+          { url: "specs/SearchParameter.json", name: "SearchParameter" },
+          { url: "specs/ServiceRequest.json", name: "ServiceRequest" },
+          { url: "specs/Slot.json", name: "Slot" },
+          { url: "specs/Specimen.json", name: "Specimen" },
+          { url: "specs/SpecimenDefinition.json", name: "SpecimenDefinition" },
+          { url: "specs/StructureDefinition.json", name: "StructureDefinition" },
+          { url: "specs/StructureMap.json", name: "StructureMap" },
+          { url: "specs/Subscription.json", name: "Subscription" },
+          { url: "specs/Substance.json", name: "Substance" },
+          { url: "specs/SubstanceSpecification.json", name: "SubstanceSpecification" },
+          { url: "specs/SupplyDelivery.json", name: "SupplyDelivery" },
+          { url: "specs/SupplyRequest.json", name: "SupplyRequest" },
+          { url: "specs/Task.json", name: "Task" },
+          { url: "specs/TerminologyCapabilities.json", name: "TerminologyCapabilities" },
+          { url: "specs/TestReport.json", name: "TestReport" },
+          { url: "specs/TestScript.json", name: "TestScript" },
+          { url: "specs/ValueSet.json", name: "ValueSet" },
+          { url: "specs/VerificationResult.json", name: "VerificationResult" },
+          { url: "specs/VisionPrescription.json", name: "VisionPrescription" }
+        ],
+        "urls.primaryName": "Patient"
+      })
+      window.ui = ui
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,3895 @@
+{
+ "info": {
+  "description": "An interaction during which services are provided to the patient",
+  "title": "FHIR R4 Encounter Resource",
+  "version": "r4"
+ },
+ "openapi": "3.0.1",
+ "servers": [
+  {
+   "url": "/fhir/r4"
+  }
+ ],
+ "components": {
+  "schemas": {
+   "Encounter": {
+    "description": "An interaction during which services are provided to the patient",
+    "type": "object",
+    "properties": {
+     "account": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "The set of accounts that may be used for billing for this Encounter"
+     },
+     "appointment": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "The appointment that scheduled this encounter"
+     },
+     "basedOn": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "The ServiceRequest that initiated this encounter"
+     },
+     "class": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Classification of patient encounter"
+     },
+     "classHistory": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Encounter.classHistory"
+      },
+      "description": "List of past encounter classes"
+     },
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "diagnosis": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Encounter.diagnosis"
+      },
+      "description": "The list of diagnosis relevant to this encounter"
+     },
+     "episodeOfCare": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Episode(s) of care that this encounter should be recorded against"
+     },
+     "hospitalization": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Encounter.hospitalization"
+       }
+      ],
+      "description": "Details about the admission to a healthcare service"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Identifier"
+      },
+      "description": "Identifier(s) by which this encounter is known"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "length": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": "Quantity of time the encounter lasted (less time absent)"
+     },
+     "location": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Encounter.location"
+      },
+      "description": "List of locations where the patient has been"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "partOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Another Encounter this encounter is part of"
+     },
+     "participant": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Encounter.participant"
+      },
+      "description": "List of participants involved in the encounter"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "The start and end time of the encounter"
+     },
+     "priority": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Indicates the urgency of the encounter"
+     },
+     "reasonCode": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Coded reason the encounter takes place"
+     },
+     "reasonReference": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Reason the encounter takes place (reference)"
+     },
+     "serviceProvider": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The organization (facility) responsible for this encounter"
+     },
+     "serviceType": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Specific type of service"
+     },
+     "status": {
+      "type": "string",
+      "description": "planned | arrived | triaged | in-progress | onleave | finished | cancelled +"
+     },
+     "statusHistory": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Encounter.statusHistory"
+      },
+      "description": "List of past encounter statuses"
+     },
+     "subject": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The patient or group present at the encounter"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Specific type of encounter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Encounter.classHistory": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "class": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "inpatient | outpatient | ambulatory | emergency +"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "The time that the episode was in the specified class"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Encounter.diagnosis": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The diagnosis or procedure relevant to the encounter"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Ranking of the diagnosis (for each role type)"
+     },
+     "use": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Role that this diagnosis has within the encounter (e.g. admission, billing, discharge …)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Encounter.hospitalization": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "admitSource": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "From where patient was admitted (physician referral, transfer)"
+     },
+     "destination": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Location/organization to which the patient is discharged"
+     },
+     "dietPreference": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Diet preferences reported by the patient"
+     },
+     "dischargeDisposition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Category or kind of location after discharge"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The location/organization from which the patient came before admission"
+     },
+     "preAdmissionIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Pre-admission identifier"
+     },
+     "reAdmission": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission"
+     },
+     "specialArrangement": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Wheelchair, translator, stretcher, etc."
+     },
+     "specialCourtesy": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Special courtesies (VIP, board member)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Encounter.location": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "location": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Location the encounter takes place"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period during which the patient was present at the location"
+     },
+     "physicalType": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The physical type of the location (usually the level in the location hierachy - bed room ward etc.)"
+     },
+     "status": {
+      "type": "string",
+      "description": "planned | active | reserved | completed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Encounter.participant": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "individual": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Persons involved in the encounter other than the patient"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Period of time during the encounter that the participant participated"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Role of participant in encounter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Encounter.statusHistory": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "The time that the episode was in the specified status"
+     },
+     "status": {
+      "type": "string",
+      "description": "planned | arrived | triaged | in-progress | onleave | finished | cancelled +"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Reference": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "display": {
+      "type": "string",
+      "description": "Text alternative for the resource"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Logical reference, when literal reference is not known"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Literal reference, Relative, internal or absolute URL"
+     },
+     "type": {
+      "type": "string",
+      "description": "Type the reference refers to (e.g. \"Patient\")"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coding": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+     },
+     "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+     },
+     "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+     },
+     "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Resource": {
+    "description": "Base Resource",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Extension": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "url": {
+      "type": "string",
+      "description": "identifies the meaning of the extension"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "valueAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "valueAnnotation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Annotation"
+       }
+      ],
+      "description": ""
+     },
+     "valueAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "valueBase64Binary": {
+      "type": "string",
+      "description": ""
+     },
+     "valueBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "valueCanonical": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCode": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueCoding": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactDetail": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactDetail"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactPoint": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactPoint"
+       }
+      ],
+      "description": ""
+     },
+     "valueContributor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Contributor"
+       }
+      ],
+      "description": ""
+     },
+     "valueCount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Count"
+       }
+      ],
+      "description": ""
+     },
+     "valueDataRequirement": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DataRequirement"
+       }
+      ],
+      "description": ""
+     },
+     "valueDate": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDecimal": {
+      "type": "number",
+      "description": ""
+     },
+     "valueDistance": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Distance"
+       }
+      ],
+      "description": ""
+     },
+     "valueDosage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Dosage"
+       }
+      ],
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valueExpression": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": ""
+     },
+     "valueHumanName": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/HumanName"
+       }
+      ],
+      "description": ""
+     },
+     "valueId": {
+      "type": "string",
+      "description": ""
+     },
+     "valueIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": ""
+     },
+     "valueInstant": {
+      "type": "string",
+      "description": ""
+     },
+     "valueInteger": {
+      "type": "number",
+      "description": ""
+     },
+     "valueMarkdown": {
+      "type": "string",
+      "description": ""
+     },
+     "valueMeta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueOid": {
+      "type": "string",
+      "description": ""
+     },
+     "valueParameterDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ParameterDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "valuePositiveInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "valueRelatedArtifact": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/RelatedArtifact"
+       }
+      ],
+      "description": ""
+     },
+     "valueSampledData": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/SampledData"
+       }
+      ],
+      "description": ""
+     },
+     "valueSignature": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Signature"
+       }
+      ],
+      "description": ""
+     },
+     "valueString": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "valueTriggerDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TriggerDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valueUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueUri": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUrl": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUsageContext": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/UsageContext"
+       }
+      ],
+      "description": ""
+     },
+     "valueUuid": {
+      "type": "string",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Identifier": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assigner": {
+      "type": "string",
+      "description": "Organization that issued id (may be just text)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when id is/was valid for use"
+     },
+     "system": {
+      "type": "string",
+      "description": "The namespace for the identifier value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Description of identifier"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | secondary | old (If known)"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value that is unique"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Duration": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Meta": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lastUpdated": {
+      "type": "string",
+      "description": "When the resource version last changed"
+     },
+     "profile": {
+      "type": "string",
+      "description": "Profiles this resource claims to conform to"
+     },
+     "security": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels applied to this resource"
+     },
+     "source": {
+      "type": "string",
+      "description": "Identifies where the resource comes from"
+     },
+     "tag": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Tags applied to this resource"
+     },
+     "versionId": {
+      "type": "string",
+      "description": "Version specific identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Period": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CodeableConcept": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "coding": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Code defined by a terminology system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Narrative": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "div": {
+      "description": "Limited xhtml content"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "generated | extensions | additional | empty"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Address": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+     },
+     "country": {
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+     },
+     "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "line": {
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when address was/is in use"
+     },
+     "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+     },
+     "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+     },
+     "type": {
+      "type": "string",
+      "description": "postal | physical | both"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | billing - purpose of this address"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Age": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Annotation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "author": {
+      "description": ""
+     },
+     "authorReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "authorString": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "The annotation  - text content (as markdown)"
+     },
+     "time": {
+      "type": "string",
+      "description": "When the annotation was made"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Attachment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+     },
+     "creation": {
+      "type": "string",
+      "description": "Date attachment was first created"
+     },
+     "data": {
+      "type": "string",
+      "description": "Data inline, base64ed"
+     },
+     "hash": {
+      "type": "string",
+      "description": "Hash of the data (sha-1, base64ed)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+     },
+     "size": {
+      "type": "number",
+      "description": "Number of bytes of content (if url provided)"
+     },
+     "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+     },
+     "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name of an individual to contact"
+     },
+     "telecom": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactPoint"
+      },
+      "description": "Contact details for individual or organization"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactPoint": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when the contact point was/is in use"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Specify preferred order of use (1 = highest)"
+     },
+     "system": {
+      "type": "string",
+      "description": "phone | fax | email | pager | url | sms | other"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+     },
+     "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Contributor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details of the contributor"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Who contributed the content"
+     },
+     "type": {
+      "type": "string",
+      "description": "author | editor | reviewer | endorser"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Count": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "codeFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.codeFilter"
+      },
+      "description": ""
+     },
+     "dateFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.dateFilter"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "limit": {
+      "type": "number",
+      "description": "Number of results"
+     },
+     "mustSupport": {
+      "type": "string",
+      "description": "Indicates specific structure elements that are referenced by the knowledge module"
+     },
+     "profile": {
+      "type": "string",
+      "description": "The profile of the required data"
+     },
+     "sort": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.sort"
+      },
+      "description": ""
+     },
+     "subject": {
+      "description": ""
+     },
+     "subjectCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "subjectReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "The type of the required data"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Distance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "additionalInstruction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": ""
+     },
+     "asNeeded": {
+      "description": ""
+     },
+     "asNeededBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "asNeededCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "doseAndRate": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Dosage.doseAndRate"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "maxDosePerAdministration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerLifetime": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "method": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "patientInstruction": {
+      "type": "string",
+      "description": ""
+     },
+     "route": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "sequence": {
+      "type": "number",
+      "description": ""
+     },
+     "site": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": ""
+     },
+     "timing": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Expression": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the condition"
+     },
+     "expression": {
+      "type": "string",
+      "description": "Expression in specified language"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "text/cql | text/fhirpath | application/x-fhir-query | etc."
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name assigned to expression for reuse"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Where the expression is found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "HumanName": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+     },
+     "given": {
+      "type": "string",
+      "description": "Given names (not always 'first'). Includes middle names"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when name was/is in use"
+     },
+     "prefix": {
+      "type": "string",
+      "description": "Parts that come before the name"
+     },
+     "suffix": {
+      "type": "string",
+      "description": "Parts that come after the name"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Money": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "currency": {
+      "type": "string",
+      "description": "ISO 4217 Currency Code"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ParameterDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "documentation": {
+      "type": "string",
+      "description": "A brief description of the parameter"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "max": {
+      "type": "string",
+      "description": "Maximum cardinality (a number of *)"
+     },
+     "min": {
+      "type": "number",
+      "description": "Minimum cardinality"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name used to access the parameter value"
+     },
+     "profile": {
+      "type": "string",
+      "description": "What profile the value is expected to be"
+     },
+     "type": {
+      "type": "string",
+      "description": "What type of value"
+     },
+     "use": {
+      "type": "string",
+      "description": "in | out"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Quantity": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Coded form of the unit"
+     },
+     "comparator": {
+      "type": "string",
+      "description": "< | <= | >= | > - how to understand the value"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "system": {
+      "type": "string",
+      "description": "System that defines coded unit form"
+     },
+     "unit": {
+      "type": "string",
+      "description": "Unit representation"
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Range": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "high": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "High limit"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "low": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Low limit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Ratio": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "denominator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Denominator value"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "numerator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Numerator value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "RelatedArtifact": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "citation": {
+      "type": "string",
+      "description": "Bibliographic citation for the artifact"
+     },
+     "display": {
+      "type": "string",
+      "description": "Brief description of the related artifact"
+     },
+     "document": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "What document is being referenced"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "label": {
+      "type": "string",
+      "description": "Short label"
+     },
+     "resource": {
+      "type": "string",
+      "description": "What resource is being referenced"
+     },
+     "type": {
+      "type": "string",
+      "description": "documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of"
+     },
+     "url": {
+      "type": "string",
+      "description": "Where the artifact can be accessed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "SampledData": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+     },
+     "dimensions": {
+      "type": "number",
+      "description": "Number of sample points at each time point"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Multiply data by this before adding to origin"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lowerLimit": {
+      "type": "number",
+      "description": "Lower limit of detection"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Zero value and units"
+     },
+     "period": {
+      "type": "number",
+      "description": "Number of milliseconds between samples"
+     },
+     "upperLimit": {
+      "type": "number",
+      "description": "Upper limit of detection"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Signature": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "onBehalfOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The party represented"
+     },
+     "sigFormat": {
+      "type": "string",
+      "description": "The technical format of the signature"
+     },
+     "targetFormat": {
+      "type": "string",
+      "description": "The technical format of the signed resources"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Indication of the reason the entity signed the object(s)"
+     },
+     "when": {
+      "type": "string",
+      "description": "When the signature was created"
+     },
+     "who": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who signed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "event": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "repeat": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing.repeat"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TriggerDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": "Whether the event triggers (boolean expression)"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement"
+      },
+      "description": "Triggering data of the event (multiple = 'and')"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or URI that identifies the event"
+     },
+     "timing": {
+      "description": ""
+     },
+     "timingDate": {
+      "type": "string",
+      "description": ""
+     },
+     "timingDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "timingReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "timingTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "UsageContext": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Type of context being specified"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.codeFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "What code is expected"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A code-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A coded (token) parameter to search on"
+     },
+     "valueSet": {
+      "type": "string",
+      "description": "Valueset for the filter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.dateFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A date-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A date valued parameter to search on"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.sort": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "direction": {
+      "type": "string",
+      "description": "ascending | descending"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "The name of the attribute to perform the sort"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage.doseAndRate": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "dose": {
+      "description": ""
+     },
+     "doseQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "doseRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "rate": {
+      "description": ""
+     },
+     "rateQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "rateRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "rateRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The kind of dose or rate specified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing.repeat": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "bounds": {
+      "description": ""
+     },
+     "boundsDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "boundsPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "boundsRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "count": {
+      "type": "number",
+      "description": "Number of times to repeat"
+     },
+     "countMax": {
+      "type": "number",
+      "description": "Maximum number of times to repeat"
+     },
+     "dayOfWeek": {
+      "type": "string",
+      "description": "mon | tue | wed | thu | fri | sat | sun"
+     },
+     "duration": {
+      "type": "number",
+      "description": "How long when it happens"
+     },
+     "durationMax": {
+      "type": "number",
+      "description": "How long when it happens (Max)"
+     },
+     "durationUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "frequency": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "frequencyMax": {
+      "type": "number",
+      "description": "Event occurs up to frequencyMax times per period"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "offset": {
+      "type": "number",
+      "description": "Minutes from event (before or after)"
+     },
+     "period": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "periodMax": {
+      "type": "number",
+      "description": "Upper limit of period (3-4 hours)"
+     },
+     "periodUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "timeOfDay": {
+      "type": "string",
+      "description": "Time of day for action"
+     },
+     "when": {
+      "type": "string",
+      "description": "Code for time period of occurrence"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   }
+  }
+ },
+ "paths": {
+  "/Encounter": {
+   "post": {
+    "tags": [
+     "Encounter"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Encounter"
+       },
+       "examples": {
+        "encounter-example-emerg.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "emerg",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Emergency visit that escalated into inpatient patient @example</div>"
+          },
+          "status": "in-progress",
+          "statusHistory": [
+           {
+            "status": "arrived",
+            "period": {
+             "start": "2017-02-01T07:15:00+10:00",
+             "end": "2017-02-01T07:35:00+10:00"
+            }
+           },
+           {
+            "status": "triaged",
+            "period": {
+             "start": "2017-02-01T07:35:00+10:00",
+             "end": "2017-02-01T08:45:00+10:00"
+            }
+           },
+           {
+            "status": "in-progress",
+            "period": {
+             "start": "2017-02-01T08:45:00+10:00",
+             "end": "2017-02-01T12:15:00+10:00"
+            }
+           },
+           {
+            "status": "onleave",
+            "period": {
+             "start": "2017-02-01T12:15:00+10:00",
+             "end": "2017-02-01T12:45:00+10:00"
+            }
+           },
+           {
+            "status": "in-progress",
+            "period": {
+             "start": "2017-02-01T12:45:00+10:00"
+            }
+           }
+          ],
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "IMP",
+           "display": "inpatient encounter"
+          },
+          "classHistory": [
+           {
+            "class": {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "EMER",
+             "display": "emergency"
+            },
+            "period": {
+             "start": "2017-02-01T07:15:00+10:00",
+             "end": "2017-02-01T09:27:00+10:00"
+            }
+           },
+           {
+            "class": {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+             "code": "IMP",
+             "display": "inpatient encounter"
+            },
+            "period": {
+             "start": "2017-02-01T09:27:00+10:00"
+            }
+           }
+          ],
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "period": {
+           "start": "2017-02-01T07:15:00+10:00"
+          },
+          "hospitalization": {
+           "admitSource": {
+            "coding": [
+             {
+              "system": "http://terminology.hl7.org/CodeSystem/admit-source",
+              "code": "emd",
+              "display": "From accident/emergency department"
+             }
+            ]
+           }
+          },
+          "location": [
+           {
+            "location": {
+             "display": "Emergency Waiting Room"
+            },
+            "status": "active",
+            "period": {
+             "start": "2017-02-01T07:15:00+10:00",
+             "end": "2017-02-01T08:45:00+10:00"
+            }
+           },
+           {
+            "location": {
+             "display": "Emergency"
+            },
+            "status": "active",
+            "period": {
+             "start": "2017-02-01T08:45:00+10:00",
+             "end": "2017-02-01T09:27:00+10:00"
+            }
+           },
+           {
+            "location": {
+             "display": "Ward 1, Room 42, Bed 1"
+            },
+            "status": "active",
+            "period": {
+             "start": "2017-02-01T09:27:00+10:00",
+             "end": "2017-02-01T12:15:00+10:00"
+            }
+           },
+           {
+            "location": {
+             "display": "Ward 1, Room 42, Bed 1"
+            },
+            "status": "reserved",
+            "period": {
+             "start": "2017-02-01T12:15:00+10:00",
+             "end": "2017-02-01T12:45:00+10:00"
+            }
+           },
+           {
+            "location": {
+             "display": "Ward 1, Room 42, Bed 1"
+            },
+            "status": "active",
+            "period": {
+             "start": "2017-02-01T12:45:00+10:00"
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-f001-heart.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "f001",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: v1451 (OFFICIAL)</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>type</b>: Patient-initiated encounter <span>(Details : {SNOMED CT code '270427003' = 'Patient-initiated encounter', given as 'Patient-initiated encounter'})</span></p><p><b>priority</b>: Non-urgent cardiological admission <span>(Details : {SNOMED CT code '310361003' = 'Non-urgent cardiological admission', given as 'Non-urgent cardiological admission'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>P. Voigt</a></td></tr></table><p><b>length</b>: 140 min<span> (Details: UCUM code min = 'min')</span></p><p><b>reasonCode</b>: Heart valve replacement <span>(Details : {SNOMED CT code '34068001' = 'Heart valve replacement', given as 'Heart valve replacement'})</span></p><h3>Hospitalizations</h3><table><tr><td>-</td><td><b>PreAdmissionIdentifier</b></td><td><b>AdmitSource</b></td><td><b>DischargeDisposition</b></td></tr><tr><td>*</td><td>93042 (OFFICIAL)</td><td>Referral by physician <span>(Details : {SNOMED CT code '305956004' = 'Referral from physician', given as 'Referral by physician'})</span></td><td>Discharge to home <span>(Details : {SNOMED CT code '306689006' = 'Discharge to home', given as 'Discharge to home'})</span></td></tr></table><p><b>serviceProvider</b>: <a>Burgers University Medical Center</a></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "official",
+            "system": "http://www.amc.nl/zorgportal/identifiers/visits",
+            "value": "v1451"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "AMB",
+           "display": "ambulatory"
+          },
+          "type": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "270427003",
+              "display": "Patient-initiated encounter"
+             }
+            ]
+           }
+          ],
+          "priority": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "310361003",
+             "display": "Non-urgent cardiological admission"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "participant": [
+           {
+            "individual": {
+             "reference": "Practitioner/f002",
+             "display": "P. Voigt"
+            }
+           }
+          ],
+          "length": {
+           "value": 140,
+           "unit": "min",
+           "system": "http://unitsofmeasure.org",
+           "code": "min"
+          },
+          "reasonCode": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "34068001",
+              "display": "Heart valve replacement"
+             }
+            ]
+           }
+          ],
+          "hospitalization": {
+           "preAdmissionIdentifier": {
+            "use": "official",
+            "system": "http://www.amc.nl/zorgportal/identifiers/pre-admissions",
+            "value": "93042"
+           },
+           "admitSource": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "305956004",
+              "display": "Referral by physician"
+             }
+            ]
+           },
+           "dischargeDisposition": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "306689006",
+              "display": "Discharge to home"
+             }
+            ]
+           }
+          },
+          "serviceProvider": {
+           "reference": "Organization/f001",
+           "display": "Burgers University Medical Center"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-f002-lung.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "f002",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f002</p><p><b>identifier</b>: v3251 (OFFICIAL)</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>type</b>: Patient-initiated encounter <span>(Details : {SNOMED CT code '270427003' = 'Patient-initiated encounter', given as 'Patient-initiated encounter'})</span></p><p><b>priority</b>: Urgent <span>(Details : {SNOMED CT code '103391001' = 'Urgency', given as 'Urgent'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>M.I.M Versteegh</a></td></tr></table><p><b>length</b>: 140 min<span> (Details: UCUM code min = 'min')</span></p><p><b>reasonCode</b>: Partial lobectomy of lung <span>(Details : {SNOMED CT code '34068001' = 'Heart valve replacement', given as 'Partial lobectomy of lung'})</span></p><h3>Hospitalizations</h3><table><tr><td>-</td><td><b>PreAdmissionIdentifier</b></td><td><b>AdmitSource</b></td><td><b>DischargeDisposition</b></td></tr><tr><td>*</td><td>98682 (OFFICIAL)</td><td>Referral by radiologist <span>(Details : {SNOMED CT code '305997006' = 'Referral by radiologist', given as 'Referral by radiologist'})</span></td><td>Discharge to home <span>(Details : {SNOMED CT code '306689006' = 'Discharge to home', given as 'Discharge to home'})</span></td></tr></table><p><b>serviceProvider</b>: <a>BMC</a></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "official",
+            "system": "http://www.bmc.nl/zorgportal/identifiers/encounters",
+            "value": "v3251"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "AMB",
+           "display": "ambulatory"
+          },
+          "type": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "270427003",
+              "display": "Patient-initiated encounter"
+             }
+            ]
+           }
+          ],
+          "priority": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "103391001",
+             "display": "Urgent"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "participant": [
+           {
+            "individual": {
+             "reference": "Practitioner/f003",
+             "display": "M.I.M Versteegh"
+            }
+           }
+          ],
+          "length": {
+           "value": 140,
+           "unit": "min",
+           "system": "http://unitsofmeasure.org",
+           "code": "min"
+          },
+          "reasonCode": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "34068001",
+              "display": "Partial lobectomy of lung"
+             }
+            ]
+           }
+          ],
+          "hospitalization": {
+           "preAdmissionIdentifier": {
+            "use": "official",
+            "system": "http://www.bmc.nl/zorgportal/identifiers/pre-admissions",
+            "value": "98682"
+           },
+           "admitSource": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "305997006",
+              "display": "Referral by radiologist"
+             }
+            ]
+           },
+           "dischargeDisposition": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "306689006",
+              "display": "Discharge to home"
+             }
+            ]
+           }
+          },
+          "serviceProvider": {
+           "reference": "Organization/f001",
+           "display": "BMC"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-f003-abscess.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "f003",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f003</p><p><b>identifier</b>: v6751 (OFFICIAL)</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>type</b>: Patient-initiated encounter <span>(Details : {SNOMED CT code '270427003' = 'Patient-initiated encounter', given as 'Patient-initiated encounter'})</span></p><p><b>priority</b>: Non-urgent ear, nose and throat admission <span>(Details : {SNOMED CT code '103391001' = 'Urgency', given as 'Non-urgent ear, nose and throat admission'})</span></p><p><b>subject</b>: <a>P. van de Heuvel</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>E.M. van den Broek</a></td></tr></table><p><b>length</b>: 90 min<span> (Details: UCUM code min = 'min')</span></p><p><b>reasonCode</b>: Retropharyngeal abscess <span>(Details : {SNOMED CT code '18099001' = 'Retropharyngeal abscess', given as 'Retropharyngeal abscess'})</span></p><h3>Hospitalizations</h3><table><tr><td>-</td><td><b>PreAdmissionIdentifier</b></td><td><b>AdmitSource</b></td><td><b>DischargeDisposition</b></td></tr><tr><td>*</td><td>93042 (OFFICIAL)</td><td>Referral by physician <span>(Details : {SNOMED CT code '305956004' = 'Referral from physician', given as 'Referral by physician'})</span></td><td>Discharge to home <span>(Details : {SNOMED CT code '306689006' = 'Discharge to home', given as 'Discharge to home'})</span></td></tr></table><p><b>serviceProvider</b>: <a>Organization/f001</a></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "official",
+            "system": "http://www.bmc.nl/zorgportal/identifiers/encounters",
+            "value": "v6751"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "AMB",
+           "display": "ambulatory"
+          },
+          "type": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "270427003",
+              "display": "Patient-initiated encounter"
+             }
+            ]
+           }
+          ],
+          "priority": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "103391001",
+             "display": "Non-urgent ear, nose and throat admission"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f001",
+           "display": "P. van de Heuvel"
+          },
+          "participant": [
+           {
+            "individual": {
+             "reference": "Practitioner/f001",
+             "display": "E.M. van den Broek"
+            }
+           }
+          ],
+          "length": {
+           "value": 90,
+           "unit": "min",
+           "system": "http://unitsofmeasure.org",
+           "code": "min"
+          },
+          "reasonCode": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "18099001",
+              "display": "Retropharyngeal abscess"
+             }
+            ]
+           }
+          ],
+          "hospitalization": {
+           "preAdmissionIdentifier": {
+            "use": "official",
+            "system": "http://www.bmc.nl/zorgportal/identifiers/pre-admissions",
+            "value": "93042"
+           },
+           "admitSource": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "305956004",
+              "display": "Referral by physician"
+             }
+            ]
+           },
+           "dischargeDisposition": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "306689006",
+              "display": "Discharge to home"
+             }
+            ]
+           }
+          },
+          "serviceProvider": {
+           "reference": "Organization/f001"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-f201-20130404.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "f201",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f201</p><p><b>identifier</b>: Encounter_Roel_20130404 (TEMP)</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>type</b>: Consultation <span>(Details : {SNOMED CT code '11429006' = 'Consultation', given as 'Consultation'})</span></p><p><b>priority</b>: Normal <span>(Details : {SNOMED CT code '17621005' = 'Normal', given as 'Normal'})</span></p><p><b>subject</b>: <a>Roel</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>Practitioner/f201</a></td></tr></table><p><b>reasonCode</b>: The patient had fever peaks over the last couple of days. He is worried about these peaks. <span>(Details )</span></p><p><b>serviceProvider</b>: <a>Organization/f201</a></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "temp",
+            "value": "Encounter_Roel_20130404"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "AMB",
+           "display": "ambulatory"
+          },
+          "type": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "11429006",
+              "display": "Consultation"
+             }
+            ]
+           }
+          ],
+          "priority": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "17621005",
+             "display": "Normal"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "participant": [
+           {
+            "individual": {
+             "reference": "Practitioner/f201"
+            }
+           }
+          ],
+          "reasonCode": [
+           {
+            "text": "The patient had fever peaks over the last couple of days. He is worried about these peaks."
+           }
+          ],
+          "serviceProvider": {
+           "reference": "Organization/f201"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-f202-20130128.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "f202",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f202</p><p><b>identifier</b>: Encounter_Roel_20130128 (TEMP)</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>type</b>: Chemotherapy <span>(Details : {SNOMED CT code '367336001' = 'Chemotherapy', given as 'Chemotherapy'})</span></p><p><b>priority</b>: Urgent <span>(Details : {SNOMED CT code '103391001' = 'Urgency', given as 'Urgent'})</span></p><p><b>subject</b>: <a>Roel</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>Practitioner/f201</a></td></tr></table><p><b>length</b>: 56 minutes<span> (Details: UCUM code min = 'min')</span></p><p><b>reasonCode</b>: The patient is treated for a tumor. <span>(Details )</span></p><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: Complications from Roel's TPF chemotherapy on January 28th, 2013</p><p><b>use</b>: Admission diagnosis <span>(Details : {http://terminology.hl7.org/CodeSystem/diagnosis-role code 'AD' = 'Admission diagnosis', given as 'Admission diagnosis'})</span></p><p><b>rank</b>: 2</p></blockquote><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: The patient is treated for a tumor</p><p><b>use</b>: Chief complaint <span>(Details : {http://terminology.hl7.org/CodeSystem/diagnosis-role code 'CC' = 'Chief complaint', given as 'Chief complaint'})</span></p><p><b>rank</b>: 1</p></blockquote><p><b>serviceProvider</b>: <a>Organization/f201</a></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "temp",
+            "value": "Encounter_Roel_20130128"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "AMB",
+           "display": "ambulatory"
+          },
+          "type": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "367336001",
+              "display": "Chemotherapy"
+             }
+            ]
+           }
+          ],
+          "priority": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "103391001",
+             "display": "Urgent"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "participant": [
+           {
+            "individual": {
+             "reference": "Practitioner/f201"
+            }
+           }
+          ],
+          "length": {
+           "value": 56,
+           "unit": "minutes",
+           "system": "http://unitsofmeasure.org",
+           "code": "min"
+          },
+          "reasonCode": [
+           {
+            "text": "The patient is treated for a tumor."
+           }
+          ],
+          "diagnosis": [
+           {
+            "condition": {
+             "display": "Complications from Roel's TPF chemotherapy on January 28th, 2013"
+            },
+            "use": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+               "code": "AD",
+               "display": "Admission diagnosis"
+              }
+             ]
+            },
+            "rank": 2
+           },
+           {
+            "condition": {
+             "display": "The patient is treated for a tumor"
+            },
+            "use": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+               "code": "CC",
+               "display": "Chief complaint"
+              }
+             ]
+            },
+            "rank": 1
+           }
+          ],
+          "serviceProvider": {
+           "reference": "Organization/f201"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-f203-20130311.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "f203",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f203</p><p><b>identifier</b>: Encounter_Roel_20130311 (TEMP)</p><p><b>status</b>: finished</p><h3>StatusHistories</h3><table><tr><td>-</td><td><b>Status</b></td><td><b>Period</b></td></tr><tr><td>*</td><td>arrived</td><td>08/03/2013 --&gt; (ongoing)</td></tr></table><p><b>class</b>: inpatient encounter (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code IMP = 'inpatient encounter', stated as 'inpatient encounter')</p><p><b>type</b>: Inpatient stay for nine days <span>(Details : {SNOMED CT code '183807002' = 'Inpatient stay 9 days', given as 'Inpatient stay for nine days'})</span></p><p><b>priority</b>: High priority <span>(Details : {SNOMED CT code '394849002' = 'High priority', given as 'High priority'})</span></p><p><b>subject</b>: <a>Roel</a></p><p><b>episodeOfCare</b>: <a>EpisodeOfCare/example</a></p><p><b>basedOn</b>: <a>ServiceRequest/myringotomy</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Individual</b></td></tr><tr><td>*</td><td>Participation <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-ParticipationType code 'PART' = 'Participation)</span></td><td><a>Practitioner/f201</a></td></tr></table><p><b>appointment</b>: <a>Appointment/example</a></p><p><b>period</b>: 11/03/2013 --&gt; 20/03/2013</p><p><b>reasonCode</b>: The patient seems to suffer from bilateral pneumonia and renal insufficiency, most likely due to chemotherapy. <span>(Details )</span></p><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: <a>Condition/stroke</a></p><p><b>use</b>: Admission diagnosis <span>(Details : {http://terminology.hl7.org/CodeSystem/diagnosis-role code 'AD' = 'Admission diagnosis', given as 'Admission diagnosis'})</span></p><p><b>rank</b>: 1</p></blockquote><blockquote><p><b>diagnosis</b></p><p><b>condition</b>: <a>Condition/f201</a></p><p><b>use</b>: Discharge diagnosis <span>(Details : {http://terminology.hl7.org/CodeSystem/diagnosis-role code 'DD' = 'Discharge diagnosis', given as 'Discharge diagnosis'})</span></p></blockquote><p><b>account</b>: <a>Account/example</a></p><h3>Hospitalizations</h3><table><tr><td>-</td><td><b>Origin</b></td><td><b>AdmitSource</b></td><td><b>ReAdmission</b></td><td><b>DietPreference</b></td><td><b>SpecialCourtesy</b></td><td><b>SpecialArrangement</b></td><td><b>Destination</b></td></tr><tr><td>*</td><td><a>Location/2</a></td><td>Clinical Oncology Department <span>(Details : {SNOMED CT code '309902002' = 'Clinical oncology department', given as 'Clinical Oncology Department'})</span></td><td>readmitted <span>(Details : {[not stated] code 'null' = 'null', given as 'readmitted'})</span></td><td>Fluid balance regulation <span>(Details : {SNOMED CT code '276026009' = 'Fluid balance regulation', given as 'Fluid balance regulation'})</span></td><td>normal courtesy <span>(Details : {http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy code 'NRM' = 'normal courtesy', given as 'normal courtesy'})</span></td><td>Wheelchair <span>(Details : {http://terminology.hl7.org/CodeSystem/encounter-special-arrangements code 'wheel' = 'Wheelchair', given as 'Wheelchair'})</span></td><td><a>Location/2</a></td></tr></table><p><b>serviceProvider</b>: <a>Organization/2</a></p><p><b>partOf</b>: <a>Encounter/f203</a></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "temp",
+            "value": "Encounter_Roel_20130311"
+           }
+          ],
+          "status": "finished",
+          "statusHistory": [
+           {
+            "status": "arrived",
+            "period": {
+             "start": "2013-03-08"
+            }
+           }
+          ],
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "IMP",
+           "display": "inpatient encounter"
+          },
+          "type": [
+           {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "183807002",
+              "display": "Inpatient stay for nine days"
+             }
+            ]
+           }
+          ],
+          "priority": {
+           "coding": [
+            {
+             "system": "http://snomed.info/sct",
+             "code": "394849002",
+             "display": "High priority"
+            }
+           ]
+          },
+          "subject": {
+           "reference": "Patient/f201",
+           "display": "Roel"
+          },
+          "episodeOfCare": [
+           {
+            "reference": "EpisodeOfCare/example"
+           }
+          ],
+          "basedOn": [
+           {
+            "reference": "ServiceRequest/myringotomy"
+           }
+          ],
+          "participant": [
+           {
+            "type": [
+             {
+              "coding": [
+               {
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                "code": "PART"
+               }
+              ]
+             }
+            ],
+            "individual": {
+             "reference": "Practitioner/f201"
+            }
+           }
+          ],
+          "appointment": [
+           {
+            "reference": "Appointment/example"
+           }
+          ],
+          "period": {
+           "start": "2013-03-11",
+           "end": "2013-03-20"
+          },
+          "reasonCode": [
+           {
+            "text": "The patient seems to suffer from bilateral pneumonia and renal insufficiency, most likely due to chemotherapy."
+           }
+          ],
+          "diagnosis": [
+           {
+            "condition": {
+             "reference": "Condition/stroke"
+            },
+            "use": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+               "code": "AD",
+               "display": "Admission diagnosis"
+              }
+             ]
+            },
+            "rank": 1
+           },
+           {
+            "condition": {
+             "reference": "Condition/f201"
+            },
+            "use": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+               "code": "DD",
+               "display": "Discharge diagnosis"
+              }
+             ]
+            }
+           }
+          ],
+          "account": [
+           {
+            "reference": "Account/example"
+           }
+          ],
+          "hospitalization": {
+           "origin": {
+            "reference": "Location/2"
+           },
+           "admitSource": {
+            "coding": [
+             {
+              "system": "http://snomed.info/sct",
+              "code": "309902002",
+              "display": "Clinical Oncology Department"
+             }
+            ]
+           },
+           "reAdmission": {
+            "coding": [
+             {
+              "display": "readmitted"
+             }
+            ]
+           },
+           "dietPreference": [
+            {
+             "coding": [
+              {
+               "system": "http://snomed.info/sct",
+               "code": "276026009",
+               "display": "Fluid balance regulation"
+              }
+             ]
+            }
+           ],
+           "specialCourtesy": [
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/v3-EncounterSpecialCourtesy",
+               "code": "NRM",
+               "display": "normal courtesy"
+              }
+             ]
+            }
+           ],
+           "specialArrangement": [
+            {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/encounter-special-arrangements",
+               "code": "wheel",
+               "display": "Wheelchair"
+              }
+             ]
+            }
+           ],
+           "destination": {
+            "reference": "Location/2"
+           }
+          },
+          "serviceProvider": {
+           "reference": "Organization/2"
+          },
+          "partOf": {
+           "reference": "Encounter/f203"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-home.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "home",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Encounter with patient @example who is at home</div>"
+          },
+          "contained": [
+           {
+            "resourceType": "Location",
+            "id": "home",
+            "description": "Client's home",
+            "mode": "kind"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "HH",
+           "display": "home health"
+          },
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "participant": [
+           {
+            "period": {
+             "start": "2015-01-17T16:00:00+10:00",
+             "end": "2015-01-17T16:30:00+10:00"
+            },
+            "individual": {
+             "reference": "Practitioner/example",
+             "display": "Dr Adam Careful"
+            }
+           }
+          ],
+          "period": {
+           "start": "2015-01-17T16:00:00+10:00",
+           "end": "2015-01-17T16:30:00+10:00"
+          },
+          "location": [
+           {
+            "location": {
+             "reference": "#home",
+             "display": "Client's home"
+            },
+            "status": "completed",
+            "period": {
+             "start": "2015-01-17T16:00:00+10:00",
+             "end": "2015-01-17T16:30:00+10:00"
+            }
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example-xcda.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "xcda",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: xcda</p><p><b>identifier</b>: 1234213.52345873 (OFFICIAL)</p><p><b>status</b>: finished</p><p><b>class</b>: ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')</p><p><b>subject</b>: <a>Patient/xcda</a></p><h3>Participants</h3><table><tr><td>-</td><td><b>Individual</b></td></tr><tr><td>*</td><td><a>Practitioner/xcda1</a></td></tr></table><p><b>reasonCode</b>: Arm <span>(Details : {http://ihe.net/xds/connectathon/eventCodes code 'T-D8200' = 'T-D8200', given as 'Arm'})</span></p></div>"
+          },
+          "identifier": [
+           {
+            "use": "official",
+            "system": "http://healthcare.example.org/identifiers/enocunter",
+            "value": "1234213.52345873"
+           }
+          ],
+          "status": "finished",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "AMB",
+           "display": "ambulatory"
+          },
+          "subject": {
+           "reference": "Patient/xcda"
+          },
+          "participant": [
+           {
+            "individual": {
+             "reference": "Practitioner/xcda1"
+            }
+           }
+          ],
+          "reasonCode": [
+           {
+            "coding": [
+             {
+              "system": "http://ihe.net/xds/connectathon/eventCodes",
+              "code": "T-D8200",
+              "display": "Arm"
+             }
+            ]
+           }
+          ],
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        },
+        "encounter-example.json": {
+         "value": {
+          "resourceType": "Encounter",
+          "id": "example",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Encounter with patient @example</div>"
+          },
+          "status": "in-progress",
+          "class": {
+           "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+           "code": "IMP",
+           "display": "inpatient encounter"
+          },
+          "subject": {
+           "reference": "Patient/example"
+          },
+          "meta": {
+           "tag": [
+            {
+             "system": "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+             "code": "HTEST",
+             "display": "test health data"
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "Encounter"
+    ],
+    "parameters": [
+     {
+      "name": "account",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account to place this charge"
+     },
+     {
+      "name": "appointment",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The appointment that the response is attached to"
+     },
+     {
+      "name": "based-on",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The service request this appointment is allocated to assess"
+     },
+     {
+      "name": "class",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Classification of patient encounter"
+     },
+     {
+      "name": "date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "The activity definition publication date"
+     },
+     {
+      "name": "diagnosis",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The diagnosis or procedure relevant to the encounter"
+     },
+     {
+      "name": "episode-of-care",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Episode(s) of care that this encounter should be recorded against"
+     },
+     {
+      "name": "identifier",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account number"
+     },
+     {
+      "name": "length",
+      "in": "query",
+      "schema": {
+       "type": "integer"
+      },
+      "description": "Length of encounter in days"
+     },
+     {
+      "name": "location",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Location where adverse event occurred"
+     },
+     {
+      "name": "location-period",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "Time period during which the patient was present at the location"
+     },
+     {
+      "name": "part-of",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Part of referenced CarePlan"
+     },
+     {
+      "name": "participant",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Who is involved"
+     },
+     {
+      "name": "participant-type",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Role of participant in encounter"
+     },
+     {
+      "name": "patient",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "practitioner",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "One of the individuals of the appointment is this practitioner"
+     },
+     {
+      "name": "reason-code",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Coded reason this appointment is scheduled"
+     },
+     {
+      "name": "reason-reference",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Reason the appointment is to take place (resource)"
+     },
+     {
+      "name": "service-provider",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The organization (facility) responsible for this encounter"
+     },
+     {
+      "name": "special-arrangement",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Wheelchair, translator, stretcher, etc."
+     },
+     {
+      "name": "status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "active | inactive | entered-in-error | on-hold | unknown"
+     },
+     {
+      "name": "subject",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The entity that caused the expenses"
+     },
+     {
+      "name": "type",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "E.g. patient, expense, depreciation"
+     },
+     {
+      "name": "_format",
+      "in": "query",
+      "x-consoleDefault": "application/json",
+      "schema": {
+       "type": "string"
+      },
+      "description": ""
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Encounter"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Encounter/{id}": {
+   "parameters": [
+    {
+     "in": "path",
+     "required": true,
+     "name": "id",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "tags": [
+     "Encounter"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Encounter"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "Encounter"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/Encounter"
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "Encounter"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    }
+   }
+  },
+  "/Encounter/{id}/_history": {
+   "get": {
+    "tags": [
+     "Encounter"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_count",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_since",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Encounter"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/Encounter/{id}/_history/{vid}": {
+   "get": {
+    "tags": [
+     "Encounter"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "vid",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/Encounter"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "Encounter"
+  }
+ ]
+}

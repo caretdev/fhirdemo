@@ -1,0 +1,4606 @@
+{
+ "info": {
+  "description": "Describes a set of tests",
+  "title": "FHIR R4 TestScript Resource",
+  "version": "r4"
+ },
+ "openapi": "3.0.1",
+ "servers": [
+  {
+   "url": "/fhir/r4"
+  }
+ ],
+ "components": {
+  "schemas": {
+   "TestScript": {
+    "description": "Describes a set of tests",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details for the publisher"
+     },
+     "contained": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Resource"
+      },
+      "description": "Contained, inline Resources"
+     },
+     "copyright": {
+      "type": "string",
+      "description": "Use and/or publishing restrictions"
+     },
+     "date": {
+      "type": "string",
+      "description": "Date last changed"
+     },
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the test script"
+     },
+     "destination": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.destination"
+      },
+      "description": "An abstract server representing a destination or receiver in a message exchange"
+     },
+     "experimental": {
+      "type": "boolean",
+      "description": "For testing purposes, not real usage"
+     },
+     "fixture": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.fixture"
+      },
+      "description": "Fixture in the test script - by reference (uri)"
+     },
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Additional identifier for the test script"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "jurisdiction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": "Intended jurisdiction for test script (if applicable)"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     },
+     "metadata": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.metadata"
+       }
+      ],
+      "description": "Required capability that is assumed to function correctly on the FHIR server being tested"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name for this test script (computer friendly)"
+     },
+     "origin": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.origin"
+      },
+      "description": "An abstract server representing a client or sender in a message exchange"
+     },
+     "profile": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Reference"
+      },
+      "description": "Reference of the validation profile"
+     },
+     "publisher": {
+      "type": "string",
+      "description": "Name of the publisher (organization or individual)"
+     },
+     "purpose": {
+      "type": "string",
+      "description": "Why this test script is defined"
+     },
+     "setup": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.setup"
+       }
+      ],
+      "description": "A series of required setup operations before tests are executed"
+     },
+     "status": {
+      "type": "string",
+      "description": "draft | active | retired | unknown"
+     },
+     "teardown": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.teardown"
+       }
+      ],
+      "description": "A series of required clean up steps"
+     },
+     "test": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.test"
+      },
+      "description": "A test in this script"
+     },
+     "text": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Narrative"
+       }
+      ],
+      "description": "Text summary of the resource, for human interpretation"
+     },
+     "title": {
+      "type": "string",
+      "description": "Name for this test script (human friendly)"
+     },
+     "url": {
+      "type": "string",
+      "description": "Canonical identifier for this test script, represented as a URI (globally unique)"
+     },
+     "useContext": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/UsageContext"
+      },
+      "description": "The context that the content is intended to support"
+     },
+     "variable": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.variable"
+      },
+      "description": "Placeholder for evaluated elements"
+     },
+     "version": {
+      "type": "string",
+      "description": "Business version of the test script"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.destination": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "index": {
+      "type": "number",
+      "description": "The index of the abstract destination server starting at 1"
+     },
+     "profile": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-FormProcessor"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.fixture": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "autocreate": {
+      "type": "boolean",
+      "description": "Whether or not to implicitly create the fixture during setup"
+     },
+     "autodelete": {
+      "type": "boolean",
+      "description": "Whether or not to implicitly delete the fixture during teardown"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "resource": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Reference of the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.metadata": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "capability": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.metadata.capability"
+      },
+      "description": "Capabilities  that are assumed to function correctly on the FHIR server being tested"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "link": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.metadata.link"
+      },
+      "description": "Links to the FHIR specification"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.metadata.capability": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "capabilities": {
+      "type": "string",
+      "description": "Required Capability Statement"
+     },
+     "description": {
+      "type": "string",
+      "description": "The expected capabilities of the server"
+     },
+     "destination": {
+      "type": "number",
+      "description": "Which server these requirements apply to"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "link": {
+      "type": "string",
+      "description": "Links to the FHIR specification"
+     },
+     "origin": {
+      "type": "number",
+      "description": "Which origin server these requirements apply to"
+     },
+     "required": {
+      "type": "boolean",
+      "description": "Are the capabilities required?"
+     },
+     "validated": {
+      "type": "boolean",
+      "description": "Are the capabilities validated?"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.metadata.link": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Short description"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "url": {
+      "type": "string",
+      "description": "URL to the specification"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.origin": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "index": {
+      "type": "number",
+      "description": "The index of the abstract origin server starting at 1"
+     },
+     "profile": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "FHIR-Client | FHIR-SDC-FormFiller"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.setup": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "action": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.setup.action"
+      },
+      "description": "A setup operation or assert to perform"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.setup.action": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assert": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.setup.action.assert"
+       }
+      ],
+      "description": "The assertion to perform"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "operation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.setup.action.operation"
+       }
+      ],
+      "description": "The setup operation to perform"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.setup.action.assert": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "compareToSourceExpression": {
+      "type": "string",
+      "description": "The FHIRPath expression to evaluate against the source fixture"
+     },
+     "compareToSourceId": {
+      "type": "string",
+      "description": "Id of the source fixture to be evaluated"
+     },
+     "compareToSourcePath": {
+      "type": "string",
+      "description": "XPath or JSONPath expression to evaluate against the source fixture"
+     },
+     "contentType": {
+      "type": "string",
+      "description": "Mime type to compare against the 'Content-Type' header"
+     },
+     "description": {
+      "type": "string",
+      "description": "Tracking/reporting assertion description"
+     },
+     "direction": {
+      "type": "string",
+      "description": "response | request"
+     },
+     "expression": {
+      "type": "string",
+      "description": "The FHIRPath expression to be evaluated"
+     },
+     "headerField": {
+      "type": "string",
+      "description": "HTTP header field name"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "label": {
+      "type": "string",
+      "description": "Tracking/logging assertion label"
+     },
+     "minimumId": {
+      "type": "string",
+      "description": "Fixture Id of minimum content resource"
+     },
+     "navigationLinks": {
+      "type": "boolean",
+      "description": "Perform validation on navigation links?"
+     },
+     "operator": {
+      "type": "string",
+      "description": "equals | notEquals | in | notIn | greaterThan | lessThan | empty | notEmpty | contains | notContains | eval"
+     },
+     "path": {
+      "type": "string",
+      "description": "XPath or JSONPath expression"
+     },
+     "requestMethod": {
+      "type": "string",
+      "description": "delete | get | options | patch | post | put | head"
+     },
+     "requestURL": {
+      "type": "string",
+      "description": "Request URL comparison value"
+     },
+     "resource": {
+      "type": "string",
+      "description": "Resource type"
+     },
+     "response": {
+      "type": "string",
+      "description": "okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable"
+     },
+     "responseCode": {
+      "type": "string",
+      "description": "HTTP response code to test"
+     },
+     "sourceId": {
+      "type": "string",
+      "description": "Fixture Id of source expression or headerField"
+     },
+     "validateProfileId": {
+      "type": "string",
+      "description": "Profile Id of validation profile reference"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value to compare to"
+     },
+     "warningOnly": {
+      "type": "boolean",
+      "description": "Will this assert produce a warning only on error?"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.setup.action.operation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "accept": {
+      "type": "string",
+      "description": "Mime type to accept in the payload of the response, with charset etc."
+     },
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the request payload contents, with charset etc."
+     },
+     "description": {
+      "type": "string",
+      "description": "Tracking/reporting operation description"
+     },
+     "destination": {
+      "type": "number",
+      "description": "Server responding to the request"
+     },
+     "encodeRequestUrl": {
+      "type": "boolean",
+      "description": "Whether or not to send the request url in encoded format"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "label": {
+      "type": "string",
+      "description": "Tracking/logging operation label"
+     },
+     "method": {
+      "type": "string",
+      "description": "delete | get | options | patch | post | put | head"
+     },
+     "origin": {
+      "type": "number",
+      "description": "Server initiating the request"
+     },
+     "params": {
+      "type": "string",
+      "description": "Explicitly defined path parameters"
+     },
+     "requestHeader": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.setup.action.operation.requestHeader"
+      },
+      "description": "Each operation can have one or more header elements"
+     },
+     "requestId": {
+      "type": "string",
+      "description": "Fixture Id of mapped request"
+     },
+     "resource": {
+      "type": "string",
+      "description": "Resource type"
+     },
+     "responseId": {
+      "type": "string",
+      "description": "Fixture Id of mapped response"
+     },
+     "sourceId": {
+      "type": "string",
+      "description": "Fixture Id of body for PUT and POST requests"
+     },
+     "targetId": {
+      "type": "string",
+      "description": "Id of fixture used for extracting the [id],  [type], and [vid] for GET requests"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "The operation code type that will be executed"
+     },
+     "url": {
+      "type": "string",
+      "description": "Request URL"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.setup.action.operation.requestHeader": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "field": {
+      "type": "string",
+      "description": "HTTP header field name"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "value": {
+      "type": "string",
+      "description": "HTTP headerfield value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.teardown": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "action": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.teardown.action"
+      },
+      "description": "One or more teardown operations to perform"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.teardown.action": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "operation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.setup.action.operation"
+       }
+      ],
+      "description": "The teardown operation to perform"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.test": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "action": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/TestScript.test.action"
+      },
+      "description": "A test operation or assert to perform"
+     },
+     "description": {
+      "type": "string",
+      "description": "Tracking/reporting short description of the test"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "name": {
+      "type": "string",
+      "description": "Tracking/logging name of this test"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.test.action": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assert": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.setup.action.assert"
+       }
+      ],
+      "description": "The setup assertion to perform"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "operation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TestScript.setup.action.operation"
+       }
+      ],
+      "description": "The setup operation to perform"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TestScript.variable": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "defaultValue": {
+      "type": "string",
+      "description": "Default, hard-coded, or user-defined value for this variable"
+     },
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the variable"
+     },
+     "expression": {
+      "type": "string",
+      "description": "The FHIRPath expression against the fixture body"
+     },
+     "headerField": {
+      "type": "string",
+      "description": "HTTP header field name for source"
+     },
+     "hint": {
+      "type": "string",
+      "description": "Hint help text for default value to enter"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "name": {
+      "type": "string",
+      "description": "Descriptive name for this variable"
+     },
+     "path": {
+      "type": "string",
+      "description": "XPath or JSONPath against the fixture body"
+     },
+     "sourceId": {
+      "type": "string",
+      "description": "Fixture Id of source expression or headerField within this variable"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactDetail": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name of an individual to contact"
+     },
+     "telecom": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactPoint"
+      },
+      "description": "Contact details for individual or organization"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Resource": {
+    "description": "Base Resource",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+     },
+     "implicitRules": {
+      "type": "string",
+      "description": "A set of rules under which this content was created"
+     },
+     "language": {
+      "type": "string",
+      "description": "Language of the resource content"
+     },
+     "meta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": "Metadata about the resource"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Extension": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "url": {
+      "type": "string",
+      "description": "identifies the meaning of the extension"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueAddress": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Address"
+       }
+      ],
+      "description": ""
+     },
+     "valueAge": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Age"
+       }
+      ],
+      "description": ""
+     },
+     "valueAnnotation": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Annotation"
+       }
+      ],
+      "description": ""
+     },
+     "valueAttachment": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": ""
+     },
+     "valueBase64Binary": {
+      "type": "string",
+      "description": ""
+     },
+     "valueBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "valueCanonical": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCode": {
+      "type": "string",
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueCoding": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactDetail": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactDetail"
+       }
+      ],
+      "description": ""
+     },
+     "valueContactPoint": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ContactPoint"
+       }
+      ],
+      "description": ""
+     },
+     "valueContributor": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Contributor"
+       }
+      ],
+      "description": ""
+     },
+     "valueCount": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Count"
+       }
+      ],
+      "description": ""
+     },
+     "valueDataRequirement": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/DataRequirement"
+       }
+      ],
+      "description": ""
+     },
+     "valueDate": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDecimal": {
+      "type": "number",
+      "description": ""
+     },
+     "valueDistance": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Distance"
+       }
+      ],
+      "description": ""
+     },
+     "valueDosage": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Dosage"
+       }
+      ],
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valueExpression": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": ""
+     },
+     "valueHumanName": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/HumanName"
+       }
+      ],
+      "description": ""
+     },
+     "valueId": {
+      "type": "string",
+      "description": ""
+     },
+     "valueIdentifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": ""
+     },
+     "valueInstant": {
+      "type": "string",
+      "description": ""
+     },
+     "valueInteger": {
+      "type": "number",
+      "description": ""
+     },
+     "valueMarkdown": {
+      "type": "string",
+      "description": ""
+     },
+     "valueMeta": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Meta"
+       }
+      ],
+      "description": ""
+     },
+     "valueMoney": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Money"
+       }
+      ],
+      "description": ""
+     },
+     "valueOid": {
+      "type": "string",
+      "description": ""
+     },
+     "valueParameterDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/ParameterDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "valuePositiveInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "valueRelatedArtifact": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/RelatedArtifact"
+       }
+      ],
+      "description": ""
+     },
+     "valueSampledData": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/SampledData"
+       }
+      ],
+      "description": ""
+     },
+     "valueSignature": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Signature"
+       }
+      ],
+      "description": ""
+     },
+     "valueString": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "valueTriggerDefinition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/TriggerDefinition"
+       }
+      ],
+      "description": ""
+     },
+     "valueUnsignedInt": {
+      "type": "number",
+      "description": ""
+     },
+     "valueUri": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUrl": {
+      "type": "string",
+      "description": ""
+     },
+     "valueUsageContext": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/UsageContext"
+       }
+      ],
+      "description": ""
+     },
+     "valueUuid": {
+      "type": "string",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Identifier": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "assigner": {
+      "type": "string",
+      "description": "Organization that issued id (may be just text)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when id is/was valid for use"
+     },
+     "system": {
+      "type": "string",
+      "description": "The namespace for the identifier value"
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "Description of identifier"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | secondary | old (If known)"
+     },
+     "value": {
+      "type": "string",
+      "description": "The value that is unique"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "CodeableConcept": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "coding": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Code defined by a terminology system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "Plain text representation of the concept"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Meta": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lastUpdated": {
+      "type": "string",
+      "description": "When the resource version last changed"
+     },
+     "profile": {
+      "type": "string",
+      "description": "Profiles this resource claims to conform to"
+     },
+     "security": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Security Labels applied to this resource"
+     },
+     "source": {
+      "type": "string",
+      "description": "Identifies where the resource comes from"
+     },
+     "tag": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Tags applied to this resource"
+     },
+     "versionId": {
+      "type": "string",
+      "description": "Version specific identifier"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Reference": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "display": {
+      "type": "string",
+      "description": "Text alternative for the resource"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "identifier": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Identifier"
+       }
+      ],
+      "description": "Logical reference, when literal reference is not known"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Literal reference, Relative, internal or absolute URL"
+     },
+     "type": {
+      "type": "string",
+      "description": "Type the reference refers to (e.g. \"Patient\")"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Narrative": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "div": {
+      "description": "Limited xhtml content"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "status": {
+      "type": "string",
+      "description": "generated | extensions | additional | empty"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "UsageContext": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Coding"
+       }
+      ],
+      "description": "Type of context being specified"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "description": ""
+     },
+     "valueCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "valueQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "valueRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "valueReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Coding": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Symbol in syntax defined by the system"
+     },
+     "display": {
+      "type": "string",
+      "description": "Representation defined by the system"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": "Identity of the terminology system"
+     },
+     "userSelected": {
+      "type": "boolean",
+      "description": "If this coding was chosen directly by the user"
+     },
+     "version": {
+      "type": "string",
+      "description": "Version of the system - if relevant"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Period": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "end": {
+      "type": "string",
+      "description": "End time with inclusive boundary, if not ongoing"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "start": {
+      "type": "string",
+      "description": "Starting time with inclusive boundary"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ContactPoint": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when the contact point was/is in use"
+     },
+     "rank": {
+      "type": "number",
+      "description": "Specify preferred order of use (1 = highest)"
+     },
+     "system": {
+      "type": "string",
+      "description": "phone | fax | email | pager | url | sms | other"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | mobile - purpose of this contact point"
+     },
+     "value": {
+      "type": "string",
+      "description": "The actual contact point details"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Address": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "description": "Name of city, town etc."
+     },
+     "country": {
+      "type": "string",
+      "description": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+     },
+     "district": {
+      "type": "string",
+      "description": "District name (aka county)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "line": {
+      "type": "string",
+      "description": "Street name, number, direction & P.O. Box etc."
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when address was/is in use"
+     },
+     "postalCode": {
+      "type": "string",
+      "description": "Postal code for area"
+     },
+     "state": {
+      "type": "string",
+      "description": "Sub-unit of country (abbreviations ok)"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the address"
+     },
+     "type": {
+      "type": "string",
+      "description": "postal | physical | both"
+     },
+     "use": {
+      "type": "string",
+      "description": "home | work | temp | old | billing - purpose of this address"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Age": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Annotation": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "author": {
+      "description": ""
+     },
+     "authorReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "authorString": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": "The annotation  - text content (as markdown)"
+     },
+     "time": {
+      "type": "string",
+      "description": "When the annotation was made"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Attachment": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contentType": {
+      "type": "string",
+      "description": "Mime type of the content, with charset etc."
+     },
+     "creation": {
+      "type": "string",
+      "description": "Date attachment was first created"
+     },
+     "data": {
+      "type": "string",
+      "description": "Data inline, base64ed"
+     },
+     "hash": {
+      "type": "string",
+      "description": "Hash of the data (sha-1, base64ed)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "Human language of the content (BCP-47)"
+     },
+     "size": {
+      "type": "number",
+      "description": "Number of bytes of content (if url provided)"
+     },
+     "title": {
+      "type": "string",
+      "description": "Label to display in place of the data"
+     },
+     "url": {
+      "type": "string",
+      "description": "Uri where the data can be found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Contributor": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "contact": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/ContactDetail"
+      },
+      "description": "Contact details of the contributor"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Who contributed the content"
+     },
+     "type": {
+      "type": "string",
+      "description": "author | editor | reviewer | endorser"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Count": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "codeFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.codeFilter"
+      },
+      "description": ""
+     },
+     "dateFilter": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.dateFilter"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "limit": {
+      "type": "number",
+      "description": "Number of results"
+     },
+     "mustSupport": {
+      "type": "string",
+      "description": "Indicates specific structure elements that are referenced by the knowledge module"
+     },
+     "profile": {
+      "type": "string",
+      "description": "The profile of the required data"
+     },
+     "sort": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement.sort"
+      },
+      "description": ""
+     },
+     "subject": {
+      "description": ""
+     },
+     "subjectCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "subjectReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "The type of the required data"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Distance": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "additionalInstruction": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/CodeableConcept"
+      },
+      "description": ""
+     },
+     "asNeeded": {
+      "description": ""
+     },
+     "asNeededBoolean": {
+      "type": "boolean",
+      "description": ""
+     },
+     "asNeededCodeableConcept": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "doseAndRate": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Dosage.doseAndRate"
+      },
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "maxDosePerAdministration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerLifetime": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "maxDosePerPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "method": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "patientInstruction": {
+      "type": "string",
+      "description": ""
+     },
+     "route": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "sequence": {
+      "type": "number",
+      "description": ""
+     },
+     "site": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "text": {
+      "type": "string",
+      "description": ""
+     },
+     "timing": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Duration": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": ""
+     },
+     "comparator": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "system": {
+      "type": "string",
+      "description": ""
+     },
+     "unit": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Expression": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "description": {
+      "type": "string",
+      "description": "Natural language description of the condition"
+     },
+     "expression": {
+      "type": "string",
+      "description": "Expression in specified language"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "language": {
+      "type": "string",
+      "description": "text/cql | text/fhirpath | application/x-fhir-query | etc."
+     },
+     "name": {
+      "type": "string",
+      "description": "Short name assigned to expression for reuse"
+     },
+     "reference": {
+      "type": "string",
+      "description": "Where the expression is found"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "HumanName": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "family": {
+      "type": "string",
+      "description": "Family name (often called 'Surname')"
+     },
+     "given": {
+      "type": "string",
+      "description": "Given names (not always 'first'). Includes middle names"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "period": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": "Time period when name was/is in use"
+     },
+     "prefix": {
+      "type": "string",
+      "description": "Parts that come before the name"
+     },
+     "suffix": {
+      "type": "string",
+      "description": "Parts that come after the name"
+     },
+     "text": {
+      "type": "string",
+      "description": "Text representation of the full name"
+     },
+     "use": {
+      "type": "string",
+      "description": "usual | official | temp | nickname | anonymous | old | maiden"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Money": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "currency": {
+      "type": "string",
+      "description": "ISO 4217 Currency Code"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "ParameterDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "documentation": {
+      "type": "string",
+      "description": "A brief description of the parameter"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "max": {
+      "type": "string",
+      "description": "Maximum cardinality (a number of *)"
+     },
+     "min": {
+      "type": "number",
+      "description": "Minimum cardinality"
+     },
+     "name": {
+      "type": "string",
+      "description": "Name used to access the parameter value"
+     },
+     "profile": {
+      "type": "string",
+      "description": "What profile the value is expected to be"
+     },
+     "type": {
+      "type": "string",
+      "description": "What type of value"
+     },
+     "use": {
+      "type": "string",
+      "description": "in | out"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Quantity": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "string",
+      "description": "Coded form of the unit"
+     },
+     "comparator": {
+      "type": "string",
+      "description": "< | <= | >= | > - how to understand the value"
+     },
+     "id": {
+      "type": "string",
+      "description": "Unique id for inter-element referencing"
+     },
+     "system": {
+      "type": "string",
+      "description": "System that defines coded unit form"
+     },
+     "unit": {
+      "type": "string",
+      "description": "Unit representation"
+     },
+     "value": {
+      "type": "number",
+      "description": "Numerical value (with implicit precision)"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Range": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "high": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "High limit"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "low": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Low limit"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Ratio": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "denominator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Denominator value"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "numerator": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Numerator value"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "RelatedArtifact": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "citation": {
+      "type": "string",
+      "description": "Bibliographic citation for the artifact"
+     },
+     "display": {
+      "type": "string",
+      "description": "Brief description of the related artifact"
+     },
+     "document": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Attachment"
+       }
+      ],
+      "description": "What document is being referenced"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "label": {
+      "type": "string",
+      "description": "Short label"
+     },
+     "resource": {
+      "type": "string",
+      "description": "What resource is being referenced"
+     },
+     "type": {
+      "type": "string",
+      "description": "documentation | justification | citation | predecessor | successor | derived-from | depends-on | composed-of"
+     },
+     "url": {
+      "type": "string",
+      "description": "Where the artifact can be accessed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "SampledData": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "Decimal values with spaces, or \"E\" | \"U\" | \"L\""
+     },
+     "dimensions": {
+      "type": "number",
+      "description": "Number of sample points at each time point"
+     },
+     "factor": {
+      "type": "number",
+      "description": "Multiply data by this before adding to origin"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "lowerLimit": {
+      "type": "number",
+      "description": "Lower limit of detection"
+     },
+     "origin": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": "Zero value and units"
+     },
+     "period": {
+      "type": "number",
+      "description": "Number of milliseconds between samples"
+     },
+     "upperLimit": {
+      "type": "number",
+      "description": "Upper limit of detection"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Signature": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "data": {
+      "type": "string",
+      "description": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "onBehalfOf": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "The party represented"
+     },
+     "sigFormat": {
+      "type": "string",
+      "description": "The technical format of the signature"
+     },
+     "targetFormat": {
+      "type": "string",
+      "description": "The technical format of the signed resources"
+     },
+     "type": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "Indication of the reason the entity signed the object(s)"
+     },
+     "when": {
+      "type": "string",
+      "description": "When the signature was created"
+     },
+     "who": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": "Who signed"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": ""
+     },
+     "event": {
+      "type": "string",
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "repeat": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing.repeat"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "TriggerDefinition": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "condition": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Expression"
+       }
+      ],
+      "description": "Whether the event triggers (boolean expression)"
+     },
+     "data": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/DataRequirement"
+      },
+      "description": "Triggering data of the event (multiple = 'and')"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "name": {
+      "type": "string",
+      "description": "Name or URI that identifies the event"
+     },
+     "timing": {
+      "description": ""
+     },
+     "timingDate": {
+      "type": "string",
+      "description": ""
+     },
+     "timingDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "timingReference": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Reference"
+       }
+      ],
+      "description": ""
+     },
+     "timingTiming": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Timing"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "string",
+      "description": "named-event | periodic | data-changed | data-added | data-modified | data-removed | data-accessed | data-access-ended"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.codeFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "code": {
+      "type": "array",
+      "items": {
+       "$ref": "#/components/schemas/Coding"
+      },
+      "description": "What code is expected"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A code-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A coded (token) parameter to search on"
+     },
+     "valueSet": {
+      "type": "string",
+      "description": "Valueset for the filter"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.dateFilter": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "A date-valued attribute to filter on"
+     },
+     "searchParam": {
+      "type": "string",
+      "description": "A date valued parameter to search on"
+     },
+     "value": {
+      "description": ""
+     },
+     "valueDateTime": {
+      "type": "string",
+      "description": ""
+     },
+     "valueDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "valuePeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "DataRequirement.sort": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "direction": {
+      "type": "string",
+      "description": "ascending | descending"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "path": {
+      "type": "string",
+      "description": "The name of the attribute to perform the sort"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Dosage.doseAndRate": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "dose": {
+      "description": ""
+     },
+     "doseQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "doseRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "rate": {
+      "description": ""
+     },
+     "rateQuantity": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Quantity"
+       }
+      ],
+      "description": ""
+     },
+     "rateRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "rateRatio": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Ratio"
+       }
+      ],
+      "description": ""
+     },
+     "type": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/CodeableConcept"
+       }
+      ],
+      "description": "The kind of dose or rate specified"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   },
+   "Timing.repeat": {
+    "description": "",
+    "type": "object",
+    "properties": {
+     "bounds": {
+      "description": ""
+     },
+     "boundsDuration": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Duration"
+       }
+      ],
+      "description": ""
+     },
+     "boundsPeriod": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Period"
+       }
+      ],
+      "description": ""
+     },
+     "boundsRange": {
+      "type": "object",
+      "allOf": [
+       {
+        "$ref": "#/components/schemas/Range"
+       }
+      ],
+      "description": ""
+     },
+     "count": {
+      "type": "number",
+      "description": "Number of times to repeat"
+     },
+     "countMax": {
+      "type": "number",
+      "description": "Maximum number of times to repeat"
+     },
+     "dayOfWeek": {
+      "type": "string",
+      "description": "mon | tue | wed | thu | fri | sat | sun"
+     },
+     "duration": {
+      "type": "number",
+      "description": "How long when it happens"
+     },
+     "durationMax": {
+      "type": "number",
+      "description": "How long when it happens (Max)"
+     },
+     "durationUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "frequency": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "frequencyMax": {
+      "type": "number",
+      "description": "Event occurs up to frequencyMax times per period"
+     },
+     "id": {
+      "type": "string",
+      "description": ""
+     },
+     "offset": {
+      "type": "number",
+      "description": "Minutes from event (before or after)"
+     },
+     "period": {
+      "type": "number",
+      "description": "Event occurs frequency times per period"
+     },
+     "periodMax": {
+      "type": "number",
+      "description": "Upper limit of period (3-4 hours)"
+     },
+     "periodUnit": {
+      "type": "string",
+      "description": "s | min | h | d | wk | mo | a - unit of time (UCUM)"
+     },
+     "timeOfDay": {
+      "type": "string",
+      "description": "Time of day for action"
+     },
+     "when": {
+      "type": "string",
+      "description": "Code for time period of occurrence"
+     }
+    },
+    "required": [
+     "id"
+    ]
+   }
+  }
+ },
+ "paths": {
+  "/TestScript": {
+   "post": {
+    "tags": [
+     "TestScript"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/TestScript"
+       },
+       "examples": {
+        "testscript-example-history.json": {
+         "value": {
+          "resourceType": "TestScript",
+          "id": "testscript-example-history",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: testscript-example-history</p><p><b>url</b>: <b>http://hl7.org/fhir/TestScript/testscript-example-history</b></p><p><b>identifier</b>: urn:oid:1.3.6.1.4.1.21367.2005.3.7.9877</p><p><b>version</b>: 1.0</p><p><b>name</b>: TestScript Example History</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 18/01/2017</p><p><b>publisher</b>: HL7</p><p><b>contact</b>: </p><p><b>description</b>: TestScript example resource with setup to delete if present and create a new instance of a Patient then update that Patient to create a minimum history; and single test definition to get the history of that Patient with various asserts.</p><p><b>jurisdiction</b>: United States of America (the) <span>(Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United States of America (the)'})</span></p><p><b>purpose</b>: Patient (Conditional) Create, Update, Delete and History (Instance) Operations</p><p><b>copyright</b>: © HL7.org 2011+</p><blockquote><p><b>metadata</b></p><h3>Links</h3><table><tr><td>-</td><td><b>Url</b></td><td><b>Description</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/patient.html</a></td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr></table><h3>Capabilities</h3><table><tr><td>-</td><td><b>Required</b></td><td><b>Validated</b></td><td><b>Description</b></td><td><b>Link</b></td><td><b>Capabilities</b></td></tr><tr><td>*</td><td>true</td><td>false</td><td>Patient Update, Delete and History (Instance) Operations</td><td><a>http://hl7.org/fhir/http.html#update</a></td><td><a>CapabilityStatement/example</a></td></tr></table></blockquote><blockquote><p><b>fixture</b></p><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a>Peter Chalmers</a></p></blockquote><blockquote><p><b>fixture</b></p><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a>Donald Duck</a></p></blockquote><p><b>profile</b>: <a>Generated Summary: url: http://hl7.org/fhir/StructureDefinition/Bundle; version: 4.0.1; name: Bundle; ACTIVE; date: 01/11/2019 9:29:23 AM; publisher: Health Level Seven International (FHIR Infrastructure); description: A container for a collection of resources.; 4.0.1; RESOURCE; type: Bundle; baseDefinition: http://hl7.org/fhir/StructureDefinition/Resource; SPECIALIZATION</a></p><h3>Variables</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Path</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>createResourceId</td><td>Patient/id</td><td>fixture-patient-create</td></tr></table><blockquote><p><b>setup</b></p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td></tr><tr><td>*</td><td>Delete (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code delete = 'Delete', stated as 'null')</td><td>Patient</td><td>SetupDeletePatient</td><td>Execute a delete operation to insure the patient does not exist on the server.</td><td>json</td><td>true</td><td>/${createResourceId}</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>Operator</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 200(OK) or 204(No Content).</td><td>response</td><td>in</td><td>200,204</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>Update (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code update = 'Update', stated as 'null')</td><td>Patient</td><td>SetupCreatePatient</td><td>Create patient resource on test server using the contents of fixture-patient-create</td><td>json</td><td>json</td><td>true</td><td>/${createResourceId}</td><td>fixture-patient-create</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 201(Created).</td><td>response</td><td>201</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>Update (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code update = 'Update', stated as 'null')</td><td>Patient</td><td>SetupUpdatePatient</td><td>Update patient resource on test server using the contents of fixture-patient-update</td><td>json</td><td>json</td><td>true</td><td>/${createResourceId}</td><td>fixture-patient-update</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 200(OK).</td><td>response</td><td>200</td><td>false</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: History Patient</p><p><b>description</b>: Get the history for a known Patient and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+          },
+          "url": "http://hl7.org/fhir/TestScript/testscript-example-history",
+          "identifier": {
+           "system": "urn:ietf:rfc:3986",
+           "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9877"
+          },
+          "version": "1.0",
+          "name": "TestScript Example History",
+          "status": "draft",
+          "experimental": true,
+          "date": "2017-01-18",
+          "publisher": "HL7",
+          "contact": [
+           {
+            "name": "Support",
+            "telecom": [
+             {
+              "system": "email",
+              "value": "support@HL7.org",
+              "use": "work"
+             }
+            ]
+           }
+          ],
+          "description": "TestScript example resource with setup to delete if present and create a new instance of a Patient then update that Patient to create a minimum history; and single test definition to get the history of that Patient with various asserts.",
+          "jurisdiction": [
+           {
+            "coding": [
+             {
+              "system": "urn:iso:std:iso:3166",
+              "code": "US",
+              "display": "United States of America (the)"
+             }
+            ]
+           }
+          ],
+          "purpose": "Patient (Conditional) Create, Update, Delete and History (Instance) Operations",
+          "copyright": "© HL7.org 2011+",
+          "metadata": {
+           "link": [
+            {
+             "url": "http://hl7.org/fhir/patient.html",
+             "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+            }
+           ],
+           "capability": [
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Update, Delete and History (Instance) Operations",
+             "link": [
+              "http://hl7.org/fhir/http.html#update",
+              "http://hl7.org/fhir/http.html#delete",
+              "http://hl7.org/fhir/http.html#history"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            }
+           ]
+          },
+          "fixture": [
+           {
+            "id": "fixture-patient-create",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/example",
+             "display": "Peter Chalmers"
+            }
+           },
+           {
+            "id": "fixture-patient-update",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/pat1",
+             "display": "Donald Duck"
+            }
+           }
+          ],
+          "profile": [
+           {
+            "id": "bundle-profile",
+            "reference": "http://hl7.org/fhir/StructureDefinition/Bundle"
+           }
+          ],
+          "variable": [
+           {
+            "name": "createResourceId",
+            "path": "Patient/id",
+            "sourceId": "fixture-patient-create"
+           }
+          ],
+          "setup": {
+           "action": [
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "delete"
+              },
+              "resource": "Patient",
+              "label": "SetupDeletePatient",
+              "description": "Execute a delete operation to insure the patient does not exist on the server.",
+              "accept": "json",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 200(OK) or 204(No Content).",
+              "direction": "response",
+              "operator": "in",
+              "responseCode": "200,204",
+              "warningOnly": false
+             }
+            },
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "update"
+              },
+              "resource": "Patient",
+              "label": "SetupCreatePatient",
+              "description": "Create patient resource on test server using the contents of fixture-patient-create",
+              "accept": "json",
+              "contentType": "json",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}",
+              "sourceId": "fixture-patient-create"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 201(Created).",
+              "direction": "response",
+              "responseCode": "201",
+              "warningOnly": false
+             }
+            },
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "update"
+              },
+              "resource": "Patient",
+              "label": "SetupUpdatePatient",
+              "description": "Update patient resource on test server using the contents of fixture-patient-update",
+              "accept": "json",
+              "contentType": "json",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}",
+              "sourceId": "fixture-patient-update"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 200(OK).",
+              "direction": "response",
+              "responseCode": "200",
+              "warningOnly": false
+             }
+            }
+           ]
+          },
+          "test": [
+           {
+            "id": "01-HistoryPatient",
+            "name": "History Patient",
+            "description": "Get the history for a known Patient and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "history"
+               },
+               "resource": "Patient",
+               "description": "Get the Patient history on the test server using the id from fixture-patient-create.",
+               "accept": "json",
+               "contentType": "json",
+               "encodeRequestUrl": true,
+               "targetId": "fixture-patient-create"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "direction": "response",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Bundle.",
+               "resource": "Bundle",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Bundle conforms to the base FHIR specification.",
+               "validateProfileId": "bundle-profile",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Bundle type equals 'history'.",
+               "operator": "equals",
+               "path": "fhir:Bundle/fhir:type/@value",
+               "value": "history",
+               "warningOnly": false
+              }
+             }
+            ]
+           }
+          ]
+         }
+        },
+        "testscript-example-multisystem.json": {
+         "value": {
+          "resourceType": "TestScript",
+          "id": "testscript-example-multisystem",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: testscript-example-multisystem</p><p><b>url</b>: <b>http://hl7.org/fhir/TestScript/testscript-example-multisystem</b></p><p><b>identifier</b>: urn:oid:1.3.6.1.4.1.21367.2005.3.7.9878</p><p><b>version</b>: 1.0</p><p><b>name</b>: testscript-example-multisystem</p><p><b>title</b>: Multisystem Test Script</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 18/01/2017</p><p><b>publisher</b>: HL7</p><p><b>contact</b>: </p><p><b>description</b>: TestScript example resource showing use of origin and destination for multisystem support. The single origin will execute a Patient read against the two destination systems using user defined dynamic variables. The test engine will wait at each operation action with a defined origin and destination for the origin test system to send the expected FHIR operation to the destination test system. Once the expected request and response is observed, the test engine will continue with the test execution.</p><p><b>jurisdiction</b>: United States of America (the) <span>(Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United States of America (the)'})</span></p><p><b>purpose</b>: Patient Read Operation</p><p><b>copyright</b>: © HL7.org 2011+</p><h3>Origins</h3><table><tr><td>-</td><td><b>Index</b></td><td><b>Profile</b></td></tr><tr><td>*</td><td>1</td><td>FHIR-Client (Details: [not stated] code FHIR-Client = 'FHIR-Client', stated as 'null')</td></tr></table><blockquote><p><b>destination</b></p><p><b>index</b>: 1</p><p><b>profile</b>: FHIR-Server (Details: [not stated] code FHIR-Server = 'FHIR-Server', stated as 'null')</p></blockquote><blockquote><p><b>destination</b></p><p><b>index</b>: 2</p><p><b>profile</b>: FHIR-Server (Details: [not stated] code FHIR-Server = 'FHIR-Server', stated as 'null')</p></blockquote><blockquote><p><b>metadata</b></p><h3>Links</h3><table><tr><td>-</td><td><b>Url</b></td><td><b>Description</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/patient.html</a></td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr></table><blockquote><p><b>capability</b></p><p><b>required</b>: true</p><p><b>validated</b>: false</p><p><b>description</b>: Patient Read Operation</p><p><b>origin</b>: 1</p><p><b>destination</b>: 1</p><p><b>link</b>: <a>http://hl7.org/fhir/http.html#read</a></p><p><b>capabilities</b>: <a>CapabilityStatement/example</a></p></blockquote><blockquote><p><b>capability</b></p><p><b>required</b>: true</p><p><b>validated</b>: false</p><p><b>description</b>: Patient Read Operation</p><p><b>origin</b>: 1</p><p><b>destination</b>: 2</p><p><b>link</b>: <a>http://hl7.org/fhir/http.html#read</a></p><p><b>capabilities</b>: <a>CapabilityStatement/example</a></p></blockquote></blockquote><blockquote><p><b>variable</b></p><p><b>name</b>: Dest1PatientResourceId</p><p><b>defaultValue</b>: example</p></blockquote><blockquote><p><b>variable</b></p><p><b>name</b>: Dest2PatientResourceId</p><p><b>defaultValue</b>: example</p></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: ReadPatient-Destination1</p><p><b>description</b>: Read a Patient from the first destination test system using the user defined dynamic variable ${Dest1PatientResourceId}. Perform basic validation.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: ReadPatient-Destination2</p><p><b>description</b>: Read a Patient from the second destination test system using the user defined dynamic variable ${Dest2PatientResourceId}. Perform basic validation.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+          },
+          "url": "http://hl7.org/fhir/TestScript/testscript-example-multisystem",
+          "identifier": {
+           "system": "urn:ietf:rfc:3986",
+           "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9878"
+          },
+          "version": "1.0",
+          "name": "testscript-example-multisystem",
+          "title": "Multisystem Test Script",
+          "status": "draft",
+          "experimental": true,
+          "date": "2017-01-18",
+          "publisher": "HL7",
+          "contact": [
+           {
+            "name": "Support",
+            "telecom": [
+             {
+              "system": "email",
+              "value": "support@HL7.org",
+              "use": "work"
+             }
+            ]
+           }
+          ],
+          "description": "TestScript example resource showing use of origin and destination for multisystem support. The single origin will execute a Patient read against the two destination systems using user defined dynamic variables. The test engine will wait at each operation action with a defined origin and destination for the origin test system to send the expected FHIR operation to the destination test system. Once the expected request and response is observed, the test engine will continue with the test execution.",
+          "jurisdiction": [
+           {
+            "coding": [
+             {
+              "system": "urn:iso:std:iso:3166",
+              "code": "US",
+              "display": "United States of America (the)"
+             }
+            ]
+           }
+          ],
+          "purpose": "Patient Read Operation",
+          "copyright": "© HL7.org 2011+",
+          "origin": [
+           {
+            "index": 1,
+            "profile": {
+             "code": "FHIR-Client"
+            }
+           }
+          ],
+          "destination": [
+           {
+            "index": 1,
+            "profile": {
+             "code": "FHIR-Server"
+            }
+           },
+           {
+            "index": 2,
+            "profile": {
+             "code": "FHIR-Server"
+            }
+           }
+          ],
+          "metadata": {
+           "link": [
+            {
+             "url": "http://hl7.org/fhir/patient.html",
+             "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+            }
+           ],
+           "capability": [
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Read Operation",
+             "origin": [
+              1
+             ],
+             "destination": 1,
+             "link": [
+              "http://hl7.org/fhir/http.html#read"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            },
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Read Operation",
+             "origin": [
+              1
+             ],
+             "destination": 2,
+             "link": [
+              "http://hl7.org/fhir/http.html#read"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            }
+           ]
+          },
+          "variable": [
+           {
+            "name": "Dest1PatientResourceId",
+            "defaultValue": "example"
+           },
+           {
+            "name": "Dest2PatientResourceId",
+            "defaultValue": "example"
+           }
+          ],
+          "test": [
+           {
+            "id": "01-ReadPatient-Destination1",
+            "name": "ReadPatient-Destination1",
+            "description": "Read a Patient from the first destination test system using the user defined dynamic variable ${Dest1PatientResourceId}. Perform basic validation.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Read a Patient from the first destination test system and perform basic validation.",
+               "accept": "xml",
+               "contentType": "xml",
+               "destination": 1,
+               "encodeRequestUrl": true,
+               "origin": 1,
+               "params": "/${Dest1PatientResourceId}",
+               "requestId": "request-read-patient-01"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the request method GET was sent by the client system under test.",
+               "requestMethod": "get",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the client requested an Accept of xml.",
+               "direction": "request",
+               "headerField": "Accept",
+               "operator": "contains",
+               "value": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "direction": "response",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned format is XML.",
+               "direction": "response",
+               "contentType": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Patient.",
+               "direction": "response",
+               "resource": "Patient",
+               "warningOnly": false
+              }
+             }
+            ]
+           },
+           {
+            "id": "02-ReadPatient-Destination2",
+            "name": "ReadPatient-Destination2",
+            "description": "Read a Patient from the second destination test system using the user defined dynamic variable ${Dest2PatientResourceId}. Perform basic validation.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Read a Patient from the second destination test system and perform basic validation.",
+               "accept": "xml",
+               "contentType": "xml",
+               "destination": 2,
+               "encodeRequestUrl": true,
+               "origin": 1,
+               "params": "/${Dest2PatientResourceId}",
+               "requestHeader": [
+                {
+                 "field": "Accept-Charset",
+                 "value": "utf-8"
+                }
+               ]
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the client requested an Accept of xml.",
+               "direction": "request",
+               "headerField": "Accept",
+               "operator": "contains",
+               "value": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "direction": "response",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned format is XML.",
+               "direction": "response",
+               "contentType": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Patient.",
+               "direction": "response",
+               "resource": "Patient",
+               "warningOnly": false
+              }
+             }
+            ]
+           }
+          ]
+         }
+        },
+        "testscript-example-readtest.json": {
+         "value": {
+          "resourceType": "TestScript",
+          "id": "testscript-example-readtest",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: testscript-example-readtest</p><p><b>url</b>: <b>http://hl7.org/fhir/TestScript/testscript-example-readtest</b></p><p><b>identifier</b>: urn:oid:1.3.6.1.4.1.21367.2005.3.7.9879</p><p><b>version</b>: 1.0</p><p><b>name</b>: TestScript Example Read Test</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 18/01/2017</p><p><b>publisher</b>: HL7</p><p><b>contact</b>: </p><p><b>description</b>: TestScript example resource with ported Sprinkler basic read tests R001, R002, R003, R004. The read tests will utilize user defined dynamic variables that will hold the Patient resource id values.</p><p><b>jurisdiction</b>: United States of America (the) <span>(Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United States of America (the)'})</span></p><p><b>purpose</b>: Patient Read Operation</p><p><b>copyright</b>: © HL7.org 2011+</p><blockquote><p><b>metadata</b></p><h3>Links</h3><table><tr><td>-</td><td><b>Url</b></td><td><b>Description</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/patient.html</a></td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr></table><h3>Capabilities</h3><table><tr><td>-</td><td><b>Required</b></td><td><b>Validated</b></td><td><b>Description</b></td><td><b>Link</b></td><td><b>Capabilities</b></td></tr><tr><td>*</td><td>true</td><td>false</td><td>Patient Read Operation</td><td><a>http://hl7.org/fhir/http.html#read</a></td><td><a>CapabilityStatement/example</a></td></tr></table></blockquote><p><b>profile</b>: <a>Generated Summary: url: http://hl7.org/fhir/StructureDefinition/Patient; version: 4.0.1; name: Patient; ACTIVE; date: 01/11/2019 9:29:23 AM; publisher: Health Level Seven International (Patient Administration); description: Demographics and other administrative information about an individual or animal receiving care or other health-related services.; purpose: Tracking patient is the center of the healthcare process.; 4.0.1; RESOURCE; type: Patient; baseDefinition: http://hl7.org/fhir/StructureDefinition/DomainResource; SPECIALIZATION</a></p><blockquote><p><b>variable</b></p><p><b>name</b>: KnownPatientResourceId</p><p><b>defaultValue</b>: example</p></blockquote><blockquote><p><b>variable</b></p><p><b>name</b>: NonExistsPatientResourceId</p><p><b>defaultValue</b>: does-not-exist</p></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Sprinkler Read Test R001</p><p><b>description</b>: Read a known Patient and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Sprinkler Read Test R002</p><p><b>description</b>: Read an unknown Resource Type and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Sprinkler Read Test R003</p><p><b>description</b>: Read a known, non-existing Patient and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Sprinkler Read Test R004</p><p><b>description</b>: Read a Patient using a known bad formatted resource id and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+          },
+          "url": "http://hl7.org/fhir/TestScript/testscript-example-readtest",
+          "identifier": {
+           "system": "urn:ietf:rfc:3986",
+           "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9879"
+          },
+          "version": "1.0",
+          "name": "TestScript Example Read Test",
+          "status": "draft",
+          "experimental": true,
+          "date": "2017-01-18",
+          "publisher": "HL7",
+          "contact": [
+           {
+            "name": "Support",
+            "telecom": [
+             {
+              "system": "email",
+              "value": "support@HL7.org",
+              "use": "work"
+             }
+            ]
+           }
+          ],
+          "description": "TestScript example resource with ported Sprinkler basic read tests R001, R002, R003, R004. The read tests will utilize user defined dynamic variables that will hold the Patient resource id values.",
+          "jurisdiction": [
+           {
+            "coding": [
+             {
+              "system": "urn:iso:std:iso:3166",
+              "code": "US",
+              "display": "United States of America (the)"
+             }
+            ]
+           }
+          ],
+          "purpose": "Patient Read Operation",
+          "copyright": "© HL7.org 2011+",
+          "metadata": {
+           "link": [
+            {
+             "url": "http://hl7.org/fhir/patient.html",
+             "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+            }
+           ],
+           "capability": [
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Read Operation",
+             "link": [
+              "http://hl7.org/fhir/http.html#read"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            }
+           ]
+          },
+          "profile": [
+           {
+            "id": "patient-profile",
+            "reference": "http://hl7.org/fhir/StructureDefinition/Patient"
+           }
+          ],
+          "variable": [
+           {
+            "name": "KnownPatientResourceId",
+            "defaultValue": "example"
+           },
+           {
+            "name": "NonExistsPatientResourceId",
+            "defaultValue": "does-not-exist"
+           }
+          ],
+          "test": [
+           {
+            "id": "R001",
+            "name": "Sprinkler Read Test R001",
+            "description": "Read a known Patient and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Read the known Patient resource on the destination test system using the user defined dynamic variable ${KnownPatientResourceId}.",
+               "accept": "xml",
+               "encodeRequestUrl": true,
+               "params": "/${KnownPatientResourceId}"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned format is XML.",
+               "contentType": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP Header Last-Modified is present. Warning only as the server might not support versioning.",
+               "headerField": "Last-Modified",
+               "operator": "notEmpty",
+               "warningOnly": true
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Patient.",
+               "resource": "Patient",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Patient conforms to the base FHIR specification.",
+               "validateProfileId": "patient-profile",
+               "warningOnly": false
+              }
+             }
+            ]
+           },
+           {
+            "id": "R002",
+            "name": "Sprinkler Read Test R002",
+            "description": "Read an unknown Resource Type and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Attempt to read the Parameters resource type. What we really want here is an illegal type but the build process won't allow that. Parameters is a valid resource which doesn't have an end-point so, this should fail.",
+               "accept": "xml",
+               "encodeRequestUrl": true,
+               "params": "/1"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 404(Not Found).",
+               "response": "notFound",
+               "warningOnly": false
+              }
+             }
+            ]
+           },
+           {
+            "id": "R003",
+            "name": "Sprinkler Read Test R003",
+            "description": "Read a known, non-existing Patient and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Attempt to read the non-existing Patient resource on the destination test system using the user defined dynamic variable ${NonExistsPatientResourceId}.",
+               "accept": "xml",
+               "encodeRequestUrl": true,
+               "params": "/${NonExistsPatientResourceId}"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 404(Not Found).",
+               "response": "notFound",
+               "warningOnly": false
+              }
+             }
+            ]
+           },
+           {
+            "id": "R004",
+            "name": "Sprinkler Read Test R004",
+            "description": "Read a Patient using a known bad formatted resource id and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Attempt to read a Patient resource on the destination test system using known bad formatted resource id.",
+               "accept": "xml",
+               "encodeRequestUrl": true,
+               "params": "/ID-may-not-contain-CAPITALS"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 400(Bad Request).",
+               "response": "bad",
+               "warningOnly": false
+              }
+             }
+            ]
+           }
+          ]
+         }
+        },
+        "testscript-example-search.json": {
+         "value": {
+          "resourceType": "TestScript",
+          "id": "testscript-example-search",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: testscript-example-search</p><p><b>url</b>: <b>http://hl7.org/fhir/TestScript/testscript-example-search</b></p><p><b>identifier</b>: urn:oid:1.3.6.1.4.1.21367.2005.3.7.9881</p><p><b>version</b>: 1.0</p><p><b>name</b>: TestScript Example Search</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 18/01/2017</p><p><b>publisher</b>: HL7</p><p><b>contact</b>: </p><p><b>description</b>: TestScript example resource with simple Patient search test. The read tests will utilize user defined dynamic variables that will hold the Patient search parameter values.</p><p><b>jurisdiction</b>: United States of America (the) <span>(Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United States of America (the)'})</span></p><p><b>purpose</b>: Patient Search Operation</p><p><b>copyright</b>: © HL7.org 2011+</p><blockquote><p><b>metadata</b></p><h3>Links</h3><table><tr><td>-</td><td><b>Url</b></td><td><b>Description</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/patient.html</a></td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr></table><h3>Capabilities</h3><table><tr><td>-</td><td><b>Required</b></td><td><b>Validated</b></td><td><b>Description</b></td><td><b>Link</b></td><td><b>Capabilities</b></td></tr><tr><td>*</td><td>true</td><td>false</td><td>Patient Search Operation</td><td><a>http://hl7.org/fhir/http.html#search</a></td><td><a>CapabilityStatement/example</a></td></tr></table></blockquote><h3>Fixtures</h3><table><tr><td>-</td><td><b>Autocreate</b></td><td><b>Autodelete</b></td><td><b>Resource</b></td></tr><tr><td>*</td><td>false</td><td>false</td><td><a>Peter Chalmers</a></td></tr></table><p><b>profile</b>: <a>Generated Summary: url: http://hl7.org/fhir/StructureDefinition/Bundle; version: 4.0.1; name: Bundle; ACTIVE; date: 01/11/2019 9:29:23 AM; publisher: Health Level Seven International (FHIR Infrastructure); description: A container for a collection of resources.; 4.0.1; RESOURCE; type: Bundle; baseDefinition: http://hl7.org/fhir/StructureDefinition/Resource; SPECIALIZATION</a></p><blockquote><p><b>variable</b></p><p><b>name</b>: PatientCreateLocation</p><p><b>headerField</b>: Location</p><p><b>sourceId</b>: PatientCreateResponse</p></blockquote><blockquote><p><b>variable</b></p><p><b>name</b>: PatientSearchFamilyName</p><p><b>description</b>: Enter patient search criteria for a known family name on the target system</p><p><b>hint</b>: [Family name]</p></blockquote><blockquote><p><b>variable</b></p><p><b>name</b>: PatientSearchGivenName</p><p><b>description</b>: Enter patient search criteria for a known given name on the target system</p><p><b>hint</b>: [Given name]</p></blockquote><blockquote><p><b>variable</b></p><p><b>name</b>: PatientSearchBundleTotal</p><p><b>description</b>: Evaluate the returned Patient searchset Bundle.total value</p><p><b>expression</b>: Bundle.total.toInteger()</p></blockquote><blockquote><p><b>setup</b></p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td></tr><tr><td>*</td><td>Search (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code search = 'Search', stated as 'null')</td><td>Patient</td><td>Test simple search to verify server support.</td><td>xml</td><td>true</td><td>?family=DONTEXPECTAMATCH&amp;given=DONTEXPECTAMATCH</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>Operator</b></td><td><b>RequestURL</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the request url contains the family search parameter.</td><td>request</td><td>contains</td><td>family</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 200(OK).</td><td>response</td><td>200</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Resource</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned resource type is Bundle.</td><td>Bundle</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>NavigationLinks</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned Bundle correctly defines the navigation links.</td><td>true</td><td>false</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Patient Create Search</p><p><b>description</b>: Create a Patient resource and capture the returned HTTP Header Location. Then search for (read) that Patient using the Location URL value and validate the response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Patient Search Dynamic</p><p><b>description</b>: Search for Patient resources using the user defined dynamic variables ${PatientSearchFamilyName} and ${PatientSearchGivenName} and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+          },
+          "url": "http://hl7.org/fhir/TestScript/testscript-example-search",
+          "identifier": {
+           "system": "urn:ietf:rfc:3986",
+           "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9881"
+          },
+          "version": "1.0",
+          "name": "TestScript Example Search",
+          "status": "draft",
+          "experimental": true,
+          "date": "2017-01-18",
+          "publisher": "HL7",
+          "contact": [
+           {
+            "name": "Support",
+            "telecom": [
+             {
+              "system": "email",
+              "value": "support@HL7.org",
+              "use": "work"
+             }
+            ]
+           }
+          ],
+          "description": "TestScript example resource with simple Patient search test. The read tests will utilize user defined dynamic variables that will hold the Patient search parameter values.",
+          "jurisdiction": [
+           {
+            "coding": [
+             {
+              "system": "urn:iso:std:iso:3166",
+              "code": "US",
+              "display": "United States of America (the)"
+             }
+            ]
+           }
+          ],
+          "purpose": "Patient Search Operation",
+          "copyright": "© HL7.org 2011+",
+          "metadata": {
+           "link": [
+            {
+             "url": "http://hl7.org/fhir/patient.html",
+             "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+            }
+           ],
+           "capability": [
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Search Operation",
+             "link": [
+              "http://hl7.org/fhir/http.html#search"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            }
+           ]
+          },
+          "fixture": [
+           {
+            "id": "fixture-patient-create",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/example",
+             "display": "Peter Chalmers"
+            }
+           }
+          ],
+          "profile": [
+           {
+            "id": "bundle-profile",
+            "reference": "http://hl7.org/fhir/StructureDefinition/Bundle"
+           }
+          ],
+          "variable": [
+           {
+            "name": "PatientCreateLocation",
+            "headerField": "Location",
+            "sourceId": "PatientCreateResponse"
+           },
+           {
+            "name": "PatientSearchFamilyName",
+            "description": "Enter patient search criteria for a known family name on the target system",
+            "hint": "[Family name]"
+           },
+           {
+            "name": "PatientSearchGivenName",
+            "description": "Enter patient search criteria for a known given name on the target system",
+            "hint": "[Given name]"
+           },
+           {
+            "name": "PatientSearchBundleTotal",
+            "description": "Evaluate the returned Patient searchset Bundle.total value",
+            "expression": "Bundle.total.toInteger()"
+           }
+          ],
+          "setup": {
+           "action": [
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "search"
+              },
+              "resource": "Patient",
+              "description": "Test simple search to verify server support.",
+              "accept": "xml",
+              "encodeRequestUrl": true,
+              "params": "?family=DONTEXPECTAMATCH&given=DONTEXPECTAMATCH"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the request url contains the family search parameter.",
+              "direction": "request",
+              "operator": "contains",
+              "requestURL": "family",
+              "warningOnly": false
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 200(OK).",
+              "direction": "response",
+              "responseCode": "200",
+              "warningOnly": false
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned resource type is Bundle.",
+              "resource": "Bundle",
+              "warningOnly": false
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned Bundle correctly defines the navigation links.",
+              "navigationLinks": true,
+              "warningOnly": false
+             }
+            }
+           ]
+          },
+          "test": [
+           {
+            "id": "01-PatientCreateSearch",
+            "name": "Patient Create Search",
+            "description": "Create a Patient resource and capture the returned HTTP Header Location. Then search for (read) that Patient using the Location URL value and validate the response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "create"
+               },
+               "resource": "Patient",
+               "description": "Create a Patient resource and capture the returned HTTP Header Location.",
+               "accept": "xml",
+               "contentType": "xml",
+               "encodeRequestUrl": true,
+               "responseId": "PatientCreateResponse",
+               "sourceId": "fixture-patient-create"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 201(Created).",
+               "response": "created",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP Header Location is present.",
+               "direction": "response",
+               "headerField": "Location",
+               "operator": "notEmpty",
+               "warningOnly": false
+              }
+             },
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "description": "Read the created Patient using the captured Location URL value.",
+               "accept": "xml",
+               "encodeRequestUrl": true,
+               "url": "${PatientCreateLocation}"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Patient.",
+               "resource": "Patient",
+               "warningOnly": false
+              }
+             }
+            ]
+           },
+           {
+            "id": "02-PatientSearchDynamic",
+            "name": "Patient Search Dynamic",
+            "description": "Search for Patient resources using the user defined dynamic variables ${PatientSearchFamilyName} and ${PatientSearchGivenName} and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "search"
+               },
+               "resource": "Patient",
+               "description": "Search for Patient resources on the destination test system.",
+               "accept": "xml",
+               "encodeRequestUrl": true,
+               "params": "?family=${PatientSearchFamilyName}&given=${PatientSearchGivenName}"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned format is XML.",
+               "contentType": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Bundle.",
+               "resource": "Bundle",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Bundle conforms to the base FHIR specification.",
+               "validateProfileId": "bundle-profile",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Bundle type equals 'searchset'.",
+               "operator": "equals",
+               "path": "fhir:Bundle/fhir:type/@value",
+               "value": "searchset",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Bundle total is greater than or equal to the number of returned entries.",
+               "expression": "Bundle.total.toInteger() >= entry.count()",
+               "warningOnly": false
+              }
+             }
+            ]
+           }
+          ]
+         }
+        },
+        "testscript-example-update.json": {
+         "value": {
+          "resourceType": "TestScript",
+          "id": "testscript-example-update",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: testscript-example-update</p><p><b>url</b>: <b>http://hl7.org/fhir/TestScript/testscript-example-update</b></p><p><b>identifier</b>: urn:oid:1.3.6.1.4.1.21367.2005.3.7.9882</p><p><b>version</b>: 1.0</p><p><b>name</b>: TestScript Example Update</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 18/01/2017</p><p><b>publisher</b>: HL7</p><p><b>contact</b>: </p><p><b>description</b>: TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to update that Patient with various asserts.</p><p><b>jurisdiction</b>: United States of America (the) <span>(Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United States of America (the)'})</span></p><p><b>purpose</b>: Patient (Conditional) Create, Update, Delete Operations</p><p><b>copyright</b>: © HL7.org 2011+</p><blockquote><p><b>metadata</b></p><h3>Links</h3><table><tr><td>-</td><td><b>Url</b></td><td><b>Description</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/patient.html</a></td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr></table><h3>Capabilities</h3><table><tr><td>-</td><td><b>Required</b></td><td><b>Validated</b></td><td><b>Description</b></td><td><b>Link</b></td><td><b>Capabilities</b></td></tr><tr><td>*</td><td>true</td><td>false</td><td>Patient Update and Delete Operations</td><td><a>http://hl7.org/fhir/http.html#update</a></td><td><a>CapabilityStatement/example</a></td></tr></table></blockquote><blockquote><p><b>fixture</b></p><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a>Peter Chalmers</a></p></blockquote><blockquote><p><b>fixture</b></p><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a>Donald Duck</a></p></blockquote><p><b>profile</b>: <a>Generated Summary: url: http://hl7.org/fhir/StructureDefinition/Patient; version: 4.0.1; name: Patient; ACTIVE; date: 01/11/2019 9:29:23 AM; publisher: Health Level Seven International (Patient Administration); description: Demographics and other administrative information about an individual or animal receiving care or other health-related services.; purpose: Tracking patient is the center of the healthcare process.; 4.0.1; RESOURCE; type: Patient; baseDefinition: http://hl7.org/fhir/StructureDefinition/DomainResource; SPECIALIZATION</a></p><h3>Variables</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Path</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>createResourceId</td><td>Patient/id</td><td>fixture-patient-create</td></tr></table><blockquote><p><b>setup</b></p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td></tr><tr><td>*</td><td>Delete (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code delete = 'Delete', stated as 'null')</td><td>Patient</td><td>SetupDeletePatient</td><td>Execute a delete operation to insure the patient does not exist on the server.</td><td>xml</td><td>true</td><td>/${createResourceId}</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>Operator</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 200(OK) or 204(No Content).</td><td>response</td><td>in</td><td>200,204</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>Update (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code update = 'Update', stated as 'null')</td><td>Patient</td><td>SetupCreatePatient</td><td>Create patient resource on test server using the contents of fixture-patient-create</td><td>xml</td><td>xml</td><td>true</td><td>/${createResourceId}</td><td>fixture-patient-create</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 201(Created).</td><td>response</td><td>201</td><td>false</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Update Patient</p><p><b>description</b>: Update a Patient and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+          },
+          "url": "http://hl7.org/fhir/TestScript/testscript-example-update",
+          "identifier": {
+           "system": "urn:ietf:rfc:3986",
+           "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9882"
+          },
+          "version": "1.0",
+          "name": "TestScript Example Update",
+          "status": "draft",
+          "experimental": true,
+          "date": "2017-01-18",
+          "publisher": "HL7",
+          "contact": [
+           {
+            "name": "Support",
+            "telecom": [
+             {
+              "system": "email",
+              "value": "support@HL7.org",
+              "use": "work"
+             }
+            ]
+           }
+          ],
+          "description": "TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to update that Patient with various asserts.",
+          "jurisdiction": [
+           {
+            "coding": [
+             {
+              "system": "urn:iso:std:iso:3166",
+              "code": "US",
+              "display": "United States of America (the)"
+             }
+            ]
+           }
+          ],
+          "purpose": "Patient (Conditional) Create, Update, Delete Operations",
+          "copyright": "© HL7.org 2011+",
+          "metadata": {
+           "link": [
+            {
+             "url": "http://hl7.org/fhir/patient.html",
+             "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+            }
+           ],
+           "capability": [
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Update and Delete Operations",
+             "link": [
+              "http://hl7.org/fhir/http.html#update",
+              "http://hl7.org/fhir/http.html#delete"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            }
+           ]
+          },
+          "fixture": [
+           {
+            "id": "fixture-patient-create",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/example",
+             "display": "Peter Chalmers"
+            }
+           },
+           {
+            "id": "fixture-patient-update",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/pat1",
+             "display": "Donald Duck"
+            }
+           }
+          ],
+          "profile": [
+           {
+            "id": "patient-profile",
+            "reference": "http://hl7.org/fhir/StructureDefinition/Patient"
+           }
+          ],
+          "variable": [
+           {
+            "name": "createResourceId",
+            "path": "Patient/id",
+            "sourceId": "fixture-patient-create"
+           }
+          ],
+          "setup": {
+           "action": [
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "delete"
+              },
+              "resource": "Patient",
+              "label": "SetupDeletePatient",
+              "description": "Execute a delete operation to insure the patient does not exist on the server.",
+              "accept": "xml",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 200(OK) or 204(No Content).",
+              "direction": "response",
+              "operator": "in",
+              "responseCode": "200,204",
+              "warningOnly": false
+             }
+            },
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "update"
+              },
+              "resource": "Patient",
+              "label": "SetupCreatePatient",
+              "description": "Create patient resource on test server using the contents of fixture-patient-create",
+              "accept": "xml",
+              "contentType": "xml",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}",
+              "sourceId": "fixture-patient-create"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 201(Created).",
+              "direction": "response",
+              "responseCode": "201",
+              "warningOnly": false
+             }
+            }
+           ]
+          },
+          "test": [
+           {
+            "id": "01-UpdatePatient",
+            "name": "Update Patient",
+            "description": "Update a Patient and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "update"
+               },
+               "resource": "Patient",
+               "label": "SetupUpdatePatient",
+               "description": "Update patient resource on test server using the contents of fixture-patient-update",
+               "accept": "xml",
+               "contentType": "xml",
+               "encodeRequestUrl": true,
+               "params": "/${createResourceId}",
+               "sourceId": "fixture-patient-update"
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned format is XML.",
+               "contentType": "xml",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP Header Last-Modified is present. Warning only as the server might not support versioning.",
+               "headerField": "Last-Modified",
+               "operator": "notEmpty",
+               "warningOnly": true
+              }
+             }
+            ]
+           }
+          ]
+         }
+        },
+        "testscript-example.json": {
+         "value": {
+          "resourceType": "TestScript",
+          "id": "testscript-example",
+          "text": {
+           "status": "generated",
+           "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative with Details</b></p><p><b>id</b>: testscript-example</p><p><b>url</b>: <b>http://hl7.org/fhir/TestScript/testscript-example</b></p><p><b>identifier</b>: urn:oid:1.3.6.1.4.1.21367.2005.3.7.9876</p><p><b>version</b>: 1.0</p><p><b>name</b>: TestScript Example</p><p><b>status</b>: draft</p><p><b>experimental</b>: true</p><p><b>date</b>: 18/01/2017</p><p><b>publisher</b>: HL7</p><p><b>contact</b>: </p><p><b>description</b>: TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to read the created Patient with various asserts.</p><p><b>useContext</b>: </p><p><b>jurisdiction</b>: United States of America (the) <span>(Details : {urn:iso:std:iso:3166 code 'US' = 'United States of America', given as 'United States of America (the)'})</span></p><p><b>purpose</b>: Patient Conditional Create (Update), Read and Delete Operations</p><p><b>copyright</b>: © HL7.org 2011+</p><blockquote><p><b>metadata</b></p><h3>Links</h3><table><tr><td>-</td><td><b>Url</b></td><td><b>Description</b></td></tr><tr><td>*</td><td><a>http://hl7.org/fhir/patient.html</a></td><td>Demographics and other administrative information about an individual or animal receiving care or other health-related services.</td></tr></table><h3>Capabilities</h3><table><tr><td>-</td><td><b>Required</b></td><td><b>Validated</b></td><td><b>Description</b></td><td><b>Link</b></td><td><b>Capabilities</b></td></tr><tr><td>*</td><td>true</td><td>false</td><td>Patient Update, Read and Delete Operations</td><td><a>http://hl7.org/fhir/http.html#delete</a></td><td><a>CapabilityStatement/example</a></td></tr></table></blockquote><blockquote><p><b>fixture</b></p><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a>Peter Chalmers</a></p></blockquote><blockquote><p><b>fixture</b></p><p><b>autocreate</b>: false</p><p><b>autodelete</b>: false</p><p><b>resource</b>: <a>Peter Chalmers (minimum)</a></p></blockquote><p><b>profile</b>: <a>Generated Summary: url: http://hl7.org/fhir/StructureDefinition/Patient; version: 4.0.1; name: Patient; ACTIVE; date: 01/11/2019 9:29:23 AM; publisher: Health Level Seven International (Patient Administration); description: Demographics and other administrative information about an individual or animal receiving care or other health-related services.; purpose: Tracking patient is the center of the healthcare process.; 4.0.1; RESOURCE; type: Patient; baseDefinition: http://hl7.org/fhir/StructureDefinition/DomainResource; SPECIALIZATION</a></p><h3>Variables</h3><table><tr><td>-</td><td><b>Name</b></td><td><b>Path</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>createResourceId</td><td>Patient/id</td><td>fixture-patient-create</td></tr></table><blockquote><p><b>setup</b></p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td></tr><tr><td>*</td><td>Delete (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code delete = 'Delete', stated as 'null')</td><td>Patient</td><td>SetupDeletePatient</td><td>Execute a delete operation to insure the patient does not exist on the server.</td><td>json</td><td>true</td><td>/${createResourceId}</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>Operator</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 200(OK) or 204(No Content).</td><td>response</td><td>in</td><td>200,204</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Label</b></td><td><b>Description</b></td><td><b>Accept</b></td><td><b>ContentType</b></td><td><b>EncodeRequestUrl</b></td><td><b>Params</b></td><td><b>SourceId</b></td></tr><tr><td>*</td><td>Update (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code update = 'Update', stated as 'null')</td><td>Patient</td><td>SetupCreatePatient</td><td>Create patient resource on test server using the contents of fixture-patient-create</td><td>json</td><td>json</td><td>true</td><td>/${createResourceId}</td><td>fixture-patient-create</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>ResponseCode</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 201(Created).</td><td>response</td><td>201</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td><td><b>Type</b></td><td><b>Resource</b></td><td><b>Description</b></td><td><b>EncodeRequestUrl</b></td><td><b>TargetId</b></td></tr><tr><td>*</td><td>Read (Details: http://terminology.hl7.org/CodeSystem/testscript-operation-codes code read = 'Read', stated as 'null')</td><td>Patient</td><td>Read the created patient resource on the test server using the id from fixture-patient-create. Verify contents.</td><td>true</td><td>fixture-patient-create</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>Direction</b></td><td><b>Response</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned HTTP status is 200(OK).</td><td>response</td><td>okay</td><td>false</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td><td><b>Description</b></td><td><b>CompareToSourceId</b></td><td><b>CompareToSourceExpression</b></td><td><b>Operator</b></td><td><b>WarningOnly</b></td></tr><tr><td>*</td><td>Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit compareToSourceId reference to fixture-patient-create used to create the Patient.</td><td>fixture-patient-create</td><td>Patient.name.first().family</td><td>equals</td><td>false</td></tr></table></blockquote></blockquote><blockquote><p><b>test</b></p><p><b>name</b>: Read Patient</p><p><b>description</b>: Read a Patient and validate response.</p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote><blockquote><p><b>action</b></p><h3>Asserts</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote><blockquote><p><b>teardown</b></p><blockquote><p><b>action</b></p><h3>Operations</h3><table><tr><td>-</td></tr><tr><td>*</td></tr></table></blockquote></blockquote></div>"
+          },
+          "url": "http://hl7.org/fhir/TestScript/testscript-example",
+          "identifier": {
+           "system": "urn:ietf:rfc:3986",
+           "value": "urn:oid:1.3.6.1.4.1.21367.2005.3.7.9876"
+          },
+          "version": "1.0",
+          "name": "TestScript Example",
+          "status": "draft",
+          "experimental": true,
+          "date": "2017-01-18",
+          "publisher": "HL7",
+          "contact": [
+           {
+            "name": "Support",
+            "telecom": [
+             {
+              "system": "email",
+              "value": "support@HL7.org",
+              "use": "work"
+             }
+            ]
+           }
+          ],
+          "description": "TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to read the created Patient with various asserts.",
+          "useContext": [
+           {
+            "code": {
+             "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+             "code": "focus"
+            },
+            "valueCodeableConcept": {
+             "coding": [
+              {
+               "system": "http://terminology.hl7.org/CodeSystem/variant-state",
+               "code": "positive"
+              }
+             ]
+            }
+           }
+          ],
+          "jurisdiction": [
+           {
+            "coding": [
+             {
+              "system": "urn:iso:std:iso:3166",
+              "code": "US",
+              "display": "United States of America (the)"
+             }
+            ]
+           }
+          ],
+          "purpose": "Patient Conditional Create (Update), Read and Delete Operations",
+          "copyright": "© HL7.org 2011+",
+          "metadata": {
+           "link": [
+            {
+             "url": "http://hl7.org/fhir/patient.html",
+             "description": "Demographics and other administrative information about an individual or animal receiving care or other health-related services."
+            }
+           ],
+           "capability": [
+            {
+             "required": true,
+             "validated": false,
+             "description": "Patient Update, Read and Delete Operations",
+             "link": [
+              "http://hl7.org/fhir/http.html#delete",
+              "http://hl7.org/fhir/http.html#read",
+              "http://hl7.org/fhir/http.html#update"
+             ],
+             "capabilities": "CapabilityStatement/example"
+            }
+           ]
+          },
+          "fixture": [
+           {
+            "id": "fixture-patient-create",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/example",
+             "display": "Peter Chalmers"
+            }
+           },
+           {
+            "id": "fixture-patient-minimum",
+            "autocreate": false,
+            "autodelete": false,
+            "resource": {
+             "reference": "Patient/example",
+             "display": "Peter Chalmers (minimum)"
+            }
+           }
+          ],
+          "profile": [
+           {
+            "id": "patient-profile",
+            "reference": "http://hl7.org/fhir/StructureDefinition/Patient"
+           }
+          ],
+          "variable": [
+           {
+            "name": "createResourceId",
+            "path": "Patient/id",
+            "sourceId": "fixture-patient-create"
+           }
+          ],
+          "setup": {
+           "action": [
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "delete"
+              },
+              "resource": "Patient",
+              "label": "SetupDeletePatient",
+              "description": "Execute a delete operation to insure the patient does not exist on the server.",
+              "accept": "json",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 200(OK) or 204(No Content).",
+              "direction": "response",
+              "operator": "in",
+              "responseCode": "200,204",
+              "warningOnly": false
+             }
+            },
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "update"
+              },
+              "resource": "Patient",
+              "label": "SetupCreatePatient",
+              "description": "Create patient resource on test server using the contents of fixture-patient-create",
+              "accept": "json",
+              "contentType": "json",
+              "encodeRequestUrl": true,
+              "params": "/${createResourceId}",
+              "sourceId": "fixture-patient-create"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 201(Created).",
+              "direction": "response",
+              "responseCode": "201",
+              "warningOnly": false
+             }
+            },
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "read"
+              },
+              "resource": "Patient",
+              "description": "Read the created patient resource on the test server using the id from fixture-patient-create. Verify contents.",
+              "encodeRequestUrl": true,
+              "targetId": "fixture-patient-create"
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned HTTP status is 200(OK).",
+              "direction": "response",
+              "response": "okay",
+              "warningOnly": false
+             }
+            },
+            {
+             "assert": {
+              "description": "Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit compareToSourceId reference to fixture-patient-create used to create the Patient.",
+              "compareToSourceId": "fixture-patient-create",
+              "compareToSourceExpression": "Patient.name.first().family",
+              "operator": "equals",
+              "warningOnly": false
+             }
+            }
+           ]
+          },
+          "test": [
+           {
+            "id": "01-ReadPatient",
+            "name": "Read Patient",
+            "description": "Read a Patient and validate response.",
+            "action": [
+             {
+              "operation": {
+               "type": {
+                "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+                "code": "read"
+               },
+               "resource": "Patient",
+               "description": "Read the patient resource on the test server using the id from fixture-patient-create. Prevent URL encoding of the request.",
+               "encodeRequestUrl": false,
+               "responseId": "fixture-patient-read",
+               "targetId": "fixture-patient-create"
+              }
+             },
+             {
+              "assert": {
+               "label": "01-ReadPatientOK",
+               "description": "Confirm that the returned HTTP status is 200(OK).",
+               "direction": "response",
+               "response": "okay",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned HTTP Header Last-Modified is present. Warning only as the server might not support versioning.",
+               "direction": "response",
+               "headerField": "Last-Modified",
+               "operator": "notEmpty",
+               "warningOnly": true
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource type is Patient.",
+               "resource": "Patient",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Patient conforms to the base FHIR specification.",
+               "validateProfileId": "patient-profile",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit sourceId reference to read responseId fixture.",
+               "operator": "equals",
+               "path": "fhir:Patient/fhir:name/fhir:family/@value",
+               "sourceId": "fixture-patient-read",
+               "value": "Chalmers",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Patient contains the expected given name 'Peter'. Uses explicit sourceId reference to read responseId fixture.",
+               "operator": "equals",
+               "path": "fhir:Patient/fhir:name/fhir:given/@value",
+               "sourceId": "fixture-patient-read",
+               "value": "Peter",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit compareToSourceId reference to fixture-patient-create used to create the Patient and implicit reference to read response payload.",
+               "compareToSourceId": "fixture-patient-create",
+               "compareToSourcePath": "fhir:Patient/fhir:name/fhir:family/@value",
+               "operator": "equals",
+               "path": "fhir:Patient/fhir:name/fhir:family/@value",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit compareToSourceId reference to fixture-patient-create used to create the Patient and explicit reference to read response payload and default operator of 'equals'.",
+               "compareToSourceId": "fixture-patient-create",
+               "compareToSourcePath": "fhir:Patient/fhir:name/fhir:given/@value",
+               "path": "fhir:Patient/fhir:name/fhir:given/@value",
+               "sourceId": "fixture-patient-read",
+               "warningOnly": false
+              }
+             },
+             {
+              "assert": {
+               "description": "Confirm that the returned resource contains the expected retained elements and values. Warning only to provide users with reviewable results.",
+               "minimumId": "fixture-patient-minimum",
+               "warningOnly": true
+              }
+             }
+            ]
+           }
+          ],
+          "teardown": {
+           "action": [
+            {
+             "operation": {
+              "type": {
+               "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+               "code": "delete"
+              },
+              "resource": "Patient",
+              "description": "Delete the patient resource on the test server using the id from fixture-patient-create.",
+              "encodeRequestUrl": true,
+              "targetId": "fixture-patient-create"
+             }
+            }
+           ]
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "get": {
+    "tags": [
+     "TestScript"
+    ],
+    "parameters": [
+     {
+      "name": "context",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "A use context assigned to the activity definition"
+     },
+     {
+      "name": "context-quantity",
+      "in": "query",
+      "schema": {
+       "type": "integer"
+      },
+      "description": "A quantity- or range-valued use context assigned to the activity definition"
+     },
+     {
+      "name": "context-type",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "A type of use context assigned to the activity definition"
+     },
+     {
+      "name": "context-type-quantity",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "A use context type and quantity- or range-based value assigned to the activity definition"
+     },
+     {
+      "name": "context-type-value",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "A use context type and value assigned to the activity definition"
+     },
+     {
+      "name": "date",
+      "in": "query",
+      "schema": {
+       "type": "string",
+       "format": "date"
+      },
+      "description": "The activity definition publication date"
+     },
+     {
+      "name": "description",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The description of the activity definition"
+     },
+     {
+      "name": "identifier",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Account number"
+     },
+     {
+      "name": "jurisdiction",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Intended jurisdiction for the activity definition"
+     },
+     {
+      "name": "name",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Human-readable label"
+     },
+     {
+      "name": "publisher",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "Name of the publisher of the activity definition"
+     },
+     {
+      "name": "status",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "active | inactive | entered-in-error | on-hold | unknown"
+     },
+     {
+      "name": "testscript-capability",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "TestScript required and validated capability"
+     },
+     {
+      "name": "title",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The human-friendly name of the activity definition"
+     },
+     {
+      "name": "url",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The uri that identifies the activity definition"
+     },
+     {
+      "name": "version",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      },
+      "description": "The business version of the activity definition"
+     },
+     {
+      "name": "_format",
+      "in": "query",
+      "x-consoleDefault": "application/json",
+      "schema": {
+       "type": "string"
+      },
+      "description": ""
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/TestScript"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/TestScript/{id}": {
+   "parameters": [
+    {
+     "in": "path",
+     "required": true,
+     "name": "id",
+     "schema": {
+      "type": "string"
+     }
+    }
+   ],
+   "get": {
+    "tags": [
+     "TestScript"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/TestScript"
+        }
+       }
+      }
+     }
+    }
+   },
+   "put": {
+    "tags": [
+     "TestScript"
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    },
+    "requestBody": {
+     "content": {
+      "application/fhir+json": {
+       "schema": {
+        "$ref": "#/components/schemas/TestScript"
+       }
+      }
+     }
+    }
+   },
+   "delete": {
+    "tags": [
+     "TestScript"
+    ],
+    "parameters": [],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {}
+     }
+    }
+   }
+  },
+  "/TestScript/{id}/_history": {
+   "get": {
+    "tags": [
+     "TestScript"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_count",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "_since",
+      "in": "query",
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/TestScript"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/TestScript/{id}/_history/{vid}": {
+   "get": {
+    "tags": [
+     "TestScript"
+    ],
+    "parameters": [
+     {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     },
+     {
+      "name": "vid",
+      "in": "path",
+      "required": true,
+      "schema": {
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "Success",
+      "content": {
+       "application/fhir+json": {
+        "schema": {
+         "$ref": "#/components/schemas/TestScript"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "tags": [
+  {
+   "name": "TestScript"
+  }
+ ]
+}
